@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const handleUserInteraction = () => setShowButton(true);
+
+    // Attach multiple event listeners for instant detection
+    window.addEventListener("wheel", handleUserInteraction);
+    window.addEventListener("touchmove", handleUserInteraction);
+    window.addEventListener("scroll", handleUserInteraction);
+
+    return () => {
+      window.removeEventListener("wheel", handleUserInteraction);
+      window.removeEventListener("touchmove", handleUserInteraction);
+      window.removeEventListener("scroll", handleUserInteraction);
+    };
+  }, []);
+
   return (
     <div
       className="relative bg-cover bg-center min-h-[600px] flex items-center justify-center text-white text-center px-6"
@@ -17,12 +35,17 @@ const HeroSection = () => {
         <p className="mt-3">
           Ensure seamless compliance with our expert tax filing services.
         </p>
-        <a
-          href="#"
-          className="mt-5 inline-block bg-orange-500 text-white px-6 py-3 rounded-md font-medium hover:bg-orange-600 transition"
-        >
-          Get Started Now
-        </a>
+        {showButton && (
+          <motion.a
+            href="/contact-us"
+            className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-md font-medium shadow-lg hover:bg-orange-600 transition"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            Get Started Today
+          </motion.a>
+        )}
       </div>
     </div>
   );

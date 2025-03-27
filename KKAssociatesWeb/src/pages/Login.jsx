@@ -1,118 +1,134 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import supabase from "../supabaseClient";
 
 export default function Login() {
-  const [selectedRole, setSelectedRole] = useState(null);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [name, setName] = useState("");
+  const [isSignUp, setIsSignUp] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  // Handle Login
+  const handleLogin = async () => {
+    if (!email) {
+      alert("Please enter your email.");
+      return;
+    }
 
-    if (selectedRole === "Admin") {
-      if (email === "admin@gmail.com" && password === "admin@123") {
-        navigate("/admin-panel"); // Redirect to Admin Panel
-      } else {
-        setError("Invalid Admin Credentials!");
-      }
+    const { data, error } = await supabase
+      .from("newuser")
+      .select("email")
+      .eq("email", email)
+      .single();
+
+    if (error) {
+      alert("You need to register first.");
+      setIsSignUp(true);
     } else {
-      setError("User login is not implemented yet!");
+      alert("Login successful! Redirecting...");
+      const newTab = window.open("https://ike1.ike.com/gopcs?KKA", "_blank");
+
+      if (!newTab) {
+        alert("Popup blocked! Please allow pop-ups for this site.");
+      }
+    }
+  };
+
+  // Handle Sign-Up
+  const handleSignUp = async () => {
+    if (!name || !email) {
+      alert("Please enter both name and email.");
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from("newuser")
+      .insert([{ name, email }]);
+
+    if (error) {
+      alert("Error signing up: " + error.message);
+    } else {
+      alert("Sign-up successful! Please log in.");
+      setIsSignUp(false);
     }
   };
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center relative bg-cover bg-center"
-      style={{
-        backgroundImage: "url('/homePage.png')", // Change path as needed
-      }}
+      className="min-h-screen flex flex-col items-center justify-center relative bg-cover bg-center"
+      style={{ backgroundImage: "url('/homePage.png')" }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#2D2155] opacity-60"></div>
+      <div className="absolute inset-0 bg-[#2D2155] opacity-60 pointer-events-none"></div>
 
-      <div className="relative z-10 text-white text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome Back</h1>
-        <p className="mb-6">Login to continue to your account</p>
-
-        {/* Admin & User Buttons */}
-        {!selectedRole ? (
-          <div className="flex space-x-4">
-            <button
-              className="bg-orange-500 px-6 py-2 rounded-md text-lg"
-              onClick={() => setSelectedRole("Admin")}
-            >
-              Admin
-            </button>
-            <button
-              className="bg-gray-500 px-6 py-2 rounded-md text-lg"
-              onClick={() => setSelectedRole("User")}
-            >
-              User
-            </button>
-          </div>
-        ) : (
-          <div className="bg-white text-black p-6 rounded-lg shadow-lg w-96">
-            {/* Role Title */}
-            <h2 className="text-2xl font-semibold mb-4 text-center">
-              {selectedRole} Login
-            </h2>
-
-            {/* Error Message */}
-            {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
-
-            {/* Login Form */}
-            <form onSubmit={handleLogin}>
-              <div className="mb-4">
-                <label className="block text-sm font-medium">Email ID</label>
-                <input
-                  type="email"
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-500"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div className="mb-4">
-                <label className="block text-sm font-medium">Password</label>
-                <input
-                  type="password"
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-500"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-
-              <button className="w-full bg-orange-500 text-white py-2 rounded-md hover:bg-orange-600">
-                Login
-              </button>
-            </form>
-
-            {/* Forgot Password */}
-            <div className="text-center mt-4">
-              <Link to="/forgot-password" className="text-orange-500 text-sm">
-                Forgot your password?
-              </Link>
-            </div>
-
-            {/* Back Button */}
-            <div className="text-center mt-4">
-              <button
-                className="text-gray-500 text-sm underline"
-                onClick={() => {
-                  setSelectedRole(null);
-                  setError("");
-                }}
-              >
-                Back
-              </button>
-            </div>
-          </div>
-        )}
+      {/* Centered Text */}
+      <div className="relative z-10 text-center mb-8">
+        <h1 className="text-4xl md:text-5xl font-bold text-white">Welcome Back</h1>
+        <p className="text-lg text-gray-300 mt-2">
+          {isSignUp
+            ? "Sign up to create your account"
+            : "Login to continue to your account"}
+        </p>
       </div>
-    </div>
-  );
+
+      {/* Form Card */}
+      <div className="relative z-10 bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        {isSignUp ? (
+          <>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Sign Up</h2>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="border p-2 rounded w-full mb-4"
+            />
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="border p-2 rounded w-full mb-4"
+            />
+            <button
+              onClick={handleSignUp}
+              className="bg-green-500 text-white px-6 py-2 rounded-md font-medium hover:bg-green-600 transition w-full"
+            >
+              Sign Up
+            </button>
+          </>
+        ) : (
+          <>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Login</h2>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="border p-2 rounded w-full mb-4"
+            />
+            <button
+              onClick={handleLogin}
+              className="bg-orange-500 text-white px-6 py-2 rounded-md font-medium hover:bg-orange-600 transition w-full"
+            >
+              Login
+            </button>
+          </>
+        )}
+
+        {/* Toggle Between Login and Sign Up */}
+        <div className="mt-4 text-center">
+          <p className="text-gray-600">
+            {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+            <button
+              onClick={() => setIsSignUp(!isSignUp)}
+              className="text-orange-500 font-semibold hover:underline"
+            >
+              {isSignUp ? "Login" : "Sign Up"}
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }

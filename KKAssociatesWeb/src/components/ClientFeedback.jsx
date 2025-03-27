@@ -23,7 +23,7 @@ export default function ClientFeedback() {
     },
     {
       stars: 5,
-      text: "They have always answered all my questions and helped me navigate cross-border taxes efficiently.",
+      text: "I highly recommend Kalyankumar and Associates for personal taxes across countries, my personal experience filing both India and US taxes through them has been great.",
       name: "Arun Krishnamurthy",
       role: "Telenav Inc",
     },
@@ -70,34 +70,47 @@ export default function ClientFeedback() {
         Our clients appreciate our dedicated tax services.
       </p>
 
-      <div className="relative flex justify-center items-center overflow-hidden w-full h-[300px]">
-        {feedbacks.map((feedback, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: index === currentIndex ? 1 : 0.6,
-              scale: index === currentIndex ? 1.1 : 0.9,
-              x: (index - currentIndex) * 320,
-            }}
-            transition={{ type: "spring", stiffness: 120, damping: 15 }}
-            className="absolute bg-white shadow-lg p-6 rounded-lg min-w-[320px] max-w-[350px] text-left transform"
-          >
-            <div className="text-orange-500 text-lg">
-              {"★".repeat(feedback.stars)}
-            </div>
-            <p className="text-gray-700 italic mt-2">"{feedback.text}"</p>
-            <div className="flex items-center mt-4">
-              <div className="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
-              <div>
-                <p className="text-gray-800 font-semibold">{feedback.name}</p>
-                <p className="text-gray-500 text-sm">{feedback.role}</p>
+      {/* Testimonials Section */}
+      <div className="relative flex justify-center items-center overflow-hidden w-full h-[350px]">
+        {feedbacks.map((feedback, index) => {
+          const isActive = index === currentIndex;
+          const isLeft =
+            index === (currentIndex - 1 + feedbacks.length) % feedbacks.length;
+          const isRight = index === (currentIndex + 1) % feedbacks.length;
+
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{
+                opacity: 1,
+                scale: isActive ? 1.2 : 0.85, // Center card larger, side cards smaller
+                zIndex: isActive ? 2 : 1,
+                x: isActive ? 0 : isLeft ? -220 : 220, // Adjusted spacing between side cards
+                y: isActive ? -30 : 30, // Move center card up, side cards lower
+              }}
+              transition={{ type: "spring", stiffness: 120, damping: 15 }}
+              className={`absolute bg-white shadow-lg p-6 rounded-lg min-w-[280px] max-w-[320px] flex flex-col justify-between text-left transform ${
+                isActive ? "shadow-2xl scale-110" : "shadow-md scale-90"
+              } ${!isActive ? "min-h-[250px]" : "min-h-[295px]"}`} // Reduce height of side cards
+            >
+              <div className="text-orange-500 text-lg">
+                {"★".repeat(feedback.stars)}
               </div>
-            </div>
-          </motion.div>
-        ))}
+              <p className="text-gray-700 italic mt-2">"{feedback.text}"</p>
+              <div className="flex items-center mt-4">
+                <div className="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
+                <div>
+                  <p className="text-gray-800 font-semibold">{feedback.name}</p>
+                  <p className="text-gray-500 text-sm">{feedback.role}</p>
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
 
+      {/* Dots Navigation */}
       <div className="flex justify-center mt-6 space-x-2">
         {feedbacks.map((_, index) => (
           <div
@@ -110,6 +123,7 @@ export default function ClientFeedback() {
         ))}
       </div>
 
+      {/* Company Logos Section */}
       <div className="mt-12">
         <h3 className="text-2xl font-bold text-orange-500">
           Chosen by Professionals At

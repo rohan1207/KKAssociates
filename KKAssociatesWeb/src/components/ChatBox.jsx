@@ -72,19 +72,17 @@ export default function ChatBox() {
                 Contact
               </button>
             </Link>
-
-            <button className="border border-white px-5 py-2 rounded text-white">
-              Inquire
-            </button>
           </div>
         </div>
 
         {/* 🟣 Chat Button - Positioned Absolutely in Strip */}
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="absolute right-10 bg-[#402569] text-white rounded-full p-5 shadow-lg flex items-center justify-center border-4 border-[#f58842] hover:scale-110 transition-transform"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+          className="fixed bottom-6 right-6 bg-[#402569] rounded-full p-3 shadow-lg border-4 border-[#f58842] hover:scale-110 transition-transform z-50 flex items-center justify-center"
         >
-          <MessageCircle size={32} />
+          <img src="/chat.png" alt="Chat" className="w-10 h-10" />
         </button>
       </div>
 
@@ -96,7 +94,7 @@ export default function ChatBox() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ duration: 0.3 }}
-            className="absolute right-10 top-[90px] bg-white rounded-2xl shadow-2xl w-[350px] overflow-hidden"
+            className="fixed bottom-20 right-6 bg-white rounded-2xl shadow-2xl w-[350px] overflow-hidden z-50"
           >
             {/* Header */}
             <div className="bg-[#402569] text-white p-4 flex items-center rounded-t-2xl">

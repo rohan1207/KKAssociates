@@ -13,6 +13,18 @@ import ContactUs from "./pages/ContactUs";
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
 import AdminPanel from "./pages/AdminPanel";
+import CareersPage from "./pages/CareersPage";
+import ChatBox from "./components/ChatBox";
+import BlogPage from "./pages/BlogPage";
+import Corporate from "./services/Corporate";
+import PersonalTax from "./services/PersonalTax";
+import Investor from "./services/Investor";
+import TaxAdvisory from "./services/TaxAdvisory";
+import FinCen from "./services/FinCen";
+import Estate from "./services/Estate";
+import Formation from "./services/Formation";
+import GiftTax from "./services/GiftTax";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -27,8 +39,21 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/admin-panel" element={<AdminPanel />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-      </Routes>
+        <Route path="/careers" element={<CareersPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/corporate-tax" element={<Corporate />} />
 
+
+        <Route path="/personal-tax" element={<PersonalTax />} />
+        <Route path="/investor-services" element={<Investor />} />
+        <Route path="/tax-advisory" element={<TaxAdvisory />} />
+        <Route path="/fin-advisory" element={<FinCen />} />
+        <Route path="/estate" element={<Estate />} />
+        <Route path="/formation-advisory" element={<Formation />} />
+        <Route path="/return-advisory" element={<GiftTax />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+      <ChatBox />
       <Footer />
     </Router>
   );

@@ -5,6 +5,7 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -12,11 +13,9 @@ const Footer = () => {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {/* Logo Section */}
         <div>
-          <img
-            src="/logo.png"
-            alt="KK Associates"
-            className="h-10 mb-2"
-          />
+          <Link to="/">
+            <img src="/logo.png" alt="KK Associates Logo" className="h-10" />
+          </Link>
           <p className="text-sm text-gray-300">CHARTERED ACCOUNTANTS</p>
         </div>
 
@@ -25,29 +24,39 @@ const Footer = () => {
           <h3 className="font-semibold mb-3">Quick Links</h3>
           <ul className="text-sm text-gray-300 space-y-2">
             <li>
-              <a href="#" className="hover:underline">
-                About Us
-              </a>
+              <Link to="/about">
+                <a href="#" className="hover:underline">
+                  About Us
+                </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
-                Our Services
-              </a>
+              <Link to="/services">
+                <a href="#" className="hover:underline">
+                  Our Services
+                </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
-                Contact Us
-              </a>
+              <Link to="/contact-us">
+                <a href="#" className="hover:underline">
+                  Contact Us
+                </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
-                Blog Posts
-              </a>
+              <Link to="/blog">
+                <a href="#" className="hover:underline">
+                  Blog Posts
+                </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
-                FAQs
-              </a>
+              <Link to="/careers">
+                <a href="#" className="hover:underline">
+                  Careers
+                </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -57,74 +66,22 @@ const Footer = () => {
           <h3 className="font-semibold mb-3">Newsletter</h3>
           <ul className="text-sm text-gray-300 space-y-2">
             <li>
-              <a href="#" className="hover:underline">
-                Sign Up
-              </a>
+              <Link to="/login">
+                <a href="#" className="hover:underline">
+                  Sign Up
+                </a>
+                /
+              </Link>
             </li>
+
             <li>
-              <a href="#" className="hover:underline">
-                Latest News
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Webinars
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Resources
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Support Center
-              </a>
+              <Link to="/contact-us">
+                <a href="#" className="hover:underline">
+                  Support Center
+                </a>
+              </Link>
             </li>
           </ul>
-        </div>
-
-        {/* Newsletter Subscription */}
-        <div>
-          <h3 className="font-semibold mb-3">
-            Subscribe to our newsletter for updates and insights.
-          </h3>
-          <div className="flex">
-            <input
-              type="email"
-              placeholder="Email Id"
-              className="w-full p-2 text-gray-900 rounded-l-md focus:outline-none"
-            />
-            <button className="bg-white text-[#2F1A54] px-4 py-2 rounded-r-md font-semibold hover:bg-gray-300">
-              Join
-            </button>
-          </div>
-          <p className="text-xs text-gray-300 mt-2">
-            By joining, you consent to our{" "}
-            <a href="#" className="underline">
-              Privacy Policy
-            </a>{" "}
-            and updates.
-          </p>
-        </div>
-      </div>
-
-      {/* Bottom Section */}
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-300 mt-10">
-        {/* Copyright Text */}
-        <p>© 2024 KK Associates. All rights reserved.</p>
-
-        {/* Privacy Links */}
-        <div className="flex space-x-6">
-          <a href="#" className="hover:underline">
-            Privacy Policy
-          </a>
-          <a href="#" className="hover:underline">
-            Terms of Use
-          </a>
-          <a href="#" className="hover:underline">
-            Cookie Policy
-          </a>
         </div>
 
         {/* Social Media Icons */}
@@ -143,6 +100,25 @@ const Footer = () => {
           </a>
           <a href="#">
             <FaYoutube />
+          </a>
+        </div>
+      </div>
+
+      {/* Bottom Section */}
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-300 mt-10">
+        {/* Copyright Text */}
+        <p>© 2024 KK Associates. All rights reserved.</p>
+
+        {/* Privacy Links */}
+        <div className="flex space-x-6">
+          <a href="#" className="hover:underline">
+            Privacy Policy
+          </a>
+          <a href="#" className="hover:underline">
+            Terms of Use
+          </a>
+          <a href="#" className="hover:underline">
+            Cookie Policy
           </a>
         </div>
       </div>

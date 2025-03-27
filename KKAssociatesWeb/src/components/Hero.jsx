@@ -18,28 +18,24 @@ const Hero = () => {
   // Animate based on scroll position
   useEffect(() => {
     if (scrollY < 100) {
-      // Initial state (Only text is visible)
       controls.start({
         opacity: 1,
         y: 0,
         scale: 1,
       });
     } else if (scrollY >= 100 && scrollY < 300) {
-      // First scroll (Text moves up slightly, logo shrinks a bit, button appears)
       controls.start({
         opacity: 1,
         y: -20,
         scale: 0.9,
       });
     } else if (scrollY >= 300 && scrollY < 600) {
-      // Second scroll (Only logo remains)
       controls.start({
         opacity: 0,
         y: -50,
         scale: 0.8,
       });
     } else {
-      // Completely hide the logo after scrolling past the hero section
       controls.start({
         opacity: 0,
         scale: 0.7,
@@ -57,7 +53,7 @@ const Hero = () => {
 
       {/* Content */}
       <motion.div
-        className="relative z-10"
+        className="relative z-10 flex flex-col items-center justify-center w-full"
         animate={controls}
         transition={{ duration: 0.3 }}
       >
@@ -65,15 +61,15 @@ const Hero = () => {
         <motion.div
           animate={controls}
           transition={{ duration: 0.3 }}
-          className="mb-6"
+          className="mb-6 flex flex-col items-center"
         >
           <motion.img
             src="/logo.png"
             alt="KK Associates Logo"
             className="h-16 mx-auto"
             animate={{
-              scale: scrollY > 100 ? 0.8 : 1, // Shrink logo on first scroll
-              opacity: scrollY > 600 ? 0 : 1, // Hide logo after second scroll
+              scale: scrollY > 100 ? 0.8 : 1,
+              opacity: scrollY > 600 ? 0 : 1,
             }}
             transition={{ duration: 0.3 }}
           />
@@ -85,19 +81,15 @@ const Hero = () => {
         {/* Main Heading & Subheading */}
         <motion.h2
           className="text-white text-4xl md:text-5xl font-extrabold leading-tight"
-          animate={{
-            opacity: scrollY > 300 ? 0 : 1, // Hide text on second scroll
-          }}
+          animate={{ opacity: scrollY > 300 ? 0 : 1 }}
           transition={{ duration: 0.3 }}
         >
           Seamless Cross-Border Tax Solutions <br /> Between the U.S. & India
         </motion.h2>
 
         <motion.p
-          className="text-gray-300 text-lg max-w-xl mt-4 text-center ml-[116px]"
-          animate={{
-            opacity: scrollY > 300 ? 0 : 1, // Hide text on second scroll
-          }}
+          className="text-gray-300 text-lg max-w-xl mt-4 text-center"
+          animate={{ opacity: scrollY > 300 ? 0 : 1 }}
           transition={{ duration: 0.3 }}
         >
           Navigating the complexities of cross-border taxation can be daunting.
@@ -107,19 +99,15 @@ const Hero = () => {
 
         {/* Book Consultation Button (Appears on First Scroll) */}
         <motion.div
-          animate={{
-            opacity: scrollY > 100 ? 1 : 0, // Fade in on first scroll
-          }}
+          animate={{ opacity: scrollY > 100 ? 1 : 0 }}
           transition={{ duration: 0.15 }}
         >
           <Link to="/book-consultation">
             <motion.button
               className="px-6 py-3 rounded-md text-white mt-6 text-lg font-semibold"
-              style={{ backgroundColor: "#FF7300" }} // Original orange color
-              whileHover={{
-                backgroundColor: "#FFA14A", // Lighter orange on hover
-              }}
-              transition={{ duration: 0.3, ease: "easeInOut" }} // Smooth transition
+              style={{ backgroundColor: "#FF7300" }}
+              whileHover={{ backgroundColor: "#FFA14A" }}
+              transition={{ duration: 0.7, ease: "easeInOut" }}
             >
               Book Consultation
             </motion.button>

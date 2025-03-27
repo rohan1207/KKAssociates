@@ -53,7 +53,7 @@ const Offerings = () => {
           {services.map((service) => (
             <div key={service.id} className="flex items-start space-x-4">
               {/* Numbered Badge */}
-              <div className="bg-orange-500 text-white font-bold w-10 h-10 flex items-center justify-center rounded-full text-lg">
+              <div className="bg-orange-500 text-white font-bold w-[55px] h-10 flex items-center justify-center rounded-full text-lg">
                 {service.id}
               </div>
 

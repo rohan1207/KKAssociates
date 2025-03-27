@@ -1,60 +1,76 @@
 import { useState, useEffect } from "react";
 
-export default function BookingsDashboard() {
-  const [bookings, setBookings] = useState([]);
+const CalendlyBooking = () => {
+  const [availableTimes, setAvailableTimes] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const apiKey =
+    "eyJraWQiOiIxY2UxZTEzNjE3ZGNmNzY2YjNjZWJjY2Y4ZGM1YmFmYThhNjVlNjg0MDIzZjdjMzJiZTgzNDliMjM4MDEzNWI0IiwidHlwIjoiUEFUIiwiYWxnIjoiRVMyNTYifQeyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNzQyOTM1MjY0LCJqdGkiOiJmMjRjOTRlZS00ZTFiLTQzNGItYTZlNC02OWE1YTY5YmIyNTYiLCJ1c2VyX3V1aWQiOiI4MzMxZDk4NC1mZGUyLTRlMDctODMwYi1kYjdjODE3ODRlMGMifQPLXT2ATRvf2pEOcb00kjnGgkdelBDchF7WhqUug6jZfSbTiX4TBqJMPNu2t9LH4lvHhRXEsthtOV9_LJ9J1dZg";
 
   useEffect(() => {
-    const storedBookings = JSON.parse(localStorage.getItem("bookings")) || [];
-    setBookings(storedBookings);
-  }, []);
+    if (selectedDate) {
+      fetchAvailableTimes(selectedDate);
+    }
+  }, [selectedDate]);
 
-  const clearBookings = () => {
-    localStorage.removeItem("bookings");
-    setBookings([]);
+  const fetchAvailableTimes = async (date) => {
+    try {
+      const response = await fetch(
+        "https://api.calendly.com/scheduled_events",
+        {
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      const events = data.collection.filter((event) =>
+        event.start_time.startsWith(date)
+      );
+      setAvailableTimes(events.map((event) => event.start_time));
+    } catch (error) {
+      console.error("Error fetching times:", error);
+    }
+  };
+
+  const handleBooking = (time) => {
+    window.open(
+      `https://calendly.com/YOUR_USERNAME?date=${selectedDate}&time=${time}`,
+      "_blank"
+    );
   };
 
   return (
-    <div className="min-h-screen p-8 bg-gray-100">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">
-        Admin - Bookings
-      </h1>
-
-      {bookings.length > 0 ? (
-        <div className="bg-white p-6 rounded-lg shadow-lg">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="p-3 border">Full Name</th>
-                <th className="p-3 border">Email</th>
-                <th className="p-3 border">Phone</th>
-                <th className="p-3 border">Service</th>
-                <th className="p-3 border">Date</th>
-                <th className="p-3 border">Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {bookings.map((booking, index) => (
-                <tr key={index} className="border text-center">
-                  <td className="p-3 border">{booking.fullName}</td>
-                  <td className="p-3 border">{booking.email}</td>
-                  <td className="p-3 border">{booking.phone}</td>
-                  <td className="p-3 border">{booking.serviceType}</td>
-                  <td className="p-3 border">{booking.date}</td>
-                  <td className="p-3 border">{booking.time}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <button
-            onClick={clearBookings}
-            className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
-          >
-            Clear All Bookings
-          </button>
+    <div className="p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-xl font-semibold mb-4">Book Your Consultation</h2>
+      <input
+        type="date"
+        onChange={(e) => setSelectedDate(e.target.value)}
+        className="border p-2 rounded"
+      />
+      <div className="mt-4">
+        <h3 className="font-medium">Available Times</h3>
+        <div className="grid grid-cols-3 gap-2 mt-2">
+          {availableTimes.length > 0 ? (
+            availableTimes.map((time, index) => (
+              <button
+                key={index}
+                onClick={() => handleBooking(time)}
+                className="border p-2 rounded hover:bg-gray-200"
+              >
+                {new Date(time).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </button>
+            ))
+          ) : (
+            <p>No available slots</p>
+          )}
         </div>
-      ) : (
-        <p className="text-gray-600">No bookings found.</p>
-      )}
+      </div>
     </div>
   );
-}
+};
+
+export default CalendlyBooking;
