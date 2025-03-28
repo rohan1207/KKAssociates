@@ -19,7 +19,7 @@ export default function ChatBox() {
 
   // Function to send data to WhatsApp
   const sendToWhatsapp = () => {
-    let number = "+918855817434"; // Replace with your WhatsApp number
+    let number = "+918600073706"; // Replace with your WhatsApp number
 
     const { name, email, phone, message } = formData;
 
@@ -34,17 +34,17 @@ export default function ChatBox() {
       "https://wa.me/" +
       number +
       "?text=" +
-      "📌 Contact Form Submission %0A%0A" +
-      "👤 Name: " +
+      " Contact Form Submission %0A%0A" +
+      " Name: " +
       name +
       "%0A" +
-      "📧 Email: " +
+      " Email: " +
       email +
       "%0A" +
-      "📞 Phone: " +
+      " Phone: " +
       phone +
       "%0A" +
-      "💬 Message: " +
+      " Message: " +
       message +
       "%0A";
 

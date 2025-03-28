@@ -103,19 +103,18 @@ const PersonalTax = () => {
             Hassle-free tax preparation and filing of Forms 1040 and 1040NR for
             U.S. residents and non-residents.
           </p>
-            {showButton && (
-                      <motion.a
-                        href="/contact-us"
-                        className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-md font-medium shadow-lg hover:bg-orange-600 transition"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                      >
-                        Get Started Today
-                      </motion.a>
-                    )}
+          {showButton && (
+            <motion.a
+              href="/contact-us"
+              className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-md font-medium shadow-lg hover:bg-orange-600 transition"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              Get Started Today
+            </motion.a>
+          )}
         </div>
-       
       </div>
 
       {/* Offerings Section */}
@@ -147,7 +146,9 @@ const PersonalTax = () => {
                   <h3 className="text-left text-xl font-bold text-gray-900">
                     {service.title}
                   </h3>
-                  <p className="text-left text-gray-600">{service.description}</p>
+                  <p className="text-left text-gray-600">
+                    {service.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -156,7 +157,7 @@ const PersonalTax = () => {
       </div>
 
       {/* Service Details Section */}
-      <div className="py-16 px-6 max-w-6xl mx-auto text-center">
+      <div className="py-16 px-6 max-w-6xl mx-auto text-center mt-[-75px]">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
           Who Needs This Service
         </h2>
@@ -189,8 +190,8 @@ const PersonalTax = () => {
       </div>
 
       {/* How It Works Section */}
-      <div className="py-16 px-6 md:px-12 lg:px-20 text-center">
-        <h2 className="text-3xl font-bold text-gray-900">How It Works</h2>
+      <div className="py-16 px-6 md:px-12 lg:px-20 text-center mt-[-75px]">
+        <h2 className="text-3xl font-bold md:text-4xl  text-gray-900">How It Works</h2>
         <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
           Our streamlined process ensures efficient and accurate tax filing
           services.

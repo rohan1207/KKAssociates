@@ -157,7 +157,7 @@ const Investor = () => {
       </div>
 
       {/* Service Details Section */}
-      <div className="py-16 px-6 max-w-6xl mx-auto text-center">
+      <div className="py-16 px-6 max-w-6xl mx-auto text-center mt-[-75px ]">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
           Who Needs This Service
         </h2>
@@ -190,8 +190,8 @@ const Investor = () => {
       </div>
 
       {/* How It Works Section */}
-      <div className="py-16 px-6 md:px-12 lg:px-20 text-center">
-        <h2 className="text-3xl font-bold text-gray-900">How It Works</h2>
+      <div className="py-16 px-6 md:px-12 lg:px-20 text-center mt-[-75px]">
+        <h2 className="text-3xl font-bold  md:text-4xl text-gray-900">How It Works</h2>
         <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
           Our streamlined process ensures efficient and accurate tax filing
           services.

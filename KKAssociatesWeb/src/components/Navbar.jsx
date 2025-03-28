@@ -109,6 +109,13 @@ export default function Navbar() {
               Blog
             </Link>
             <Link
+              to="/careers"
+              className="block px-3 py-2 hover:bg-gray-100 border-b"
+              onClick={() => setMenuOpen(false)}
+            >
+              Careers
+            </Link>
+            <Link
               to="/contact-us"
               className="block px-3 py-2 hover:bg-gray-100 border-b"
               onClick={() => setMenuOpen(false)}
@@ -171,7 +178,33 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden lg:flex space-x-6 items-center text-white">
           <Link to="/">Home</Link>
+
+          {/* Services Dropdown */}
+          <div className="relative group">
+            <button className="px-3 py-2 flex items-center">
+              Services
+              <ChevronDown
+                size={16}
+                className="ml-1 transition-transform group-hover:rotate-180"
+              />
+            </button>
+
+            {/* Dropdown - shown on hover */}
+            <div className="absolute left-0  w-56 bg-white rounded-lg shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+              {services.map((service, index) => (
+                <Link
+                  key={index}
+                  to={service.url}
+                  className="block px-3 py-2 hover:bg-gray-100 border-b last:border-b-0 text-black"
+                >
+                  {service.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
           <Link to="/about">About Us</Link>
+          <Link to="/careers">Careers</Link>
           <Link to="/blog">Blog</Link>
           <Link to="/contact-us">Contact Us</Link>
 
