@@ -29,7 +29,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div className="py-16 px-6 md:px-12 lg:px-20 text-center">
+    <div className="py-16 px-6 md:px-12 lg:px-20 text-center ">
       <h2 className="text-3xl font-bold text-gray-900">How It Works</h2>
       <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
         Our streamlined process ensures efficient and accurate tax filing
@@ -58,7 +58,9 @@ const HowItWorks = () => {
                 <h3 className=" flex text-xl font-bold text-gray-900">
                   {step.title}
                 </h3>
-                <p className="text-gray-600">{step.description}</p>
+                <p className="text-gray-600 text-left sm:text-center">
+                  {step.description}
+                </p>
               </div>
             </div>
           ))}
