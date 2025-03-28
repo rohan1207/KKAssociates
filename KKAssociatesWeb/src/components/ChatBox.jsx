@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function ChatBox() {
@@ -80,13 +80,13 @@ export default function ChatBox() {
           onClick={() => {
             setIsOpen(!isOpen);
           }}
-          className="fixed bottom-6 right-6 bg-[#402569] rounded-full p-3 shadow-lg border-4 border-[#f58842] hover:scale-110 transition-transform z-50 flex items-center justify-center"
+          className="fixed bottom-6 right-6 bg-[#402569] rounded-full p-3 shadow-lg border-4 border-[#f58842] hover:scale-110 transition-transform z-50 flex items-center justify-center w-13 h-13 sm:w-16 sm:h-16"
         >
-          <img src="/chat.png" alt="Chat" className="w-10 h-10" />
+          <img src="/chat.png" alt="Chat" className="w-8 h-8 sm:w-6 sm:h-6" />
         </button>
       </div>
 
-      {/* 💬 Chat Box - Appears Below the Strip */}
+      {/* 💬 Chat Box - Responsive & Small on Mobile */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -94,14 +94,20 @@ export default function ChatBox() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-20 right-6 bg-white rounded-2xl shadow-2xl w-[350px] overflow-hidden z-50"
+            className="fixed bottom-20 right-6 bg-white rounded-2xl shadow-2xl w-[350px] sm:w-[280px] max-sm:w-[240px] overflow-hidden z-50"
           >
-            {/* Header */}
-            <div className="bg-[#402569] text-white p-4 flex items-center rounded-t-2xl">
-              <MessageCircle size={24} className="mr-2" />
-              <span className="font-semibold text-lg">
-                Got Questions? Chat With Us.
-              </span>
+            {/* Header with Close Button */}
+            <div className="bg-[#402569] text-white p-4 flex items-center justify-between rounded-t-2xl">
+              <div className="flex items-center">
+                <MessageCircle size={24} className="mr-2" />
+                <span className="font-semibold text-lg">Chat With Us</span>
+              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-white hover:text-gray-300"
+              >
+                <X size={20} />
+              </button>
             </div>
 
             {/* Chat Content */}
@@ -112,7 +118,7 @@ export default function ChatBox() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Enter your full name"
-                className="w-full border border-gray-300 p-3 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]"
+                className="w-full border border-gray-300 p-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]"
               />
               <input
                 type="email"
@@ -120,7 +126,7 @@ export default function ChatBox() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Email"
-                className="w-full border border-gray-300 p-3 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]"
+                className="w-full border border-gray-300 p-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]"
               />
               <input
                 type="text"
@@ -128,18 +134,18 @@ export default function ChatBox() {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Phone"
-                className="w-full border border-gray-300 p-3 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]"
+                className="w-full border border-gray-300 p-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]"
               />
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Your message"
-                className="w-full border border-gray-300 p-3 rounded-lg mb-3 h-24 focus:outline-none focus:ring-2 focus:ring-[#402569]"
+                className="w-full border border-gray-300 p-2 rounded-lg mb-3 h-20 focus:outline-none focus:ring-2 focus:ring-[#402569]"
               />
               <button
                 onClick={sendToWhatsapp}
-                className="bg-[#402569] text-white w-full py-3 rounded-lg hover:bg-[#311c4f] transition text-lg"
+                className="bg-[#402569] text-white w-full py-2 rounded-lg hover:bg-[#311c4f] transition text-lg"
               >
                 Send Message
               </button>

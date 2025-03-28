@@ -1,5 +1,4 @@
 import { useState } from "react";
-import LeaderInfo from "./LeaderInfo";
 
 export default function LeadershipTeam({ selectedLeader, setSelectedLeader }) {
   const teamMembers = [
@@ -7,7 +6,7 @@ export default function LeadershipTeam({ selectedLeader, setSelectedLeader }) {
       name: "Alpesh Gujrathi",
       image: "alpeshg.png",
       shortInfo:
-        "A Chartered Accountant since 2006, specializing in tax planning and cross-border tax consultation.",
+        "A Chartered Accountant since 2006, specializing in tax planning and cross-border tax consultation  .",
       fullInfo: `A Chartered Accountant since 2006, Alpesh brings over 12 years of
 experience in public accounting, specializing in tax planning, compliance, and
 cross-border tax consultation for clients with income in both the U.S. and India. He has
@@ -51,17 +50,20 @@ Certified Public Accountants since 2009.`,
       image: "jaren.jpeg",
       shortInfo:
         "A partner at KKA with over 12 years of experience across the U.S. and India, offering strategic tax advisory.",
-      fullInfo: `He is a licensed CPA in the State of Utah, has a Master’s of Science in Taxation, and has years of Tax and Accounting experience. In Addition to doing taxes for individuals and businesses for years. He has worked for one of the big four accounting firms, has managed the tax analyst team at TAX Works, a major software provider and has taught accounting classes at the University of Utah. He is also very knowledgeable in business systems and technology.`,
+      fullInfo: "He is a licensed CPA in the State of Utah, has a Master’s of Science in Taxation, and has years of Tax and Accounting experience. In Addition to doing taxes for individuals and businesses for years. He has worked for one of the big four accounting firms, has managed the tax analyst team at TAX Works, a major software provider and has taught accounting classes at the University of Utah. He is also very knowledgeable in business systems and technology."
     },
   ];
 
   return (
     <div className="text-center py-12 bg-white">
-      <h2 className="text-2xl md:text-3xl font-bold text-orange-500 mb-6">
-        Meet Our Leadership Team
-      </h2>
-
-      <div className="flex flex-wrap justify-center gap-2 max-w-5xl mx-auto">
+    <h2 className="text-2xl md:text-3xl font-bold text-orange-500 mb-6">
+      Meet Our Leadership Team
+    </h2>
+  
+    {/* Scrollable Container for Mobile */}
+    <div className="overflow-x-auto pb-4">
+      {/* Responsive Grid for Team Members */}
+      <div className="flex gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:flex lg:justify-center lg:gap-8 max-w-5xl mx-auto">
         {teamMembers
           .filter(
             (member) => !selectedLeader || selectedLeader.name !== member.name
@@ -69,21 +71,27 @@ Certified Public Accountants since 2009.`,
           .map((member, index) => (
             <div
               key={index}
-              className="bg-white shadow-lg rounded-xl p-5 w-[22%] min-w-[250px]"
+              className="bg-white shadow-lg rounded-xl p-5 w-[300px] h-[377px] overflow-hidden flex flex-col justify-between shrink-0"
             >
+              {/* Leader Image */}
               <img
                 src={member.image}
                 alt={member.name}
                 className="w-40 h-40 object-cover rounded-full mx-auto shadow-md"
               />
+  
+              {/* Leader Name */}
               <h3 className="mt-3 font-bold text-gray-800 text-lg">
                 {member.name}
               </h3>
+  
+              {/* Short Info */}
               <p className="text-sm text-gray-600 mt-2">{member.shortInfo}</p>
-
+  
+              {/* Read More Button */}
               <button
                 onClick={() => setSelectedLeader(member)}
-                className="relative top-2 right-0 mt-4 px-4 py-2 bg-[#2E1A55] text-white font-semibold rounded-lg shadow-md hover:bg-[#3c2f55] transition"
+                className="relative top-2 right-0 mt-4 px-4 py-2 bg-[#2E1A55] text-white font-semibold rounded-lg shadow-md hover:bg-[#3c2f55] transition ml-[60px] w-[130px]"
               >
                 Read More
               </button>
@@ -91,5 +99,7 @@ Certified Public Accountants since 2009.`,
           ))}
       </div>
     </div>
-  );
+  </div>
+  
+  );
 }

@@ -142,9 +142,9 @@ const ServiceCard = ({ service, isLargeScreen }) => {
 
       <button
         onClick={() => navigate(service.path)}
-        className={` ml-[105px] w-[50%] mt-4 px-4 py-2 text-white rounded-md ${
+        className={`w-[86%] sm:w-[50%] mt-4 px-4 py-2 text-white rounded-md ${
           service.buttonColor
-        } ${
+        } ml-[15px] sm:ml-[105px] ${
           isLargeScreen
             ? "opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             : "opacity-100"

@@ -86,7 +86,7 @@ const Footer = () => {
 
         {/* Social Media Icons */}
         <div className="flex space-x-4 text-xl">
-          <a href="#">
+          <a href="https://www.linkedin.com/company/kkassociate/">
             <FaFacebookF />
           </a>
           <a href="#">
@@ -95,7 +95,7 @@ const Footer = () => {
           <a href="#">
             <FaTwitter />
           </a>
-          <a href="#">
+          <a href="https://www.linkedin.com/company/kkassociate/">
             <FaLinkedinIn />
           </a>
           <a href="#">

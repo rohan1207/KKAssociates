@@ -30,19 +30,18 @@ export default function ClientFeedback() {
   ];
 
   const logos = [
-    "/amaz.png",
-    "/microsoft.png",
+    "/amazon.webp",
+    "/intel.svg",
     "/amdo.png",
+    "/adobe.svg",
+    "/oliver.png",
+    "/microsoft.webp",
+    "/coviam.png",
     "/adobe.png",
-    "/amaz.png",
-    "/microsoft.png",
+    "/Arista.webp",
+    "/microsoft.webp",
     "/amdo.png",
-    "/adobe.png",
-    "/adobe.png",
-    "/amaz.png",
-    "/microsoft.png",
-    "/amdo.png",
-    "/adobe.png",
+    "/intel.svg",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -84,25 +83,37 @@ export default function ClientFeedback() {
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{
                 opacity: 1,
-                scale: isActive ? 1.2 : 0.85, // Center card larger, side cards smaller
+                scale: isActive ? 1.15 : 0.85, // Slightly reduced center card scale for small screens
                 zIndex: isActive ? 2 : 1,
-                x: isActive ? 0 : isLeft ? -220 : 220, // Adjusted spacing between side cards
-                y: isActive ? -30 : 30, // Move center card up, side cards lower
+                x: isActive ? 0 : isLeft ? -180 : 180, // Adjusted spacing for mobile
+                y: isActive ? -20 : 20, // Reduced vertical movement for compact layout
               }}
               transition={{ type: "spring", stiffness: 120, damping: 15 }}
-              className={`absolute bg-white shadow-lg p-6 rounded-lg min-w-[280px] max-w-[320px] flex flex-col justify-between text-left transform ${
-                isActive ? "shadow-2xl scale-110" : "shadow-md scale-90"
-              } ${!isActive ? "min-h-[250px]" : "min-h-[295px]"}`} // Reduce height of side cards
+              className={`absolute bg-white shadow-lg p-4 sm:p-3 rounded-lg min-w-[280px] max-w-[320px] sm:min-w-[240px] sm:max-w-[280px] flex flex-col justify-between text-left transform ${
+                isActive
+                  ? "shadow-2xl scale-105 sm:scale-100"
+                  : "shadow-md scale-90 sm:scale-85"
+              } ${
+                !isActive
+                  ? "min-h-[230px] sm:min-h-[200px]"
+                  : "min-h-[275px] sm:min-h-[240px]"
+              }`} // Adjusted height for mobile
             >
-              <div className="text-orange-500 text-lg">
+              <div className="text-orange-500 text-lg sm:text-base">
                 {"★".repeat(feedback.stars)}
               </div>
-              <p className="text-gray-700 italic mt-2">"{feedback.text}"</p>
-              <div className="flex items-center mt-4">
-                <div className="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
+              <p className="text-gray-700 italic mt-2 sm:text-sm">
+                "{feedback.text}"
+              </p>
+              <div className="flex items-center mt-4 sm:mt-3">
+                <div className="w-10 h-10 sm:w-8 sm:h-8 bg-gray-300 rounded-full mr-3"></div>
                 <div>
-                  <p className="text-gray-800 font-semibold">{feedback.name}</p>
-                  <p className="text-gray-500 text-sm">{feedback.role}</p>
+                  <p className="text-gray-800 font-semibold sm:text-sm">
+                    {feedback.name}
+                  </p>
+                  <p className="text-gray-500 text-sm sm:text-xs">
+                    {feedback.role}
+                  </p>
                 </div>
               </div>
             </motion.div>

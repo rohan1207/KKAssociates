@@ -9,36 +9,77 @@ export default function CareersPage() {
     resume: null,
   });
 
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     setFormData({
       ...formData,
-      [name]: files ? files[0] : value,
+      [name]: files ? files[0] : value, // Handle file input separately
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Application submitted successfully!");
-    console.log("Form Data:", formData);
+    setSuccessMessage(""); // Clear previous messages
+    setErrorMessage("");
+    setLoading(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mldjwdnz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          contact: formData.contact,
+          message: formData.message,
+          resume: formData.resumeLink, // Sending resume link
+        }),
+      });
+
+      if (response.ok) {
+        setSuccessMessage("Application submitted successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          contact: "",
+          message: "",
+          resumeLink: "",
+        });
+      } else {
+        setErrorMessage("Failed to submit application. Please try again.");
+      }
+    } catch (error) {
+      setErrorMessage("An unexpected error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="container mx-auto p-4 md:p-8">
       {/* Careers Section */}
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-gray-800">Join Our Team</h2>
-        <p className="mt-3 text-lg text-gray-600 max-w-2xl mx-auto">
+      <div className="text-center mb-6 md:mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+          Join Our Team
+        </h2>
+        <p className="mt-6 text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
           Inviting commerce graduates to work in a dynamic environment. Get in
           touch if you fulfill the following criteria.
         </p>
       </div>
 
-      {/* Qualifications Section */}
-      <div className="flex">
-        <div className="bg-[#2E1A55] p-6 rounded-lg shadow-md max-w-3xl mx-auto mb-10 text-white">
-          <h3 className="text-2xl font-semiboldmb-3 mt-4">Qualifications</h3>
-          <ul className="list-disc pl-6 text-white space-y-2 mt-4">
+      {/* Qualifications & Apply Form */}
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+        {/* Qualifications Section */}
+        <div className="bg-[#2E1A55] p-6 rounded-lg shadow-md text-white w-full md:w-1/2">
+          <h3 className="text-2xl font-semibold mb-4">Qualifications</h3>
+          <ul className="list-disc pl-6 space-y-2">
             <li>
               At least 2 years experience in Finance, Accounting, and Taxes.
             </li>
@@ -48,11 +89,32 @@ export default function CareersPage() {
         </div>
 
         {/* Apply Now Form */}
-        <div className="bg-white shadow-lg rounded-lg p-8 max-w-xl mx-auto border border-gray-300">
-          <h3 className="text-2xl font-semibold text-gray-700 mb-6 text-center">
+        <div className="bg-white shadow-lg rounded-lg p-6 md:p-8 w-full md:w-1/2 border border-gray-300">
+          <h3 className="text-2xl font-semibold text-gray-700 mb-4 text-center">
             Apply Now
           </h3>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {successMessage && (
+            <p className="text-center text-green-600 font-medium">
+              {successMessage}
+            </p>
+          )}
+
+          {errorMessage && (
+            <p className="text-center text-red-600 font-medium">
+              {errorMessage}
+            </p>
+          )}
+
+          {errorMessage && (
+            <p className="text-center text-red-600 font-medium">
+              {errorMessage}
+            </p>
+          )}
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4"
+            encType="multipart/form-data"
+          >
             <input
               type="text"
               name="name"
@@ -88,17 +150,21 @@ export default function CareersPage() {
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             ></textarea>
             <input
-              type="file"
-              name="resume"
+              type="url"
+              name="resumeLink"
+              placeholder="Paste Google Drive link to your resume *"
               required
+              value={formData.resumeLink}
               onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg bg-gray-50 cursor-pointer"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+
             <button
               type="submit"
+              disabled={loading}
               className="w-full bg-[rgb(227,121,62)] text-white py-3 rounded-lg hover:bg-[rgb(242,140,80)] transition font-semibold text-lg"
             >
-              Submit Application
+              {loading ? "Submitting..." : "Submit Application"}
             </button>
           </form>
         </div>

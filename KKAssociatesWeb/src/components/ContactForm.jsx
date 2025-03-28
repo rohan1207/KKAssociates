@@ -34,28 +34,26 @@ export default function ContactForm() {
     }
   };
 
-  // ✅ Handle WhatsApp Message Sending (With Prefilled Text for iOS & Android)
+  // ✅ Handle WhatsApp Message Sending
   const sendToWhatsapp = () => {
     const { name, email, message } = formData;
-    const phoneNumber = "8600073706"; // ✅ Replace with your WhatsApp number (without country code)
+    const phoneNumber = "8600073706";
 
     if (!name || !email || !message) {
       alert("Please fill in all required fields!");
       return;
     }
 
-    const text = `📌 Contact Form Submission\n\n👤 Name: ${name}\n📧 Email: ${email}\n💬 Message: ${message}`;
+    const text = ` Contact Form Submission\n\n Name: ${name}\n Email: ${email}\n Message: ${message}`;
     const encodedText = encodeURIComponent(text);
 
-    // ✅ Use WhatsApp URL Scheme for iOS
-    const whatsappURL = `whatsapp://send?phone=91${phoneNumber}&text=${encodedText}`;
-
-    // ✅ Open WhatsApp with Prefilled Text
-    window.location.href = whatsappURL;
+    const whatsappURL =
+      "https://wa.me/91" + phoneNumber + "?text=" + encodedText;
+    window.open(whatsappURL, "_blank");
   };
 
   return (
-    <div>
+    <div className="mt-[180px] lg:mt-0 px-4 sm:px-8">
       <h2 className="text-lg font-semibold mb-4">Send Us a Message</h2>
 
       {/* Toggle Between Email & WhatsApp */}
