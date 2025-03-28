@@ -219,7 +219,7 @@ const Estate = () => {
                   >
                     {step.title}
                   </h3>
-                  <p className="text-gray-600">{step.description}</p>
+                  <p className="text-gray-600 text-left sm:text-center">{step.description}</p>
                 </div>
               </div>
             ))}
