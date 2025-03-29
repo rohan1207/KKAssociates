@@ -10,7 +10,7 @@ const BlogPage = () => {
   // Fetch blogs from Supabase
   useEffect(() => {
     const fetchBlogs = async () => {
-      const { data, error } = await supabase.from("demo").select("*");
+      const { data, error } = await supabase.from("blogs").select("*");
 
       if (error) {
         console.error("Error fetching blogs:", error);
@@ -44,20 +44,18 @@ const BlogPage = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
         {blogs.map((blog) => (
           <div
-            key={blog.ID}
+            key={blog.id} // Change from blog.ID to blog.id
             className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] group relative"
-            style={{ height: "320px" }} // Fixed height for uniform card sizes
+            style={{ height: "320px" }}
           >
-            {/* Blog Title */}
             <div className="p-6 pb-16 relative h-full flex flex-col">
               <h2 className="text-2xl font-semibold text-gray-900">
-                {blog.TITLE}
+                {blog.title}
               </h2>
               <p className="text-gray-600 mt-3 leading-relaxed line-clamp-3 flex-grow">
-                {blog.SHORT_INFO}
+                {blog.short_info} 
               </p>
 
-              {/* Read More Button (Fixed Bottom-Right) */}
               <div className="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <button
                   onClick={() => setSelectedBlog(blog)}
@@ -75,20 +73,20 @@ const BlogPage = () => {
       {selectedBlog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-[95vh] overflow-hidden flex flex-col">
-            {/* Blog Content */}
             <div className="p-8 overflow-y-auto flex-grow">
               <h1 className="text-3xl font-bold text-gray-900">
-                {selectedBlog.TITLE}
+                {selectedBlog.title} 
               </h1>
               <h2 className="text-xl text-gray-800 mt-2">
-                {selectedBlog.SHORT_INFO}
+                {selectedBlog.short_info} 
               </h2>
               <p className="text-gray-500 text-sm mt-2">
-                By {selectedBlog.AUTHOR}
+                By {selectedBlog.author}
+              
               </p>
               <div className="mt-4 prose prose-lg prose-blue max-w-none">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-                  {selectedBlog.CONTENT}
+                  {selectedBlog.content} 
                 </ReactMarkdown>
               </div>
             </div>
@@ -97,9 +95,12 @@ const BlogPage = () => {
             <div className="p-5 border-t flex justify-end bg-gray-100">
               <button
                 onClick={() => setSelectedBlog(null)}
-                className="bg-red-500 text-white px-6 py-3 rounded-full text-lg hover:bg-red-600 transition-all"
+                className="
+    bg-red-500 text-white rounded-full hover:bg-red-600 transition-all
+    h-[36px] w-[58px] text-center mr-[117px]
+  "
               >
-                Close
+                <p className="text-lg leading-[0.75rem]">Close</p>
               </button>
             </div>
           </div>

@@ -34,37 +34,13 @@ const Sidebar = ({ setActiveComponent }) => {
         Generate Report
       </button>
 
-      {/* Dropdown - Contacts */}
-      <div>
-        <button
-          className="bg-orange-500 text-white w-full py-2 rounded-2xl"
-          onClick={() => toggleDropdown("contacts")}
-        >
-          Contacts ⏷
-        </button>
-        {openDropdown === "contacts" && (
-          <div className="ml-4">
-            <button
-              className="block w-full py-2 text-left"
-              onClick={() => setActiveComponent("NewContact")}
-            >
-              New Contact
-            </button>
-            <button
-              className="block w-full py-2 text-left"
-              onClick={() => setActiveComponent("EditContact")}
-            >
-              Edit Contact
-            </button>
-            <button
-              className="block w-full py-2 text-left"
-              onClick={() => setActiveComponent("DeleteContact")}
-            >
-              Delete Contact
-            </button>
-          </div>
-        )}
-      </div>
+      <button
+        className="bg-orange-500 text-white w-full py-2 mb-2 rounded-2xl"
+        onClick={() => setActiveComponent("ManageContacts")}
+      >
+        Manage Contacts
+      </button>
+
 
       {/* Dropdown - Digital File */}
       <div>
@@ -114,7 +90,7 @@ const Sidebar = ({ setActiveComponent }) => {
       </button>
       <button
         className="bg-orange-500 text-white w-full py-2 mt-2 rounded-2xl"
-        onClick={() => setActiveComponent("AccountExecutive")}
+        onClick={() => setActiveComponent("AddBlog")}
       >
         Add Blogs
       </button>

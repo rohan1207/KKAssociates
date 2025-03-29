@@ -1,7 +1,7 @@
 import React from "react";
 
 const GenerateReport = () => {
-  // Dummy report data
+  // Dummy report data (later replace with database integration)
   const reports = [
     {
       id: 1,
@@ -30,54 +30,59 @@ const GenerateReport = () => {
   ];
 
   const downloadReport = (reportName) => {
-    alert(`Downloading ${reportName} (Dummy Function)`);
+    alert(`📥 Downloading: ${reportName}`);
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">
-        📊 Generate Reports
+    <div className="max-w-5xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold text-gray-800 flex items-center mb-4">
+        <span className="mr-2"></span> Generate Reports
       </h2>
 
-      {/* Table */}
-      <table className="min-w-full border border-gray-300 rounded-lg">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="py-2 px-4 border">ID</th>
-            <th className="py-2 px-4 border">Report Name</th>
-            <th className="py-2 px-4 border">Date</th>
-            <th className="py-2 px-4 border">Status</th>
-            <th className="py-2 px-4 border">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reports.map((report) => (
-            <tr key={report.id} className="text-center">
-              <td className="py-2 px-4 border">{report.id}</td>
-              <td className="py-2 px-4 border">{report.name}</td>
-              <td className="py-2 px-4 border">{report.date}</td>
-              <td
-                className={`py-2 px-4 border font-semibold ${
-                  report.status === "Completed"
-                    ? "text-green-600"
-                    : "text-yellow-500"
-                }`}
-              >
-                {report.status}
-              </td>
-              <td className="py-2 px-4 border">
-                <button
-                  className="bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700"
-                  onClick={() => downloadReport(report.name)}
-                  disabled={report.status !== "Completed"}
-                >
-                  Download
-                </button>
-              </td>
+      {/* Responsive Table */}
+      <div className="overflow-x-auto">
+        <table className="w-full border border-gray-300 rounded-lg">
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="py-3 px-4 text-left">ID</th>
+              <th className="py-3 px-4 text-left">Report Name</th>
+              <th className="py-3 px-4 text-left">Date</th>
+              <th className="py-3 px-4 text-left">Status</th>
+              <th className="py-3 px-4 text-center">Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {reports.map((report) => (
+              <tr key={report.id} className="border-b">
+                <td className="py-3 px-4">{report.id}</td>
+                <td className="py-3 px-4">{report.name}</td>
+                <td className="py-3 px-4">{report.date}</td>
+                <td
+                  className="py-3 px-4 font-semibold"
+                  style={{
+                    color: report.status === "Completed" ? "green" : "orange",
+                  }}
+                >
+                  {report.status}
+                </td>
+                <td className="py-3 px-4 text-center">
+                  <button
+                    className={`px-4 py-2 rounded-md text-white font-medium transition ${
+                      report.status === "Completed"
+                        ? "bg-blue-600 hover:bg-blue-700"
+                        : "bg-gray-400 cursor-not-allowed"
+                    }`}
+                    onClick={() => downloadReport(report.name)}
+                    disabled={report.status !== "Completed"}
+                  >
+                    Download
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
