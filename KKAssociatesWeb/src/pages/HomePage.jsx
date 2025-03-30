@@ -2,8 +2,10 @@ import React from "react";
 
 import Hero from "../components/Hero";
 import OurServices from "../components/OurServices";
-import ClientFeedback from "../components/ClientFeedback";
+
 import Expertise from "../components/Expertise";
+import FeedBack from "../components/FeedBack";
+import CompanyLogo from "../components/CompanyLogo";
 
 const HomePage = () => {
   return (
@@ -12,7 +14,9 @@ const HomePage = () => {
       <OurServices />
 
       <Expertise />
-      <ClientFeedback />
+
+      <FeedBack />
+      <CompanyLogo />
     </>
   );
 };

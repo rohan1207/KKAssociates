@@ -153,7 +153,7 @@ export default function Login() {
               />
               <button
                 type="submit"
-                className="bg-orange-500 text-white px-6 py-2 rounded-md w-full hover:bg-orange-600"
+                className="bg-[#FF5500] text-white px-6 py-2 rounded-md w-full hover:bg-orange-600"
               >
                 Login
               </button>

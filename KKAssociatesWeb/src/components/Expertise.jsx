@@ -47,7 +47,7 @@ export default function Expertise() {
             {/* Counter Animation */}
             <Counter value={item.value} />
 
-            <p className="text-xl font-medium text-purple-900">{item.label}</p>
+            <p className="text-xl font-medium  text-[#2E1A55]">{item.label}</p>
           </motion.div>
         ))}
       </div>

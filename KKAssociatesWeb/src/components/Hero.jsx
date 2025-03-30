@@ -29,6 +29,8 @@ const Hero = () => {
       className="h-screen flex flex-col justify-center items-center text-center bg-cover bg-center relative px-4 sm:px-6 md:px-12"
       style={{ backgroundImage: "url('/homePage.png')" }}
     >
+      {/* Add Content Here */}
+
       {/* Overlay */}
       <div className="absolute inset-0 bg-[#2D215594]"></div>
 
@@ -43,30 +45,31 @@ const Hero = () => {
           <motion.img
             src="/logo.png"
             alt="KK Associates Logo"
-            className="h-12 sm:h-14 md:h-16 mx-auto"
+            className="w-[250px] sm:w-[350px] md:w-[580px] h-auto mx-auto"
             animate={{
               scale: scrollY > 100 ? 0.8 : 1,
               opacity: scrollY > 600 ? 0 : 1,
             }}
             transition={{ duration: 0.3 }}
           />
-          <p className="text-gray-300 text-sm sm:text-lg tracking-wide">
-            CHARTERED ACCOUNTANTS
-          </p>
         </motion.div>
 
         {/* Main Heading & Subheading */}
         <motion.h2
-          className="text-white text-2xl sm:text-3xl md:text-4xl font-extrabold leading-snug sm:leading-tight"
+          className="text-white text-center font-roboto font-bold text-[32px] sm:text-[48px] md:text-[56px] 
+             leading-[40px] sm:leading-[55px] md:leading-[67px] 
+             max-w-full sm:max-w-[1045px] mx-auto"
           animate={{ opacity: scrollY > 300 ? 0 : 1 }}
           transition={{ duration: 0.3 }}
         >
-          Seamless Cross-Border Tax Solutions <br className="hidden sm:block" />
+          Seamless Cross-Border Tax Solutions
+          <br className="hidden sm:block" />
           Between the U.S. & India
         </motion.h2>
 
         <motion.p
-          className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xs sm:max-w-md mt-3 sm:mt-4 text-center"
+          className="text-gray-300 text-center font-roboto font-normal text-[18px] leading-[27px] 
+             sm:text-lg max-w-full sm:max-w-[1045px] px-4 sm:px-0 mt-3 sm:mt-4 mx-auto"
           animate={{ opacity: scrollY > 300 ? 0 : 1 }}
           transition={{ duration: 0.3 }}
         >
@@ -76,16 +79,18 @@ const Hero = () => {
         </motion.p>
 
         {/* Book Consultation Button */}
+
+        {/* Book Consultation Button */}
         <motion.div
           animate={{ opacity: scrollY > 100 ? 1 : 0 }}
           transition={{ duration: 0.15 }}
-          className="w-full max-w-xs sm:max-w-sm mt-5 sm:mt-6"
+          className="w-full flex justify-center mt-5 sm:mt-6"
         >
           <Link to="/book-consultation">
             <motion.button
-              className="w-full px-5 py-2 sm:py-3 rounded-md text-white text-sm sm:text-lg font-semibold"
-              style={{ backgroundColor: "#FF7300" }}
-              whileHover={{ backgroundColor: "#FFA14A" }}
+              className="w-[194px] h-[55px] sm:w-[223px] sm:h-[64px] rounded-[20px] bg-[#FF5500] text-white font-semibold 
+                 text-md sm:text-lg px-5 py-2 sm:py-3 flex justify-center items-center shadow-lg"
+              whileHover={{ backgroundColor: "#FF7733" }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               Book Consultation

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ShieldCheck, Trophy } from "lucide-react";
+import { FiDownload } from "react-icons/fi"; // Download icon
 
 export default function Accreditations() {
   const [showModal, setShowModal] = useState(false);
@@ -24,7 +25,10 @@ export default function Accreditations() {
           <span className="bg-orange-500 p-2 rounded-lg text-white">
             <ShieldCheck />
           </span>
-          <p>Certified U.S. Tax Experts</p>
+          <p className="flex items-center gap-3">
+            Certified U.S. Tax Experts
+            <FiDownload className="text-gray-500 text-lg" />
+          </p>
         </div>
         <div className="flex items-center gap-3 text-gray-700">
           <span className="bg-orange-500 p-2 rounded-lg text-white">

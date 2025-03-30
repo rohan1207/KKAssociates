@@ -162,7 +162,7 @@ export default function CareersPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[rgb(227,121,62)] text-white py-3 rounded-lg hover:bg-[rgb(242,140,80)] transition font-semibold text-lg"
+              className="w-full bg-[#FF5500]  text-white py-3 rounded-lg hover:bg-bg-[#FF5500]  transition font-semibold text-lg"
             >
               {loading ? "Submitting..." : "Submit Application"}
             </button>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const TaxAdvisory = () => {
   const [showButton, setShowButton] = useState(false);
@@ -104,15 +105,23 @@ const TaxAdvisory = () => {
             efficiency across India and the U.S.
           </p>
           {showButton && (
-            <motion.a
-              href="/contact-us"
-              className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-md font-medium shadow-lg hover:bg-orange-600 transition"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }} // Always visible, adjust based on scroll logic if needed
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="w-full flex justify-center mt-5 sm:mt-6"
             >
-              Get Started Today
-            </motion.a>
+              <Link to="/contact-us">
+                <motion.button
+                  className="w-[194px] h-[55px] sm:w-[223px] sm:h-[64px] rounded-[20px] bg-[#FF5500] text-white font-semibold 
+                                                                  text-md sm:text-lg px-5 py-2 sm:py-3 flex justify-center items-center shadow-lg"
+                  whileHover={{ scale: 1.05, backgroundColor: "#FF7733" }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                >
+                  Get Started
+                </motion.button>
+              </Link>
+            </motion.div>
           )}
         </div>
       </div>
@@ -139,7 +148,7 @@ const TaxAdvisory = () => {
           <div className="space-y-6">
             {services.map((service) => (
               <div key={service.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-[55px] h-10 flex items-center justify-center rounded-full text-lg">
+                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
                   {service.id}
                 </div>
                 <div>
@@ -166,7 +175,7 @@ const TaxAdvisory = () => {
           <div className="space-y-6">
             {details.map((item) => (
               <div key={item.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-10 h-10 flex items-center justify-center rounded-full text-lg">
+                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
                   {item.id}
                 </div>
                 <div>
@@ -209,7 +218,7 @@ const TaxAdvisory = () => {
           <div className="space-y-6">
             {steps.map((step) => (
               <div key={step.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-10 h-10 flex items-center justify-center rounded-full text-lg">
+                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
                   {step.id}
                 </div>
                 <div>

@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const AboutUsMain = () => {
   return (
@@ -21,7 +23,9 @@ const AboutUsMain = () => {
 
       {/* Content */}
       <div className="relative z-10 max-w-3xl px-6">
-        <h1 className="text-4xl font-bold">About KK Associates</h1>
+        <h2 className="text-4xl font-bold">
+          About <br></br>KK Associates
+        </h2>
         <p className="text-lg mt-4">
           With years of expertise in U.S.-India taxation, we simplify complex
           tax laws for individuals, businesses, and professionals.

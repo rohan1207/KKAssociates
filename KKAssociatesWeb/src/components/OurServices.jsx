@@ -6,7 +6,8 @@ const services = [
     title: "U.S. Corporate Tax Filings",
     description: "Smooth compliance with U.S. tax laws for corporations.",
     tags: ["Forms 1120C", "1120S", "1120F"],
-    buttonColor: "bg-purple-900 hover:bg-purple-800",
+    buttonColor: "bg-[#2E1A55] hover:bg-purple hover:scale-105 transition-all duration-300",
+
     path: "/corporate-tax",
     image: "service1.png",
   },
@@ -14,7 +15,8 @@ const services = [
     title: "U.S. Personal Tax Filings",
     description: "Hassle-free preparation and filing for U.S. residents.",
     tags: ["Forms 1040", "1040NR"],
-    buttonColor: "bg-purple-900 hover:bg-purple-800",
+    buttonColor: "bg-[#2E1A55] hover:bg-purple hover:scale-105 transition-all duration-300",
+
     path: "/personal-tax",
     image: "service2.png",
   },
@@ -22,7 +24,7 @@ const services = [
     title: "EB-5 Investor Services",
     description: "Navigate the EB-5 Immigrant Investor Program.",
     tags: ["Investment", "Green Card"],
-    buttonColor: "bg-purple-900 hover:bg-purple-800",
+    buttonColor: "bg-[#2E1A55] hover:bg-purple hover:scale-105 transition-all duration-300",
     path: "/investor-services",
     image: "service3.png",
   },
@@ -30,7 +32,7 @@ const services = [
     title: "Tax Advisory Services",
     description: "Expert guidance on international tax regulations.",
     tags: ["Compliance", "Consulting"],
-    buttonColor: "bg-purple-900 hover:bg-purple-800",
+    buttonColor: "bg-[#2E1A55] hover:bg-purple hover:scale-105 transition-all duration-300",
     path: "/tax-advisory",
     image: "service4.png",
   },
@@ -38,7 +40,7 @@ const services = [
     title: "FinCen Reporting",
     description: "Compliance with FinCen reporting regulations.",
     tags: ["AML", "Financial Crimes"],
-    buttonColor: "bg-purple-900 hover:bg-purple-800",
+    buttonColor: "bg-[#2E1A55] hover:bg-purple hover:scale-105 transition-all duration-300",
     path: "/fin-advisory",
     image: "service5.png",
   },
@@ -46,7 +48,7 @@ const services = [
     title: "Estate Planning",
     description: "Plan your estate effectively with expert guidance.",
     tags: ["Wealth", "Inheritance"],
-    buttonColor: "bg-purple-900 hover:bg-purple-800",
+    buttonColor: "bg-[#2E1A55] hover:bg-purple hover:scale-105 transition-all duration-300",
     path: "/estate",
     image: "service6.png",
   },
@@ -54,7 +56,7 @@ const services = [
     title: "Business Formation",
     description: "Guidance on setting up your business.",
     tags: ["Startup", "LLC", "Corporation"],
-    buttonColor: "bg-purple-900 hover:bg-purple-800",
+    buttonColor: "bg-[#2E1A55] hover:bg-purple hover:scale-105 transition-all duration-300",
     path: "/formation-advisory",
     image: "service7.png",
   },
@@ -62,7 +64,7 @@ const services = [
     title: "Gift Tax Return",
     description: "Ensure compliance with gift tax regulations.",
     tags: ["IRS", "Exemptions"],
-    buttonColor: "bg-purple-900 hover:bg-purple-800",
+    buttonColor: "bg-[#2E1A55] hover:bg-purple hover:scale-105 transition-all duration-300",
     path: "/return-advisory",
     image: "service8.png",
   },
@@ -104,9 +106,12 @@ const OurServices = () => {
             onClick={() =>
               setVisibleServices((prev) => Math.min(prev + 2, services.length))
             }
-            className="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600"
+            className="w-[194px] h-[55px] sm:w-[223px] sm:h-[64px]  bg-[#FF5500] text-white font-roboto font-medium 
+             text-md sm:text-lg  leading-[24px] sm:leading-[27px] text-center 
+             rounded-[20px] sm:rounded-[20px] px-5 py-2 sm:px-6 sm:py-3 
+             hover:bg-[#FF7733] transition duration-300 ease-in-out"
           >
-            Show More Services
+            View All Services
           </button>
         </div>
       )}
@@ -123,7 +128,7 @@ const ServiceCard = ({ service, isLargeScreen }) => {
         alt={service.title}
         className="h-32 w-full object-cover rounded-md"
       />
-      <h3 className="text-lg font-bold text-orange-600 mt-3">
+      <h3 className="text-base sm:text-lg font-bold text-orange-600 mt-3">
         {service.title}
       </h3>
       <p className="text-gray-600 text-sm lg:block hidden">
@@ -140,18 +145,23 @@ const ServiceCard = ({ service, isLargeScreen }) => {
         ))}
       </div>
 
-      <button
-        onClick={() => navigate(service.path)}
-        className={`w-[86%] sm:w-[50%] mt-4 px-4 py-2 text-white rounded-md ${
-          service.buttonColor
-        } ml-[15px] sm:ml-[105px] ${
-          isLargeScreen
-            ? "opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            : "opacity-100"
-        }`}
-      >
-        Read More
-      </button>
+      <div className="flex flex-col items-center sm:items-center justify-end h-full">
+        <button
+          onClick={() => navigate(service.path)}
+          className={`w-[75px] h-[29px] sm:w-[95px] sm:h-[38px] px-3 py-1 text-white rounded-[6px] sm:rounded-[8px] 
+                font-roboto font-medium text-[10px] sm:text-[14px] leading-[20px] sm:leading-[24px] 
+                ${service.buttonColor} 
+                mt-[-29px] sm:mt-[20px]   /* -29px for phone, 20px for desktop */
+                sm:mb-3 mb-[-0.25rem]    /* Adjusted bottom margin */
+                ${
+                  isLargeScreen
+                    ? "opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    : "opacity-100"
+                }`}
+        >
+          Read More
+        </button>
+      </div>
     </div>
   );
 };

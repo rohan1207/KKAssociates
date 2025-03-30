@@ -22,6 +22,10 @@ import Formation from "./services/Formation";
 import GiftTax from "./services/GiftTax";
 import Dashboard from "./pages/Dashboard";
 import ScrollToTop from "./components/ScrollToTop";
+import ReactGA from "react-ga4";
+import BlogDetails from "./components/BlogDetails";
+
+ReactGA.initialize("G-8RKDFTHRWM");
 
 function App() {
   return (
@@ -38,7 +42,7 @@ function App() {
         <Route path="/admin-panel" element={<AdminPanel />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/careers" element={<CareersPage />} />
-        <Route path="/blog" element={<BlogPage />} />
+
         <Route path="/corporate-tax" element={<Corporate />} />
         <Route path="/personal-tax" element={<PersonalTax />} />
         <Route path="/investor-services" element={<Investor />} />
@@ -48,6 +52,9 @@ function App() {
         <Route path="/formation-advisory" element={<Formation />} />
         <Route path="/return-advisory" element={<GiftTax />} />
         <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:id" element={<BlogDetails />} />
       </Routes>
       <ChatBox />
       <Footer />

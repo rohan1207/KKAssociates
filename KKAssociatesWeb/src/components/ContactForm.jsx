@@ -59,23 +59,32 @@ export default function ContactForm() {
       {/* Toggle Between Email & WhatsApp */}
       <div className="flex gap-4 mb-4">
         <button
-          className={`px-4 py-2 rounded-lg ${
-            !isWhatsApp ? "bg-blue-600 text-white" : "bg-gray-300 text-black"
+          className={`w-[158px] h-[42px] border-2 rounded-lg flex justify-center items-center text-sm md:text-base ${
+            !isWhatsApp ? "bg-[#007BFF] text-white" : "bg-gray-300 text-black"
           }`}
           onClick={() => setIsWhatsApp(false)}
         >
           Send Email
         </button>
+
         <button
-          className={`px-4 py-2 rounded-lg ${
-            isWhatsApp ? "bg-blue-600 text-white" : "bg-gray-300 text-black"
+          className={`w-[158px] h-[42px] border-2 rounded-lg flex justify-center items-center text-sm md:text-base ${
+            isWhatsApp ? "bg-[#25D366] text-white" : "bg-gray-300 text-black"
           }`}
           onClick={() => setIsWhatsApp(true)}
         >
           WhatsApp
         </button>
       </div>
-
+      <div className="w-full bg-[#DCF8C6] border border-green-300 rounded-lg p-4 sm:p-5 mb-6">
+        <h3 className="text-lg sm:text-xl font-semibold text-black">
+          WhatsApp Direct Connect
+        </h3>
+        <p className="text-gray-700 text-sm sm:text-base">
+          Start a conversation with us instantly on WhatsApp. Our team is ready
+          to assist you.
+        </p>
+      </div>
       <form
         onSubmit={isWhatsApp ? (e) => e.preventDefault() : handleSubmit}
         className="space-y-4"
@@ -128,7 +137,7 @@ export default function ContactForm() {
         ) : (
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+            className="w-full bg-[#007BFF] text-white py-2 rounded-lg hover:bg-[#007BFF] transition"
           >
             Send Email
           </button>

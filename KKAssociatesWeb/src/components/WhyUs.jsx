@@ -45,9 +45,9 @@ const WhyUs = () => {
             key={index}
             className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-md"
           >
-            <CheckCircle className="text-purple-600 w-7 h-7 flex-shrink-0" />
+            <CheckCircle className="text-[#2E1A55] w-7 h-7 flex-shrink-0" />
             <div>
-              <h3 className="text-lg font-semibold text-gray-800">
+              <h3 className="text-lg font-semibold text-black">
                 {feature.title}
               </h3>
               <p className="text-gray-600 text-sm">{feature.description}</p>

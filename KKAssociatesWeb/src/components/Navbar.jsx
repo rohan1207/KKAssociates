@@ -71,7 +71,9 @@ export default function Navbar() {
         {/* Mobile Menu Button (Shows user initial if logged in) */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden text-white"
+          className={`lg:hidden z-[60] fixed top-4 right-4 ${
+            menuOpen ? "text-black scale-90" : "text-white scale-100"
+          } transition-transform duration-200`}
         >
           {menuOpen ? (
             <X size={24} />
@@ -86,7 +88,11 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="absolute top-full right-0 w-56 bg-white text-black rounded-lg shadow-lg p-1 z-50">
+          <div
+            className="absolute top-full right-0  bg-white text-black rounded-b-lg rounded-tl-lg shadow-lg p-1 z-[50] 
+          h-[312px] w-[240px] mt-[-72px]
+          md:h-auto md:w-56 md:mt-0"
+          >
             <Link
               to="/"
               className="block px-3 py-2 hover:bg-gray-100 border-b"
@@ -139,7 +145,7 @@ export default function Navbar() {
               </button>
 
               {servicesOpen && (
-                <div className="bg-white rounded-lg shadow-md mt-1 w-56">
+                <div className="bg-white rounded-lg shadow-md mt-1 w-56 absolute left-[-77px]">
                   {services.map((service, index) => (
                     <Link
                       key={index}
@@ -167,7 +173,7 @@ export default function Navbar() {
               </button>
             ) : (
               <Link to="/login" onClick={() => setMenuOpen(false)}>
-                <button className="w-full bg-orange-500 px-4 py-2 rounded-md text-white mt-2">
+                <button className="w-full bg-[#FF5500] px-4 py-2 rounded-md text-white mt-2">
                   Login
                 </button>
               </Link>
@@ -234,7 +240,7 @@ export default function Navbar() {
             </div>
           ) : (
             <Link to="/login">
-              <button className="bg-orange-500 px-4 py-2 rounded-md text-white">
+              <button className="bg-[#FF5500] px-4 py-2 rounded-md text-white">
                 Login
               </button>
             </Link>

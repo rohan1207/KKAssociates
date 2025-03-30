@@ -50,56 +50,62 @@ Certified Public Accountants since 2009.`,
       image: "jaren.jpeg",
       shortInfo:
         "A partner at KKA with over 12 years of experience across the U.S. and India, offering strategic tax advisory.",
-      fullInfo: "He is a licensed CPA in the State of Utah, has a Master’s of Science in Taxation, and has years of Tax and Accounting experience. In Addition to doing taxes for individuals and businesses for years. He has worked for one of the big four accounting firms, has managed the tax analyst team at TAX Works, a major software provider and has taught accounting classes at the University of Utah. He is also very knowledgeable in business systems and technology."
+      fullInfo:
+        "He is a licensed CPA in the State of Utah, has a Master’s of Science in Taxation, and has years of Tax and Accounting experience. In Addition to doing taxes for individuals and businesses for years. He has worked for one of the big four accounting firms, has managed the tax analyst team at TAX Works, a major software provider and has taught accounting classes at the University of Utah. He is also very knowledgeable in business systems and technology.",
     },
   ];
 
   return (
     <div className="text-center py-12 bg-white">
-    <h2 className="text-2xl md:text-3xl font-bold text-orange-500 mb-6">
-      Meet Our Leadership Team
-    </h2>
-  
-    {/* Scrollable Container for Mobile */}
-    <div className="overflow-x-auto pb-4">
-      {/* Responsive Grid for Team Members */}
-      <div className="flex gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:flex lg:justify-center lg:gap-8 max-w-5xl mx-auto">
-        {teamMembers
-          .filter(
-            (member) => !selectedLeader || selectedLeader.name !== member.name
-          )
-          .map((member, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-lg rounded-xl p-5 w-[300px] h-[377px] overflow-hidden flex flex-col justify-between shrink-0"
-            >
-              {/* Leader Image */}
-              <img
-                src={member.image}
-                alt={member.name}
-                className="w-40 h-40 object-cover rounded-full mx-auto shadow-md"
-              />
-  
-              {/* Leader Name */}
-              <h3 className="mt-3 font-bold text-gray-800 text-lg">
-                {member.name}
-              </h3>
-  
-              {/* Short Info */}
-              <p className="text-sm text-gray-600 mt-2">{member.shortInfo}</p>
-  
-              {/* Read More Button */}
-              <button
-                onClick={() => setSelectedLeader(member)}
-                className="relative top-2 right-0 mt-4 px-4 py-2 bg-[#2E1A55] text-white font-semibold rounded-lg shadow-md hover:bg-[#3c2f55] transition ml-[60px] w-[130px]"
+      <h2 className="text-2xl md:text-3xl font-bold text-orange-500 mb-6">
+        Meet Our Leadership Team
+      </h2>
+
+      {/* Scrollable Container for Mobile */}
+      <div className="overflow-x-auto pb-4">
+        {/* Responsive Grid for Team Members */}
+        <div className="flex gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:flex lg:justify-center lg:gap-8 max-w-5xl mx-auto">
+          {teamMembers
+            .filter(
+              (member) => !selectedLeader || selectedLeader.name !== member.name
+            )
+            .map((member, index) => (
+              <div
+                key={index}
+                className="bg-[rgb(255,249,242)] shadow-lg rounded-xl p-5 w-[270px] h-[346px] overflow-hidden flex flex-col justify-between shrink-0 
+           sm:w-[250px] sm:h-[320px] md:w-[270px] md:h-[346px]"
               >
-                Read More
-              </button>
-            </div>
-          ))}
+                {/* Leader Image */}
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-32 h-32 object-cover rounded-full mx-auto shadow-md 
+                         sm:w-28 sm:h-28 md:w-32 md:h-32"
+                />
+
+                {/* Leader Name */}
+                <h3 className="mt-3 font-bold text-gray-800 text-lg sm:text-base md:text-lg">
+                  {member.name}
+                </h3>
+
+                {/* Short Info */}
+                <p className="text-sm text-gray-600 mt-2 sm:text-xs md:text-sm">
+                  {member.shortInfo}
+                </p>
+
+                {/* Read More Button */}
+                <button
+                  onClick={() => setSelectedLeader(member)}
+                  className="relative top-2 right-0 mt-4 px-4 py-2 bg-[#2E1A55] text-white font-semibold rounded-lg shadow-md 
+             hover:bg-[#3c2f55] transition mx-auto text-sm 
+             w-[120px] h-[38px] sm:w-[95px] sm:h-[38px] md:w-[130px] sm:rounded-[8px] sm:text-[14px]"
+                >
+                  Read More
+                </button>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
-  </div>
-  
-  );
+  );
 }
