@@ -127,35 +127,45 @@ const TaxAdvisory = () => {
       </div>
 
       {/* Offerings Section */}
-      <div className="py-16 px-6 max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+      <div className="py-16 px-4 sm:px-8 md:px-12 lg:px-20 max-w-6xl mx-auto">
+        {/* Section Heading */}
+        <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
           What We Offer
         </h2>
-        <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+        <p className="text-gray-600 mt-2 max-w-2xl mx-auto text-center">
           Our comprehensive corporate tax services ensure your business
           maintains full compliance while optimizing tax efficiency.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-10 mt-12 items-center">
-          <div>
+        {/* Grid Layout */}
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-10">
+          {/* Image Section */}
+          <div className="w-full md:w-[45%] flex justify-center">
             <img
               src="/Offerings.png"
-              alt="Offerings"
-              className="rounded-lg shadow-md w-full"
+              alt="Our Offerings"
+              className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
           </div>
 
-          <div className="space-y-6">
+          {/* Services Section */}
+          <div className="w-full md:w-[55%] space-y-4">
             {services.map((service) => (
-              <div key={service.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
+              <div
+                key={service.id}
+                className="flex items-start space-x-3 sm:space-x-4"
+              >
+                {/* Service Number */}
+                <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
                   {service.id}
                 </div>
+
+                {/* Title & Description */}
                 <div>
-                  <h3 className="text-left text-xl font-bold text-gray-900">
+                  <h3 className="text-sm sm:text-lg font-bold text-gray-900">
                     {service.title}
                   </h3>
-                  <p className="text-left text-gray-600">
+                  <p className="text-gray-600 text-xs sm:text-base line-clamp-2 sm:line-clamp-none">
                     {service.description}
                   </p>
                 </div>
@@ -166,66 +176,92 @@ const TaxAdvisory = () => {
       </div>
 
       {/* Service Details Section */}
-      <div className="py-16 px-6 max-w-6xl mx-auto text-center mt-[-60px]">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+      <div className="py-16 px-4 sm:px-8 md:px-12 lg:px-20 max-w-6xl mx-auto mt-[-79px]">
+        {/* Section Heading */}
+        <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
           Who Needs This Service
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-10 mt-12 items-center">
-          <div className="space-y-6">
+        {/* Grid Layout */}
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-10">
+          {/* Details Section */}
+          <div className="w-full md:w-[55%] space-y-4">
             {details.map((item) => (
-              <div key={item.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
+              <div
+                key={item.id}
+                className="flex items-start space-x-3 sm:space-x-4"
+              >
+                {/* Service Number */}
+                <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
                   {item.id}
                 </div>
+
+                {/* Title & Description */}
                 <div>
-                  <h3 className="text-left text-xl font-bold text-gray-900">
+                  <h3 className="text-sm sm:text-lg font-bold text-gray-900">
                     {item.title}
                   </h3>
-                  <p className="text-left text-gray-600">{item.description}</p>
+                  <p className="text-gray-600 text-xs sm:text-base line-clamp-2 sm:line-clamp-none">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div>
+          {/* Image Section */}
+          <div className="w-full md:w-[45%] flex justify-center">
             <img
               src="/ServiceDetails.png"
               alt="Who Needs This Service"
-              className="rounded-lg shadow-md w-full"
+              className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
           </div>
         </div>
       </div>
 
       {/* How It Works Section */}
-      <div className="py-16 px-6 md:px-12 lg:px-20 text-center  mt-[-75px]">
-        <h2 className="text-3xl font-bold text-gray-900">How It Works</h2>
-        <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
+      <div className="py-16 px-4 sm:px-8 md:px-12 lg:px-20 max-w-6xl mx-auto mt-[-75px]">
+        {/* Section Heading */}
+        <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
+          How It Works
+        </h2>
+        <p className="text-gray-600 mt-2 max-w-2xl mx-auto text-center">
           Our streamlined process ensures efficient and accurate tax filing
           services.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12 mt-12 items-center">
-          <div>
+        {/* Grid Layout */}
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-12 mt-10">
+          {/* Image Section */}
+          <div className="w-full md:w-1/2 flex justify-center">
             <img
               src="/HowItWorks.png"
               alt="How It Works"
-              className="rounded-lg shadow-md w-full"
+              className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
           </div>
 
-          <div className="space-y-6">
+          {/* Steps Section */}
+          <div className="w-full md:w-1/2 space-y-4">
             {steps.map((step) => (
-              <div key={step.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
+              <div
+                key={step.id}
+                className="flex items-start space-x-3 sm:space-x-4"
+              >
+                {/* Step Number */}
+                <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
                   {step.id}
                 </div>
+
+                {/* Step Title & Description */}
                 <div>
-                  <h3 className="text-left text-xl font-bold text-gray-900">
+                  <h3 className="text-sm sm:text-lg font-bold text-gray-900">
                     {step.title}
                   </h3>
-                  <p className="text-left text-gray-600">{step.description}</p>
+                  <p className="text-gray-600 text-xs sm:text-base line-clamp-2 sm:line-clamp-none">
+                    {step.description}
+                  </p>
                 </div>
               </div>
             ))}

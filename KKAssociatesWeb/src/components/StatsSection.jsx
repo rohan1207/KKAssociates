@@ -101,7 +101,7 @@ export default function StatsSection({ selectedLeader, setSelectedLeader }) {
           </div>
         ) : (
           <div className="block">
-            <h2 className="text-2xl font-bold mb-2">Our Story</h2>
+            <h2 className="text-2xl font-bold mb-2 text-center">Our Story</h2>
             <p className="text-gray-300">
               With decades of experience in cross-border taxation between the
               U.S. and India, we have established a strong reputation. Our team

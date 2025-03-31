@@ -125,118 +125,149 @@ const Estate = () => {
           )}
         </div>
       </div>
-
-      {/* Offerings Section */}
-      <div className="py-16 px-6 max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+      <div className="py-8 px-4 sm:px-6 max-w-5xl mx-auto">
+        {/* Section Heading */}
+        <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
           What We Offer
         </h2>
-        <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+        <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
           Our comprehensive corporate tax services ensure your business
           maintains full compliance while optimizing tax efficiency.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-10 mt-12 items-center">
-          <div>
-            <img
-              src="/Offerings.png"
-              alt="Offerings"
-              className="rounded-lg shadow-md w-full"
-            />
-          </div>
+        {/* Image - Full width on phone */}
+        <div className="w-full mt-6">
+          <img
+            src="/Offerings.png"
+            alt="Offerings"
+            className="w-full h-auto object-cover rounded-lg shadow-md"
+          />
+        </div>
 
-          <div className="space-y-6">
+        {/* Smooth Horizontal Scrollable Services List */}
+        <div className="mt-6 overflow-x-auto">
+          <motion.div
+            className="flex space-x-6 px-4"
+            drag="x"
+            dragConstraints={{ left: -500, right: 0 }}
+          >
             {services.map((service) => (
-              <div key={service.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
+              <motion.div
+                key={service.id}
+                className="flex flex-col items-center text-center min-w-[83%] sm:min-w-[50%] lg:min-w-[30%] bg-white p-4 rounded-lg shadow-md"
+                whileHover={{ scale: 1.05 }}
+              >
+                {/* Service ID Number */}
+                <div className="bg-orange-500 text-white font-bold w-9 h-9 flex items-center justify-center rounded-full text-lg">
                   {service.id}
                 </div>
 
-                <div>
-                  <h3 className="  text-left flex text-xl font-bold text-gray-900">
-                    {service.title}
-                  </h3>
-                  <p className=" text-left text-gray-600">
-                    {service.description}
-                  </p>
-                </div>
-              </div>
+                {/* Title & Description */}
+                <h3 className="mt-2 text-lg font-bold text-gray-900 text-left mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 text-sm max-w-xs px-2 text-left">
+                  {service.description}
+                </p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
-
       {/* Service Details Section */}
-      <div className="py-16 px-6 max-w-6xl mx-auto text-center mt-[-75px]">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+      <div className="py-8 px-4 sm:px-6 max-w-5xl mx-auto mt-[-30px]">
+        {/* Section Heading */}
+        <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
           Who Needs This Service
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-10 mt-12 items-center">
-          <div className="space-y-6">
+        {/* Image - Full width on phone */}
+        <div className="w-full mt-6">
+          <img
+            src="/ServiceDetails.png"
+            alt="Who Needs This Service"
+            className="w-full h-auto object-cover rounded-lg shadow-md"
+          />
+        </div>
+
+        {/* Smooth Horizontal Scrollable List */}
+        <div className="mt-6 overflow-x-auto">
+          <motion.div
+            className="flex space-x-6 px-4"
+            drag="x"
+            dragConstraints={{ left: -500, right: 0 }}
+          >
             {details.map((item) => (
-              <div key={item.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
+              <motion.div
+                key={item.id}
+                className="flex flex-col items-center text-center min-w-[75%] sm:min-w-[50%] lg:min-w-[30%] bg-white p-4 rounded-lg shadow-md"
+                whileHover={{ scale: 1.05 }}
+              >
+                {/* Service ID Number */}
+                <div className="bg-orange-500 text-white font-bold w-9 h-9 flex items-center justify-center rounded-full text-lg">
                   {item.id}
                 </div>
 
-                <div>
-                  <h3 className="  text-left flex text-xl font-bold text-gray-900">
-                    {item.title}
-                  </h3>
-                  <p className=" text-left text-gray-600">{item.description}</p>
-                </div>
-              </div>
+                {/* Title & Description */}
+                <h3 className="mt-2 text-lg font-bold text-gray-900">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-sm max-w-xs px-2">
+                  {item.description}
+                </p>
+              </motion.div>
             ))}
-          </div>
-
-          <div>
-            <img
-              src="/ServiceDetails.png"
-              alt="Who Needs This Service"
-              className="rounded-lg shadow-md w-full"
-            />
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      {/* How It Works Section */}
-      <div className="py-16 px-6 md:px-12 lg:px-20 text-center mt-[-75px]">
-        <h2 className="text-3xl font-bold md:text-4xl text-gray-900">
+      
+      <div className="py-8 px-4 sm:px-6 max-w-5xl mx-auto mt-[-30px]">
+        {/* Section Heading */}
+        <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
           How It Works
         </h2>
-        <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
+        <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
           Our streamlined process ensures efficient and accurate tax filing
           services.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12 mt-12 items-center">
-          <div>
-            <img
-              src="/HowItWorks.png"
-              alt="How It Works"
-              className="rounded-lg shadow-md w-full"
-            />
-          </div>
+        {/* Image - Full width on phone */}
+        <div className="w-full mt-6">
+          <img
+            src="/HowItWorks.png"
+            alt="How It Works"
+            className="w-full h-auto object-cover rounded-lg shadow-md"
+          />
+        </div>
 
-          <div className="space-y-6">
+        {/* Smooth Horizontal Scrollable Steps List */}
+        <div className="mt-6 overflow-x-auto">
+          <motion.div
+            className="flex space-x-6 px-4"
+            drag="x"
+            dragConstraints={{ left: -500, right: 0 }}
+          >
             {steps.map((step) => (
-              <div key={step.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
+              <motion.div
+                key={step.id}
+                className="flex flex-col items-center text-center min-w-[75%] sm:min-w-[50%] lg:min-w-[30%] bg-white p-4 rounded-lg shadow-md"
+                whileHover={{ scale: 1.05 }}
+              >
+                {/* Step Number */}
+                <div className="bg-orange-500 text-white font-bold w-9 h-9 flex items-center justify-center rounded-full text-lg">
                   {step.id}
                 </div>
 
-                <div>
-                  <h3 className=" text-left flex text-xl font-bold text-gray-900">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 text-left sm:text-center">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
+                {/* Title & Description */}
+                <h3 className="mt-2 text-lg font-bold text-gray-900">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 text-sm max-w-xs px-2">
+                  {step.description}
+                </p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

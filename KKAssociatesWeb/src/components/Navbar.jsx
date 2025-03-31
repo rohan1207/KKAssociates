@@ -201,7 +201,7 @@ export default function Navbar() {
                 <Link
                   key={index}
                   to={service.url}
-                  className="block px-3 py-2 hover:bg-gray-100 border-b last:border-b-0 text-black"
+                  className="block px-3 py-2 hover:bg-gray-100 border-b last:border-b-0 text-black hover:rounded-lg"
                 >
                   {service.name}
                 </Link>

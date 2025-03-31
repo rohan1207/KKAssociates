@@ -145,50 +145,36 @@ const Corporate = () => {
           </div>
 
           <div className="space-y-6">
-            {services.map((service) => (
-              <div key={service.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
-                  {service.id}
-                </div>
+            <div className="h-[12.3rem] overflow-y-scroll sm:hidden">
+              {services.map((service) => (
+                <div key={service.id} className="flex items-start space-x-4">
+                  <div className="bg-orange-500 text-white font-bold w-[28px] h-[28px] sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
+                    {service.id}
+                  </div>
 
-                <div>
-                  <h3 className=" flex text-xl font-bold text-gray-900">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 text-left">
-                    {service.description}
-                  </p>
+                  <div>
+                    <h3 className=" flex text-xl font-bold text-gray-900">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-gray-600 text-left ">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Service Details Section */}
-      <div className="py-16 px-6 max-w-6xl mx-auto text-center mt-1">
+      <div className="py-16 px-6 max-w-6xl mx-auto text-center mt-[-70px]">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
           Who Needs This Service
         </h2>
 
         <div className="grid md:grid-cols-2 gap-10 mt-12 items-center">
-          <div className="space-y-6">
-            {details.map((item) => (
-              <div key={item.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
-                  {item.id}
-                </div>
-
-                <div>
-                  <h3 className=" flex text-xl font-bold text-gray-900">
-                    {item.title}
-                  </h3>
-                  <p className=" text-left text-gray-600">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
           <div>
             <img
               src="/ServiceDetails.png"
@@ -196,11 +182,31 @@ const Corporate = () => {
               className="rounded-lg shadow-md w-full"
             />
           </div>
+          <div className="space-y-6">
+            <div className="h-[12.3rem] overflow-y-scroll sm:hidden">
+              {details.map((item) => (
+                <div key={item.id} className="flex items-start space-x-4">
+                  <div className="bg-orange-500 text-white font-bold w-[28px] h-[28px] sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
+                    {item.id}
+                  </div>
+
+                  <div>
+                    <h3 className=" flex text-xl font-bold text-gray-900">
+                      {item.title}
+                    </h3>
+                    <p className=" text-left text-gray-600">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
       {/* How It Works Section */}
-      <div className="py-16 px-6 md:px-12 lg:px-20 text-center mt-[-75px]">
+      <div className="py-16 px-6 md:px-12 lg:px-20 text-center mt-[-70px]">
         <h2 className="text-3xl font-bold text-gray-900">How It Works</h2>
         <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
           Our streamlined process ensures efficient and accurate tax filing
@@ -217,25 +223,27 @@ const Corporate = () => {
           </div>
 
           <div className="space-y-6">
-            {steps.map((step) => (
-              <div key={step.id} className="flex items-start space-x-4">
-                <div className="bg-orange-500 text-white font-bold w-10 h-10 sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
-                  {step.id}
-                </div>
+            <div className="h-[12.3rem] overflow-y-scroll sm:hidden">
+              {steps.map((step) => (
+                <div key={step.id} className="flex items-start space-x-4">
+                  <div className="bg-orange-500 text-white font-bold w-[28px] h-[28px] sm:w-[40px] sm:h-10 flex items-center justify-center rounded-full text-lg flex-shrink-0">
+                    {step.id}
+                  </div>
 
-                <div>
-                  <h3
-                    className=" flex
+                  <div>
+                    <h3
+                      className=" flex
                   text-xl font-bold text-gray-900"
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 text-left sm:text-center">
-                    {step.description}
-                  </p>
+                    >
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-600 text-left sm:text-center">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
