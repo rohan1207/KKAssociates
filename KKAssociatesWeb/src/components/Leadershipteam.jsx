@@ -4,7 +4,7 @@ export default function LeadershipTeam({ selectedLeader, setSelectedLeader }) {
   const teamMembers = [
     {
       name: "Alpesh Gujrathi",
-      image: "alpeshg.png",
+      image: "Alpesh_Photo.jpg",
       shortInfo:
         "A Chartered Accountant since 2006, specializing in tax planning and cross-border tax consultation  .",
       fullInfo: `A Chartered Accountant since 2006, Alpesh brings over 12 years of
@@ -33,7 +33,7 @@ Institute of Chartered Accountants of India, New Delhi.`,
     },
     {
       name: "Sachin Ahuja",
-      image: "ahuja.jpeg",
+      image: "sachin.png",
       shortInfo:
         "A partner at KKA with over 12 years of experience across the U.S. and India, offering strategic tax advisory.",
       fullInfo: `A partner at KKA with over 12 years of post-qualification experience, Sachin
@@ -47,11 +47,11 @@ Certified Public Accountants since 2009.`,
     },
     {
       name: "Jaren Durham",
-      image: "jaren.jpeg",
+      image: "wade.jpg",
       shortInfo:
         "A partner at KKA with over 12 years of experience across the U.S. and India, offering strategic tax advisory.",
       fullInfo:
-        "He is a licensed CPA in the State of Utah, has a Master’s of Science in Taxation, and has years of Tax and Accounting experience. In Addition to doing taxes for individuals and businesses for years. He has worked for one of the big four accounting firms, has managed the tax analyst team at TAX Works, a major software provider and has taught accounting classes at the University of Utah. He is also very knowledgeable in business systems and technology.",
+        "He is a licensed CPA in the State of Utah, has a Master's of Science in Taxation, and has years of Tax and Accounting experience. In Addition to doing taxes for individuals and businesses for years. He has worked for one of the big four accounting firms, has managed the tax analyst team at TAX Works, a major software provider and has taught accounting classes at the University of Utah. He is also very knowledgeable in business systems and technology.",
     },
   ];
 
@@ -72,33 +72,57 @@ Certified Public Accountants since 2009.`,
             .map((member, index) => (
               <div
                 key={index}
-                className="bg-[rgb(255,249,242)] shadow-lg rounded-xl p-5 w-[270px] h-[346px] overflow-hidden flex flex-col justify-between shrink-0 
-           sm:w-[250px] sm:h-[320px] md:w-[270px] md:h-[346px]"
+                className="relative bg-[rgb(255,249,242)] shadow-lg rounded-xl overflow-hidden flex flex-col shrink-0 
+                w-[240px] h-[280px] sm:w-[250px] sm:h-[320px] md:w-[270px] md:h-[346px] group"
               >
-                {/* Leader Image */}
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-32 h-32 object-cover rounded-full mx-auto shadow-md 
-                         sm:w-28 sm:h-28 md:w-32 md:h-32"
-                />
+                {/* Card Content */}
+                <div className="p-4 sm:p-5 flex flex-col items-center h-full">
+                  {/* Leader Image Container with Fixed Dimensions */}
+                  <div className="w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] rounded-full overflow-hidden mb-3 sm:mb-4">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
 
-                {/* Leader Name */}
-                <h3 className="mt-3 font-bold text-gray-800 text-lg sm:text-base md:text-lg">
-                  {member.name}
-                </h3>
+                  {/* Default Content - Always Visible */}
+                  <div className="text-center">
+                    <h3 className="font-bold text-gray-800 text-base sm:text-lg mb-1 sm:mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-600 line-clamp-2 sm:line-clamp-2">
+                      {member.shortInfo}
+                    </p>
+                  </div>
+                </div>
 
-                {/* Short Info */}
-                <p className="text-sm text-gray-600 mt-2 sm:text-xs md:text-sm">
-                  {member.shortInfo}
-                </p>
+                {/* Hover Overlay - Only on Desktop */}
+                <div 
+                  className="hidden sm:flex absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 
+                  flex-col justify-between p-6 rounded-xl"
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(99, 73, 187, 0.5) 37.17%, #2D2155 81.57%)'
+                  }}
+                >
+                  <div className="text-white">
+                    <h3 className="text-xl font-bold mb-2">{member.name}</h3>
+                    <p className="text-sm text-gray-100 line-clamp-2">
+                      {member.shortInfo}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setSelectedLeader(member)}
+                    className="absolute bottom-4 right-4 px-4 py-2 bg-[#FF6B00] text-white text-sm font-medium rounded-lg hover:bg-[#e65900] transition-colors"
+                  >
+                    Read More
+                  </button>
+                </div>
 
-                {/* Read More Button */}
+                {/* Mobile Read More Button */}
                 <button
                   onClick={() => setSelectedLeader(member)}
-                  className="relative top-2 right-0 mt-4 px-4 py-2 bg-[#2E1A55] text-white font-semibold rounded-lg shadow-md 
-             hover:bg-[#3c2f55] transition mx-auto text-sm 
-             w-[120px] h-[38px] sm:w-[95px] sm:h-[38px] md:w-[130px] sm:rounded-[8px] sm:text-[14px]"
+                  className="block sm:hidden absolute bottom-3 right-3 px-2.5 py-1 bg-[#2D2155] text-white text-[10px] font-medium rounded-md shadow-md hover:bg-[#3d3165] transition-colors"
                 >
                   Read More
                 </button>

@@ -22,69 +22,69 @@ const Estate = () => {
   const services = [
     {
       id: 1,
-      title: "Structuring of estate plans to optimize tax efficiency",
+      title: "Estate Planning & Documentation",
       description:
-        "Expert preparation and filing of Forms 1120C, 1120S, and 1120F with meticulous attention to detail.",
+        "Comprehensive estate planning services including wills, trusts, and power of attorney documents.",
     },
     {
       id: 2,
-      title: "Legal & tax advisory for wealth transfers",
+      title: "Tax Planning & Compliance",
       description:
-        "Ensuring full compliance with U.S. tax laws and IRS regulations through our comprehensive review process.",
+        "Strategic estate tax planning to minimize tax liabilities and ensure compliance with IRS regulations.",
     },
     {
       id: 3,
-      title: "U.S. & India cross-border estate planning",
+      title: "Asset Protection Strategies",
       description:
-        "Strategic tax optimization approaches to maximize efficiency while maintaining compliance.",
+        "Expert guidance on protecting your assets and ensuring smooth wealth transfer to future generations.",
     },
   ];
 
   const details = [
     {
       id: 1,
-      title: "High-net-worth individuals & families",
+      title: "High-Net-Worth Individuals",
       description:
-        "Companies registered in the U.S. that require annual corporate tax filings.",
+        "Individuals with significant assets requiring comprehensive estate planning.",
     },
     {
       id: 2,
-      title: "Business owners planning succession",
+      title: "Business Owners",
       description:
-        "Indian businesses operating in the U.S. market requiring compliance.",
+        "Entrepreneurs needing succession planning and business asset protection.",
     },
     {
       id: 3,
-      title: "Individuals with cross-border assets",
+      title: "International Families",
       description:
-        "Businesses with international operations that need expert tax management.",
+        "Families with cross-border assets requiring specialized estate planning.",
     },
   ];
 
   const steps = [
     {
       id: 1,
-      title: "Initial Planning & Strategy Development",
+      title: "Initial Assessment",
       description:
-        "Comprehensive review of your business structure and tax requirements.",
+        "Comprehensive review of your estate planning needs and objectives.",
     },
     {
       id: 2,
-      title: "Legal & Tax Structuring",
+      title: "Strategy Development",
       description:
-        "Thorough analysis of financial documents and previous filings.",
+        "Customized estate planning strategy based on your specific situation.",
     },
     {
       id: 3,
-      title: "Execution of Estate Plans",
+      title: "Document Preparation",
       description:
-        "Expert preparation and submission of all required tax forms.",
+        "Expert preparation of all necessary estate planning documents.",
     },
     {
       id: 4,
-      title: "Ongoing Advisory & Adjustments",
+      title: "Implementation & Review",
       description:
-        "Ongoing assistance and support for any follow-up requirements.",
+        "Final review and implementation of your estate plan.",
     },
   ];
 
@@ -98,16 +98,15 @@ const Estate = () => {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10">
           <h1 className="text-3xl md:text-5xl font-bold">
-            Estate & Succession Planning
+            Estate Planning Services
           </h1>
           <p className="mt-3">
-            Secure your assets and legacy with strategic estate planning and
-            cross-border succession solutions.
+            Expert estate planning services ensuring your legacy is protected and efficiently transferred.
           </p>
           {showButton && (
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }} // Always visible, adjust based on scroll logic if needed
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="w-full flex justify-center mt-5 sm:mt-6"
             >
@@ -125,149 +124,142 @@ const Estate = () => {
           )}
         </div>
       </div>
-      <div className="py-8 px-4 sm:px-6 max-w-5xl mx-auto">
+
+      {/* Offerings Section */}
+      <div className="py-16 px-4 sm:px-8 md:px-12 lg:px-20 max-w-6xl mx-auto">
         {/* Section Heading */}
         <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
           What We Offer
         </h2>
         <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
-          Our comprehensive corporate tax services ensure your business
-          maintains full compliance while optimizing tax efficiency.
+          Our comprehensive estate planning services ensure your assets are protected and distributed according to your wishes.
         </p>
 
-        {/* Image - Full width on phone */}
-        <div className="w-full mt-6">
-          <img
-            src="/Offerings.png"
-            alt="Offerings"
-            className="w-full h-auto object-cover rounded-lg shadow-md"
-          />
-        </div>
+        {/* Image & Service List */}
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
+          {/* Image Section */}
+          <div className="w-full md:w-[45%] flex justify-center">
+            <img
+              src="/2.jpg"
+              alt="Offerings"
+              className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
+            />
+          </div>
 
-        {/* Smooth Horizontal Scrollable Services List */}
-        <div className="mt-6 overflow-x-auto">
-          <motion.div
-            className="flex space-x-6 px-4"
-            drag="x"
-            dragConstraints={{ left: -500, right: 0 }}
-          >
-            {services.map((service) => (
-              <motion.div
-                key={service.id}
-                className="flex flex-col items-center text-center min-w-[83%] sm:min-w-[50%] lg:min-w-[30%] bg-white p-4 rounded-lg shadow-md"
-                whileHover={{ scale: 1.05 }}
-              >
-                {/* Service ID Number */}
-                <div className="bg-orange-500 text-white font-bold w-9 h-9 flex items-center justify-center rounded-full text-lg">
-                  {service.id}
+          {/* Services List - Scrollable on mobile */}
+          <div className="w-full md:w-[55%]">
+            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+              {services.map((service) => (
+                <div key={service.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
+                  {/* Service Number */}
+                  <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
+                    {service.id}
+                  </div>
+
+                  {/* Service Title & Description */}
+                  <div>
+                    <h3 className="text-sm sm:text-lg font-bold text-gray-900">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 text-xs sm:text-base">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
-
-                {/* Title & Description */}
-                <h3 className="mt-2 text-lg font-bold text-gray-900 text-left mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 text-sm max-w-xs px-2 text-left">
-                  {service.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
+
       {/* Service Details Section */}
-      <div className="py-8 px-4 sm:px-6 max-w-5xl mx-auto mt-[-30px]">
+      <div className="py-16 px-4 sm:px-8 md:px-12 lg:px-20 max-w-6xl mx-auto mt-[-79px]">
         {/* Section Heading */}
         <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
           Who Needs This Service
         </h2>
 
-        {/* Image - Full width on phone */}
-        <div className="w-full mt-6">
-          <img
-            src="/ServiceDetails.png"
-            alt="Who Needs This Service"
-            className="w-full h-auto object-cover rounded-lg shadow-md"
-          />
-        </div>
+        {/* Grid Layout */}
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
+          {/* Service List - Scrollable on mobile */}
+          <div className="w-full md:w-[55%]">
+            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+              {details.map((item) => (
+                <div key={item.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
+                  {/* Number Icon */}
+                  <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
+                    {item.id}
+                  </div>
 
-        {/* Smooth Horizontal Scrollable List */}
-        <div className="mt-6 overflow-x-auto">
-          <motion.div
-            className="flex space-x-6 px-4"
-            drag="x"
-            dragConstraints={{ left: -500, right: 0 }}
-          >
-            {details.map((item) => (
-              <motion.div
-                key={item.id}
-                className="flex flex-col items-center text-center min-w-[75%] sm:min-w-[50%] lg:min-w-[30%] bg-white p-4 rounded-lg shadow-md"
-                whileHover={{ scale: 1.05 }}
-              >
-                {/* Service ID Number */}
-                <div className="bg-orange-500 text-white font-bold w-9 h-9 flex items-center justify-center rounded-full text-lg">
-                  {item.id}
+                  {/* Title & Description */}
+                  <div>
+                    <h3 className="text-sm sm:text-lg font-bold text-gray-900">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 text-xs sm:text-base">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
 
-                {/* Title & Description */}
-                <h3 className="mt-2 text-lg font-bold text-gray-900">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-sm max-w-xs px-2">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Image Section */}
+          <div className="w-full md:w-[45%] flex justify-center">
+            <img
+              src="/1.jpeg"
+              alt="Who Needs This Service"
+              className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
+            />
+          </div>
         </div>
       </div>
-      
-      <div className="py-8 px-4 sm:px-6 max-w-5xl mx-auto mt-[-30px]">
+
+      {/* How It Works Section */}
+      <div className="py-16 px-4 sm:px-8 md:px-12 lg:px-20 max-w-6xl mx-auto mt-[-75px]">
         {/* Section Heading */}
         <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
           How It Works
         </h2>
-        <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
-          Our streamlined process ensures efficient and accurate tax filing
-          services.
+        <p className="text-gray-600 mt-2 max-w-2xl mx-auto text-center">
+          Our streamlined process ensures your estate plan is comprehensive and legally sound.
         </p>
 
-        {/* Image - Full width on phone */}
-        <div className="w-full mt-6">
-          <img
-            src="/HowItWorks.png"
-            alt="How It Works"
-            className="w-full h-auto object-cover rounded-lg shadow-md"
-          />
-        </div>
+        {/* Grid Layout */}
+        <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-10 mt-10">
+          {/* Process Steps - Scrollable on mobile */}
+          <div className="w-full md:w-[55%]">
+            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+              {steps.map((step) => (
+                <div key={step.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
+                  {/* Step Number */}
+                  <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
+                    {step.id}
+                  </div>
 
-        {/* Smooth Horizontal Scrollable Steps List */}
-        <div className="mt-6 overflow-x-auto">
-          <motion.div
-            className="flex space-x-6 px-4"
-            drag="x"
-            dragConstraints={{ left: -500, right: 0 }}
-          >
-            {steps.map((step) => (
-              <motion.div
-                key={step.id}
-                className="flex flex-col items-center text-center min-w-[75%] sm:min-w-[50%] lg:min-w-[30%] bg-white p-4 rounded-lg shadow-md"
-                whileHover={{ scale: 1.05 }}
-              >
-                {/* Step Number */}
-                <div className="bg-orange-500 text-white font-bold w-9 h-9 flex items-center justify-center rounded-full text-lg">
-                  {step.id}
+                  {/* Step Title & Description */}
+                  <div>
+                    <h3 className="text-sm sm:text-lg font-bold text-gray-900">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-600 text-xs sm:text-base">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
 
-                {/* Title & Description */}
-                <h3 className="mt-2 text-lg font-bold text-gray-900">
-                  {step.title}
-                </h3>
-                <p className="text-gray-600 text-sm max-w-xs px-2">
-                  {step.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Image Section */}
+          <div className="w-full md:w-[45%] flex justify-center">
+            <img
+            src="/3.webp"
+              alt="How It Works"
+              className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
+            />
+          </div>
         </div>
       </div>
     </div>

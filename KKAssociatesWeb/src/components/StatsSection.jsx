@@ -3,6 +3,7 @@ import { useRef, useEffect, useState } from "react";
 export default function StatsSection({ selectedLeader, setSelectedLeader }) {
   const statsRef = useRef(null);
   const [hideButton, setHideButton] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     if (selectedLeader && statsRef.current) {
@@ -17,35 +18,36 @@ export default function StatsSection({ selectedLeader, setSelectedLeader }) {
       setHideButton(buttonPosition <= navbarHeight);
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
-    <div
-      ref={statsRef}
-      className="flex flex-col items-center justify-center p-8 bg-white"
-    >
-      {/* Conditional Rendering for Our Story or Leader Details */}
-      <div className="bg-[#25225D] text-white p-6 rounded-xl max-w-3xl shadow-md border border-blue-400 mb-10">
-        {selectedLeader ? (
-          <div className="flex flex-col md:flex-row items-center md:items-start">
-            {/* Image Container with Relative Position */}
+    <div ref={statsRef} className="flex items-center justify-center p-8 bg-white mt-0 md:mt-[82px]">
+      {selectedLeader ? (
+        isMobile ? (
+          // ----------- Mobile View -----------
+          <div className="flex flex-col items-center w-full bg-[#25225D] p-6 rounded-lg">
             <div className="md:w-1/3 w-full relative">
               <img
                 src={selectedLeader.image}
                 alt={selectedLeader.name}
                 className="w-full h-auto rounded-lg"
               />
-              {/* Mobile Cross Button (Top Right Corner of Image) */}
+              {/* Mobile Close Button */}
               <button
                 onClick={() => setSelectedLeader(null)}
                 className={`absolute top-0 right-0 bg-white text-black rounded-full p-1 hover:bg-gray-200 transition z-50 w-5 h-5 md:hidden ${
-                  hideButton
-                    ? "opacity-0 pointer-events-none"
-                    : "opacity-100 pointer-events-auto"
+                  hideButton ? "opacity-0 pointer-events-none" : "opacity-100 pointer-events-auto"
                 }`}
               >
                 <svg
@@ -55,80 +57,95 @@ export default function StatsSection({ selectedLeader, setSelectedLeader }) {
                   stroke="currentColor"
                   strokeWidth={2}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* Leader Details */}
-            <div className="md:w-2/3 w-full md:pl-6 mt-4 md:mt-0 relative">
-              {/* Large Screen Cross Button (Original Position) */}
+            <div className="w-full md:w-2/3 mt-4">
+              <h2 className="text-2xl font-bold text-orange-500 mb-2">{selectedLeader.name}</h2>
+              <p className="text-gray-300 leading-relaxed">{selectedLeader.fullInfo}</p>
+            </div>
+          </div>
+        ) : (
+          // ----------- Desktop View -----------
+          <div className="relative w-full max-w-4xl">
+            {/* Desktop Image Section */}
+            <div
+              className="absolute z-10 hidden md:block"
+              style={{
+                top: "-54px",
+                left: "-69px",
+                width: "301px",
+                height: "454px",
+                overflow: "hidden",
+                zIndex: "21",
+              }}
+            >
+              <img
+  src={selectedLeader.image}
+  alt={selectedLeader.name}
+  className="w-full h-full object-cover rounded-[20px]"
+/>
+
+            </div>
+
+            {/* Fixed Size Purple Box Section */}
+            <div
+              className="relative z-20"
+              style={{
+                backgroundColor: "#25225D",
+                borderRadius: "20px",
+                color: "white",
+                padding: "40px",
+                paddingLeft: "300px",
+                boxSizing: "border-box",
+                height: "400px", // Fixed height for consistency
+                maxWidth: "880px", // Set max-width to avoid it stretching too much
+                overflowY: "auto", // Allow scroll if content exceeds
+              }}
+            >
+              <h2 className="text-2xl font-bold text-orange-500 mb-4">{selectedLeader.name}</h2>
+              <p className="text-gray-300 leading-relaxed">{selectedLeader.fullInfo}</p>
+
+              {/* Close Button */}
               <button
                 onClick={() => setSelectedLeader(null)}
-                className={`hidden md:flex absolute top-[-1.5rem] right-[-1.5rem] bg-white text-black rounded-full p-2 transition z-50 ${
-                  hideButton
-                    ? "opacity-0 pointer-events-none"
-                    : "opacity-100 pointer-events-auto"
-                }`}
+                className="absolute top-4 right-4 bg-white text-black rounded-full p-2 transition hover:bg-gray-200"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
-                  fill="none"
                   viewBox="0 0 24 24"
+                  fill="none"
                   stroke="currentColor"
                   strokeWidth={2}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-
-              <h2 className="text-2xl font-bold text-orange-500 mb-2">
-                {selectedLeader.name}
-              </h2>
-              <p className="text-gray-300 leading-relaxed">
-                {selectedLeader.fullInfo}
-              </p>
             </div>
           </div>
-        ) : (
-          <div className="block">
-            <h2 className="text-2xl font-bold mb-2 text-center">Our Story</h2>
-            <p className="text-gray-300">
-              With decades of experience in cross-border taxation between the
-              U.S. and India, we have established a strong reputation. Our team
-              of experts is dedicated to providing the best services to our
-              clients. We have served clients from various industries and
-              countries, and our customer satisfaction rate is 98%. We are
-              committed to helping our clients navigate the complex tax laws and
-              regulations.
-            </p>
-          </div>
-        )}
-      </div>
-      {/* Stats Section */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-8">
-        {[
-          { value: "7+", label: "Countries Served" },
-          { value: "40+", label: "Years of Experience" },
-          { value: "1000+", label: "Clients Served" },
-          { value: "98%", label: "Customer Satisfaction Rate" },
-        ].map((stat, index) => (
-          <div key={index}>
-            <h3 className="text-3xl font-bold text-orange-500">{stat.value}</h3>
-            <p className="text-gray-600">{stat.label}</p>
-          </div>
-        ))}
-      </div>
-         
-    </div>
-  );
+        )
+      ) : (
+        // ----------- Our Story in Purple Box -----------
+        <div
+          className="p-8 rounded-lg max-w-4xl"
+          style={{ backgroundColor: "#25225D", color: "white" }}
+        >
+          <h2 className="text-2xl font-bold mb-4 text-orange-500 text-center">Our Story</h2>
+
+          <p className="text-gray-300">
+            With decades of experience in cross-border taxation between the
+            U.S. and India, we have established a strong reputation. Our team
+            of experts is dedicated to providing the best services to our
+            clients. We have served clients from various industries and
+            countries, and our customer satisfaction rate is 98%. We are
+            committed to helping our clients navigate the complex tax laws and
+            regulations.
+          </p>
+        </div>
+      )}
+    </div>
+  );
 }

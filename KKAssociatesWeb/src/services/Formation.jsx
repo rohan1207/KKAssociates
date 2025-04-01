@@ -126,139 +126,142 @@ const Formation = () => {
       </div>
 
       {/* Offerings Section */}
-      <div className="py-8 px-4 sm:px-6 max-w-5xl mx-auto">
-  {/* Section Heading */}
-  <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
-    What We Offer
-  </h2>
-  <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
-    Our comprehensive corporate tax services ensure your business maintains full compliance while optimizing tax efficiency.
-  </p>
+      <div className="py-16 px-4 sm:px-8 md:px-12 lg:px-20 max-w-6xl mx-auto">
+        {/* Section Heading */}
+        <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
+          What We Offer
+        </h2>
+        <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
+          Our comprehensive business formation services help you establish your company with confidence.
+        </p>
 
-  {/* Image & Services List - Always Side by Side */}
-  <div className="flex flex-row items-center gap-4 sm:gap-8 mt-6">
-    {/* Image with Auto Scaling */}
-    <div className="w-[45%] flex justify-center">
-      <img
-        src="/Offerings.png"
-        alt="Offerings"
-        className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
-      />
-    </div>
-
-    {/* Services List */}
-    <div className="w-[55%] space-y-3">
-      {services.map((service) => (
-        <div key={service.id} className="flex items-start space-x-2 sm:space-x-3">
-          {/* Service ID Number */}
-          <div className="bg-orange-500 text-white font-bold w-7 h-7 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
-            {service.id}
+        {/* Image & Service List */}
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
+          {/* Image Section */}
+          <div className="w-full md:w-[45%] flex justify-center">
+            <img
+              src="/14.jpeg"
+              alt="Offerings"
+              className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
+            />
           </div>
 
-          {/* Title & Description */}
-          <div>
-            <h3 className="text-sm sm:text-lg font-bold text-gray-900">
-              {service.title}
-            </h3>
-            <p className="text-gray-600 text-xs sm:text-base line-clamp-2 sm:line-clamp-none">
-              {service.description}
-            </p>
+          {/* Services List - Scrollable on mobile */}
+          <div className="w-full md:w-[55%]">
+            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+              {services.map((service) => (
+                <div key={service.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
+                  {/* Service Number */}
+                  <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
+                    {service.id}
+                  </div>
+
+                  {/* Service Title & Description */}
+                  <div>
+                    <h3 className="text-sm sm:text-lg font-bold text-gray-900">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 text-xs sm:text-base">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</div>
-
+      </div>
 
       {/* Service Details Section */}
-      <div className="py-8 px-4 sm:px-6 max-w-5xl mx-auto mt-[-20px]">
-  {/* Section Heading */}
-  <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
-    Who Needs This Service
-  </h2>
+      <div className="py-16 px-4 sm:px-8 md:px-12 lg:px-20 max-w-6xl mx-auto mt-[-79px]">
+        {/* Section Heading */}
+        <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
+          Who Needs This Service
+        </h2>
 
-  {/* Image & Services List - Always Side by Side */}
-  <div className="flex flex-row items-center gap-4 sm:gap-8 mt-6">
-   
+        {/* Grid Layout */}
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
+          {/* Service List - Scrollable on mobile */}
+          <div className="w-full md:w-[55%]">
+            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+              {details.map((item) => (
+                <div key={item.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
+                  {/* Number Icon */}
+                  <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
+                    {item.id}
+                  </div>
 
-    {/* Services List */}
-    <div className="w-[55%] space-y-3">
-      {details.map((item) => (
-        <div key={item.id} className="flex items-start space-x-2 sm:space-x-3">
-          {/* Service ID Number */}
-          <div className="bg-orange-500 text-white font-bold w-7 h-7 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
-            {item.id}
+                  {/* Title & Description */}
+                  <div>
+                    <h3 className="text-sm sm:text-lg font-bold text-gray-900">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 text-xs sm:text-base">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Title & Description */}
-          <div>
-            <h3 className="text-sm sm:text-lg font-bold text-gray-900">
-              {item.title}
-            </h3>
-            <p className="text-gray-600 text-xs sm:text-base line-clamp-2 sm:line-clamp-none">
-              {item.description}
-            </p>
+          {/* Image Section */}
+          <div className="w-full md:w-[45%] flex justify-center">
+            <img
+              src="/22.jpg"
+              alt="Who Needs This Service"
+              className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
+            />
           </div>
         </div>
-      ))}
-    </div>
-     {/* Image with Auto Scaling */}
-     <div className="w-[45%] flex justify-center">
-      <img
-        src="/ServiceDetails.png"
-        alt="Who Needs This Service"
-        className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
-      />
-    </div>
-  </div>
-</div>
-
+      </div>
 
       {/* How It Works Section */}
-      <div className="py-8 px-4 sm:px-6 max-w-5xl mx-auto mt-[-30px]">
-  {/* Section Heading */}
-  <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
-    How It Works
-  </h2>
-  <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
-    Our streamlined process ensures efficient and accurate tax filing services.
-  </p>
+      <div className="py-16 px-4 sm:px-8 md:px-12 lg:px-20 max-w-6xl mx-auto mt-[-75px]">
+        {/* Section Heading */}
+        <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center">
+          How It Works
+        </h2>
+        <p className="text-gray-600 mt-2 max-w-2xl mx-auto text-center">
+          Our streamlined process ensures efficient and accurate business formation services.
+        </p>
 
-  {/* Image & Steps List - Always Side by Side */}
-  <div className="flex flex-row items-center gap-4 sm:gap-8 mt-6">
-    {/* Image with Auto Scaling */}
-    <div className="w-[45%] flex justify-center">
-      <img
-        src="/HowItWorks.png"
-        alt="How It Works"
-        className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
-      />
-    </div>
+        {/* Grid Layout */}
+        <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-10 mt-10">
+          {/* Process Steps - Scrollable on mobile */}
+          <div className="w-full md:w-[55%]">
+            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+              {steps.map((step) => (
+                <div key={step.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
+                  {/* Step Number */}
+                  <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
+                    {step.id}
+                  </div>
 
-    {/* Steps List */}
-    <div className="w-[55%] space-y-3">
-      {steps.map((step) => (
-        <div key={step.id} className="flex items-start space-x-2 sm:space-x-3">
-          {/* Step ID Number */}
-          <div className="bg-orange-500 text-white font-bold w-7 h-7 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
-            {step.id}
+                  {/* Step Title & Description */}
+                  <div>
+                    <h3 className="text-sm sm:text-lg font-bold text-gray-900">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-600 text-xs sm:text-base">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Title & Description */}
-          <div>
-            <h3 className="text-sm sm:text-lg font-bold text-gray-900">
-              {step.title}
-            </h3>
-            <p className="text-gray-600 text-xs sm:text-base line-clamp-2 sm:line-clamp-none">
-              {step.description}
-            </p>
+          {/* Image Section */}
+          <div className="w-full md:w-[45%] flex justify-center">
+            <img
+              src="/5.webp"
+              alt="How It Works"
+              className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
+            />
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</div>
+      </div>
 
     </div>
   );

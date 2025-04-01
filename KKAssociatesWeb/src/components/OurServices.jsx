@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -84,11 +85,17 @@ const OurServices = () => {
   }, []);
 
   return (
-    <div className="bg-white py-12 px-6">
-      <h2 className="text-3xl font-bold text-center text-orange-500 mb-8">
+    <div className="bg-white py-12 px-4 sm:px-6">
+      <motion.h2 
+        className="text-3xl font-bold text-center text-orange-500 mb-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         Our Services
-      </h2>
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+      </motion.h2>
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto">
         {services
           .slice(0, isLargeScreen ? services.length : visibleServices)
           .map((service, index) => (
@@ -96,45 +103,65 @@ const OurServices = () => {
               key={index}
               service={service}
               isLargeScreen={isLargeScreen}
+              index={index}
             />
           ))}
       </div>
 
       {!isLargeScreen && visibleServices < services.length && (
-        <div className="text-center mt-8">
+        <motion.div 
+          className="text-center mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <button
             onClick={() =>
               setVisibleServices((prev) => Math.min(prev + 2, services.length))
             }
-            className="w-[194px] h-[55px] sm:w-[223px] sm:h-[64px]  bg-[#FF5500] text-white font-roboto font-medium 
-             text-md sm:text-lg  leading-[24px] sm:leading-[27px] text-center 
-             rounded-[20px] sm:rounded-[20px] px-5 py-2 sm:px-6 sm:py-3 
+            className="w-[194px] h-[55px] sm:w-[223px] sm:h-[64px] bg-[#FF5500] text-white font-roboto font-medium 
+             text-md sm:text-lg leading-[24px] sm:leading-[27px] text-center 
+             rounded-[20px] px-5 py-2 sm:px-6 sm:py-3 
              hover:bg-[#FF7733] transition duration-300 ease-in-out"
           >
             View All Services
           </button>
-        </div>
+        </motion.div>
       )}
     </div>
   );
 };
 
-const ServiceCard = ({ service, isLargeScreen }) => {
+const ServiceCard = ({ service, isLargeScreen, index }) => {
   const navigate = useNavigate();
+  
   return (
-    <div className="bg-[#fff9f2] rounded-lg shadow-md p-4 flex flex-col justify-between hover:shadow-lg transition duration-300 group">
-      <img
+    <motion.div 
+      className="bg-[#fff9f2] rounded-lg shadow-md p-4 flex flex-col h-full hover:shadow-lg transition duration-300 group relative"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ 
+        y: -5,
+        transition: { duration: 0.2 }
+      }}
+    >
+      <motion.img
         src={service.image}
         alt={service.title}
         className="h-32 w-full object-cover rounded-md"
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.2 }}
       />
       <h3 className="text-base sm:text-lg font-bold text-orange-600 mt-3">
         {service.title}
       </h3>
-      <p className="text-gray-600 text-sm lg:block hidden">
+      <p className="text-gray-600 text-sm mt-2 line-clamp-2 sm:line-clamp-none">
         {service.description}
       </p>
-      <div className="mt-2 flex flex-wrap lg:flex hidden">
+      <div className="mt-2 flex flex-wrap">
         {service.tags?.map((tag, i) => (
           <span
             key={i}
@@ -145,24 +172,21 @@ const ServiceCard = ({ service, isLargeScreen }) => {
         ))}
       </div>
 
-      <div className="flex flex-col items-center sm:items-center justify-end h-full">
-        <button
+      <div className="mt-auto pt-4 flex justify-end">
+        <motion.button
           onClick={() => navigate(service.path)}
-          className={`w-[75px] h-[29px] sm:w-[95px] sm:h-[38px] px-3 py-1 text-white rounded-[6px] sm:rounded-[8px] 
-                font-roboto font-medium text-[10px] sm:text-[14px] leading-[20px] sm:leading-[24px] 
-                ${service.buttonColor} 
-                mt-[-29px] sm:mt-[20px]   /* -29px for phone, 20px for desktop */
-                sm:mb-3 mb-[-0.25rem]    /* Adjusted bottom margin */
-                ${
-                  isLargeScreen
-                    ? "opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    : "opacity-100"
-                }`}
+          className={`w-[75px] h-[29px] sm:w-[85px] sm:h-[32px] px-3 text-white rounded-[6px] sm:rounded-[8px] 
+            font-roboto font-medium text-[10px] sm:text-[12px] leading-[20px] sm:leading-[20px] 
+            ${service.buttonColor} 
+            flex items-center justify-center
+            ${isLargeScreen ? "opacity-0 group-hover:opacity-100 transition-opacity duration-300" : "opacity-100"}`}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           Read More
-        </button>
+        </motion.button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
