@@ -150,7 +150,7 @@ const TaxAdvisory = () => {
 
           {/* Services List - Scrollable on mobile */}
           <div className="w-full md:w-[55%]">
-            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {services.map((service) => (
                 <div
                   key={service.id}
@@ -188,7 +188,7 @@ const TaxAdvisory = () => {
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Service List - Scrollable on mobile */}
           <div className="w-full md:w-[55%]">
-            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {details.map((item) => (
                 <div
                   key={item.id}
@@ -239,7 +239,7 @@ const TaxAdvisory = () => {
         <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-10 mt-10">
           {/* Process Steps - Scrollable on mobile */}
           <div className="w-full md:w-[55%]">
-            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {steps.map((step) => (
                 <div
                   key={step.id}

@@ -148,7 +148,7 @@ const Corporate = () => {
 
           {/* Services List - Scrollable on mobile */}
           <div className="w-full md:w-[55%]">
-            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
+            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
               {services.map((service) => (
                 <div key={service.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Service Number */}
@@ -183,7 +183,7 @@ const Corporate = () => {
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Service List - Scrollable on mobile */}
           <div className="w-full md:w-[55%]">
-            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
+            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
               {details.map((item) => (
                 <div key={item.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Number Icon */}
@@ -230,7 +230,7 @@ const Corporate = () => {
         <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-10 mt-10">
           {/* Process Steps - Scrollable on mobile */}
           <div className="w-full md:w-[55%]">
-            <div className="h-[300px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
+            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
               {steps.map((step) => (
                 <div key={step.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Step Number */}
