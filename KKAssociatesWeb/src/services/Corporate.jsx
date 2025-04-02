@@ -22,93 +22,114 @@ const Corporate = () => {
   const services = [
     {
       id: 1,
-      title: "Corporate Tax Return Preparation",
+      title: "Preparation & Filing",
       description:
-        "Expert preparation and filing of Forms 1120C, 1120S, and 1120F with meticulous attention to detail.",
+        "Accurate and timely filing of Forms 1120C, 1120S, and 1120F.",
     },
     {
       id: 2,
-      title: "Tax Planning & Compliance",
+      title: "Regulatory Compliance",
       description:
-        "Ensuring full compliance with U.S. tax laws and IRS regulations through our comprehensive review process.",
+        " Adherence to U.S. tax laws and IRS guidelines.",
     },
     {
       id: 3,
-      title: "Tax Optimization Strategies",
+      title: "Tax Optimization",
       description:
-        "Strategic tax optimization approaches to maximize efficiency while maintaining compliance.",
+        "Strategies to minimize liabilities and enhance financial efficiency.",
     },
   ];
 
   const details = [
     {
       id: 1,
-      title: "U.S. Corporations",
+      title: "U.S.-based corporations",
       description:
-        "Companies registered in the U.S. that require annual corporate tax filings.",
+        "Looking to streamline their tax filings.",
     },
     {
       id: 2,
-      title: "S Corporations",
+      title: "Indian businesses with U.S. operations",
       description:
-        "Businesses operating as S corporations needing specialized tax filing services.",
+        "Requiring tax compliance support.",
     },
     {
       id: 3,
-      title: "Foreign Corporations",
+      title: "Multinational companies expanding into the U.S.",
       description:
-        "International businesses with U.S. operations requiring expert tax management.",
+        "Seeking expert tax guidance.",
     },
   ];
 
   const steps = [
     {
       id: 1,
-      title: "Initial Assessment",
+      title: "Initial Consultation",
       description:
-        "Comprehensive review of your business structure and tax requirements.",
+        "Assessing corporate tax needs and goals.",
     },
     {
       id: 2,
-      title: "Document Collection",
+      title: "Document Review",
       description:
-        "Thorough analysis of financial documents and previous filings.",
+        "Gathering financial statements and relevant documentation.",
     },
     {
       id: 3,
-      title: "Tax Preparation",
+      title: "Tax Filing & Compliance",
       description:
-        "Expert preparation and submission of all required tax forms.",
+        "Preparing and submitting returns in compliance with IRS regulations.",
     },
     {
       id: 4,
-      title: "Review & Filing",
+      title: "Post-Filing Support",
       description:
-        "Final review and timely submission of tax returns.",
+        "Providing guidance on audits, amendments, and tax strategy.",
     },
   ];
 
   return (
     <div>
       {/* Hero Section */}
-      <div
-        className="relative bg-cover bg-center min-h-[600px] flex items-center justify-center text-white text-center px-6"
-        style={{ backgroundImage: "url('/ServiceSection.png')" }}
-      >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative z-10">
-          <h1 className="text-3xl md:text-5xl font-bold">
+      <div className="relative min-h-[600px] flex items-center justify-center text-white text-center px-6 overflow-hidden">
+        {/* Background Image with Parallax Effect */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ 
+            backgroundImage: "url('/service1.png')",
+            transform: "scale(1.1)",
+            transition: "transform 0.3s ease-out"
+          }}
+        />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl font-bold mb-4"
+          >
             U.S. Corporate Tax Filings
-          </h1>
-          <p className="mt-3">
-            Expert corporate tax services ensuring compliance and maximizing tax efficiency for your business.
-          </p>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-3 text-lg md:text-xl text-gray-200"
+          >
+                     Ensure seamless compliance with U.S. tax laws for corporations with expert filing of Forms 1120C, 1120S, and 1120F. Whether you're a U.S.-based company or an Indian business expanding into the U.S., our tailored tax solutions help optimize your tax strategy.
+
+          </motion.p>
           {showButton && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="w-full flex justify-center mt-5 sm:mt-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="w-full flex justify-center mt-8 sm:mt-10"
             >
               <Link to="/contact-us">
                 <motion.button
@@ -132,13 +153,13 @@ const Corporate = () => {
           What We Offer
         </h2>
         <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
-          Our comprehensive corporate tax services ensure your business maintains full compliance while optimizing tax efficiency.
+          Expert guidance for businesses to navigate U.S. corporate tax regulations while maximizing available benefits and deductions.
         </p>
 
         {/* Image & Service List */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
               src="/7.webp"
               alt="Offerings"
@@ -147,10 +168,13 @@ const Corporate = () => {
           </div>
 
           {/* Services List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[165px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
               {services.map((service) => (
-                <div key={service.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
+                <div
+                  key={service.id}
+                  className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none"
+                >
                   {/* Service Number */}
                   <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
                     {service.id}
@@ -182,10 +206,13 @@ const Corporate = () => {
         {/* Grid Layout */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Service List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
+          <div className="w-full md:w-[55%] order-2 md:order-1">
+            <div className="h-[165px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
               {details.map((item) => (
-                <div key={item.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
+                <div
+                  key={item.id}
+                  className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none"
+                >
                   {/* Number Icon */}
                   <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
                     {item.id}
@@ -206,7 +233,7 @@ const Corporate = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-2">
             <img
               src="/8.jpg"
               alt="Who Needs This Service"
@@ -223,16 +250,20 @@ const Corporate = () => {
           How It Works
         </h2>
         <p className="text-gray-600 mt-2 max-w-2xl mx-auto text-center">
-          Our streamlined process ensures efficient and accurate tax filing services.
+          Our streamlined process ensures efficient and accurate tax filing
+          services.
         </p>
 
         {/* Grid Layout */}
-        <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-10 mt-10">
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-10">
           {/* Process Steps - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[165px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0">
               {steps.map((step) => (
-                <div key={step.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
+                <div
+                  key={step.id}
+                  className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none"
+                >
                   {/* Step Number */}
                   <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
                     {step.id}
@@ -253,7 +284,7 @@ const Corporate = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
               src="/9.jpg"
               alt="How It Works"

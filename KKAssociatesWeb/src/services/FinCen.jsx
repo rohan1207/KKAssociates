@@ -22,42 +22,42 @@ const FinCen = () => {
   const services = [
     {
       id: 1,
-      title: "Compliance assistance for U.S. taxpayers with foreign assets",
+      title: "Foreign Asset Compliance",
       description:
-        "Expert preparation and filing of Forms 1120C, 1120S, and 1120F with meticulous attention to detail.",
+        "Helping U.S. taxpayers report overseas financial holdings.",
     },
     {
       id: 2,
-      title: "Filing of FINCEN 114 & FATCA Form 8938",
+      title: "Filing Support",
       description:
-        "Ensuring full compliance with U.S. tax laws and IRS regulations through our comprehensive review process.",
+        "Assistance with completing and submitting FINCEN 114 & FATCA Form 8938.",
     },
     {
       id: 3,
-      title: "Advisory on penalties & reporting obligations",
+      title: "Regulatory Advisory",
       description:
-        "Strategic tax optimization approaches to maximize efficiency while maintaining compliance.",
+        "Educating clients on reporting obligations and penalties.",
     },
   ];
 
   const details = [
     {
       id: 1,
-      title: "U.S. citizens & residents with foreign bank accounts",
+      title: "U.S. citizens & residents with foreign bank accounts and investments",
       description:
-        "Companies registered in the U.S. that require annual corporate tax filings.",
+        "Individuals with international financial interests requiring compliance.",
     },
     {
       id: 2,
       title: "Expats with overseas financial interests",
       description:
-        "Indian businesses operating in the U.S. market requiring compliance.",
+        "Requiring IRS compliance for international assets.",
     },
     {
       id: 3,
-      title: "Businesses with global financial operations",
+      title: "Businesses with global operations",
       description:
-        "Businesses with international operations that need expert tax management.",
+        "Needing structured financial reporting and compliance.",
     },
   ];
 
@@ -66,55 +66,74 @@ const FinCen = () => {
       id: 1,
       title: "Assessment of Foreign Asset Holdings",
       description:
-        "Comprehensive review of your business structure and tax requirements.",
+        "Evaluating assets subject to reporting.",
     },
     {
       id: 2,
       title: "Determination of Filing Requirements",
       description:
-        "Thorough analysis of financial documents and previous filings.",
+        "Identifying applicable tax forms and deadlines.",
     },
     {
       id: 3,
       title: "Preparation & Submission of Reports",
       description:
-        "Expert preparation and submission of all required tax forms.",
+        "Filing accurate and timely reports with IRS.",
     },
     {
       id: 4,
       title: "Ongoing Compliance Support",
       description:
-        "Ongoing assistance and support for any follow-up requirements.",
+        "Ensuring future compliance and risk mitigation.",
     },
   ];
 
   return (
     <div>
       {/* Hero Section */}
-      <div
-        className="relative bg-cover bg-center min-h-[600px] flex items-center justify-center text-white text-center px-6"
-        style={{ backgroundImage: "url('/ServiceSection.png')" }}
-      >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative z-10">
-          <h1 className="text-3xl md:text-5xl font-bold">
+      <div className="relative min-h-[600px] flex items-center justify-center text-white text-center px-6 overflow-hidden">
+        {/* Background Image with Parallax Effect */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ 
+            backgroundImage: "url('/service5.png')",
+            transform: "scale(1.1)",
+            transition: "transform 0.3s ease-out"
+          }}
+        />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl font-bold mb-4"
+          >
             FINCEN 114 & FATCA (Form 8938) Filings
-          </h1>
-          <p className="mt-3">
-            Stay compliant with U.S. foreign asset reporting requirements,
-            ensuring full adherence to FinCEN 114 and FATCA regulations.
-          </p>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-3 text-lg md:text-xl text-gray-200"
+          >
+            Stay compliant with U.S. foreign asset reporting requirements, ensuring full adherence to FINCEN 114 and FATCA regulations for international financial transparency.
+          </motion.p>
           {showButton && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }} // Always visible, adjust based on scroll logic if needed
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="w-full flex justify-center mt-5 sm:mt-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="w-full flex justify-center mt-8 sm:mt-10"
             >
               <Link to="/contact-us">
                 <motion.button
                   className="w-[194px] h-[55px] sm:w-[223px] sm:h-[64px] rounded-[20px] bg-[#FF5500] text-white font-semibold 
-                                                text-md sm:text-lg px-5 py-2 sm:py-3 flex justify-center items-center shadow-lg"
+                           text-md sm:text-lg px-5 py-2 sm:py-3 flex justify-center items-center shadow-lg"
                   whileHover={{ scale: 1.05, backgroundColor: "#FF7733" }}
                   transition={{ duration: 0.2, ease: "easeInOut" }}
                 >
@@ -133,23 +152,23 @@ const FinCen = () => {
           What We Offer
         </h2>
         <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
-          Our comprehensive FinCEN reporting services ensure accurate and timely filing of your reports.
+          Professional assistance with foreign account reporting requirements, ensuring accurate FBAR and FATCA compliance.
         </p>
 
         {/* Image & Service List */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
-              src="/10.jpeg"
+              src="/12.png"
               alt="Offerings"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
           </div>
 
           {/* Services List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[165px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {services.map((service) => (
                 <div key={service.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Service Number */}
@@ -183,8 +202,8 @@ const FinCen = () => {
         {/* Grid Layout */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Service List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-1">
+            <div className="h-[165px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {details.map((item) => (
                 <div key={item.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Number Icon */}
@@ -207,9 +226,9 @@ const FinCen = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-2">
             <img
-              src="/11.jpg"
+              src="/13.avif"
               alt="Who Needs This Service"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
@@ -228,10 +247,10 @@ const FinCen = () => {
         </p>
 
         {/* Grid Layout */}
-        <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-10 mt-10">
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-10">
           {/* Process Steps - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[165px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {steps.map((step) => (
                 <div key={step.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Step Number */}
@@ -254,9 +273,9 @@ const FinCen = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
-              src="/12.png"
+              src="/14.jpeg"
               alt="How It Works"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />

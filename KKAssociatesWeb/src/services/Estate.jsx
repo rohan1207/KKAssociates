@@ -22,93 +22,113 @@ const Estate = () => {
   const services = [
     {
       id: 1,
-      title: "Estate Planning & Documentation",
+      title: "Estate Structuring",
       description:
-        "Comprehensive estate planning services including wills, trusts, and power of attorney documents.",
+        "Tax-efficient strategies for wealth distribution.",
     },
     {
       id: 2,
-      title: "Tax Planning & Compliance",
+      title: "Legal & Tax Advisory",
       description:
-        "Strategic estate tax planning to minimize tax liabilities and ensure compliance with IRS regulations.",
+        "Assistance with wills, trusts, and succession planning.",
     },
     {
       id: 3,
-      title: "Asset Protection Strategies",
+      title: "Cross-Border Estate Planning",
       description:
-        "Expert guidance on protecting your assets and ensuring smooth wealth transfer to future generations.",
+        "Navigating U.S.-India estate tax laws.",
     },
   ];
 
   const details = [
     {
       id: 1,
-      title: "High-Net-Worth Individuals",
+      title: "High-net-worth individuals & families",
       description:
-        "Individuals with significant assets requiring comprehensive estate planning.",
+        "Securing generational wealth.",
     },
     {
       id: 2,
-      title: "Business Owners",
+      title: "Business owners",
       description:
-        "Entrepreneurs needing succession planning and business asset protection.",
+        "Planning succession with tax-efficient solutions.",
     },
     {
       id: 3,
-      title: "International Families",
+      title: "Individuals with international assets",
       description:
-        "Families with cross-border assets requiring specialized estate planning.",
+        "Needing cross-border legal expertise.",
     },
   ];
 
   const steps = [
     {
       id: 1,
-      title: "Initial Assessment",
+      title: "Initial Planning & Strategy Development",
       description:
-        "Comprehensive review of your estate planning needs and objectives.",
+        "Crafting a customized estate plan.",
     },
     {
       id: 2,
-      title: "Strategy Development",
+      title: "Legal & Tax Structuring",
       description:
-        "Customized estate planning strategy based on your specific situation.",
+        "Setting up trusts and wills with tax efficiency.",
     },
     {
       id: 3,
-      title: "Document Preparation",
+      title: "Execution of Estate Plans",
       description:
-        "Expert preparation of all necessary estate planning documents.",
+        "Implementing inheritance and asset transfer strategies.",
     },
     {
       id: 4,
-      title: "Implementation & Review",
+      title: "Ongoing Advisory & Adjustments",
       description:
-        "Final review and implementation of your estate plan.",
+        "Monitoring and refining the estate plan over time.",
     },
   ];
 
   return (
     <div>
       {/* Hero Section */}
-      <div
-        className="relative bg-cover bg-center min-h-[600px] flex items-center justify-center text-white text-center px-6"
-        style={{ backgroundImage: "url('/ServiceSection.png')" }}
-      >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative z-10">
-          <h1 className="text-3xl md:text-5xl font-bold">
-            Estate Planning Services
-          </h1>
-          <p className="mt-3">
-            Expert estate planning services ensuring your legacy is protected and efficiently transferred.
-          </p>
+      <div className="relative min-h-[600px] flex items-center justify-center text-white text-center px-6 overflow-hidden">
+        {/* Background Image with Parallax Effect */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ 
+            backgroundImage: "url('/service6.png')",
+            transform: "scale(1.1)",
+            transition: "transform 0.3s ease-out"
+          }}
+        />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl font-bold mb-4"
+          >
+            Estate & Succession Planning
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-3 text-lg md:text-xl text-gray-200"
+          >
+            Secure your assets and legacy with strategic estate planning and cross-border succession solutions designed for wealth preservation.
+          </motion.p>
           {showButton && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="w-full flex justify-center mt-5 sm:mt-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="w-full flex justify-center mt-8 sm:mt-10"
             >
               <Link to="/contact-us">
                 <motion.button
@@ -132,23 +152,23 @@ const Estate = () => {
           What We Offer
         </h2>
         <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
-          Our comprehensive estate planning services ensure your assets are protected and distributed according to your wishes.
+          Tailored estate planning strategies to protect your assets and ensure efficient wealth transfer to future generations.
         </p>
 
         {/* Image & Service List */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
-              src="/2.jpg"
+              src="/5.webp"
               alt="Offerings"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
           </div>
 
           {/* Services List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[165px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {services.map((service) => (
                 <div key={service.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Service Number */}
@@ -182,8 +202,8 @@ const Estate = () => {
         {/* Grid Layout */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Service List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-1">
+            <div className="h-[165px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {details.map((item) => (
                 <div key={item.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Number Icon */}
@@ -206,9 +226,9 @@ const Estate = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-2">
             <img
-              src="/1.jpeg"
+              src="/20.jpeg"
               alt="Who Needs This Service"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
@@ -227,10 +247,10 @@ const Estate = () => {
         </p>
 
         {/* Grid Layout */}
-        <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-10 mt-10">
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-10">
           {/* Process Steps - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[165px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {steps.map((step) => (
                 <div key={step.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Step Number */}
@@ -253,9 +273,9 @@ const Estate = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
-            src="/3.webp"
+              src="/21.jpeg"
               alt="How It Works"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />

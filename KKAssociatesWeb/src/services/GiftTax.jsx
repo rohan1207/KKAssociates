@@ -21,42 +21,42 @@ const GiftTax = () => {
   const services = [
     {
       id: 1,
-      title: "Preparation & filing of Form 706 for U.S. gift tax",
+      title: "Preparation & Filing",
       description:
-        "Expert preparation and filing of Forms 1120C, 1120S, and 1120F with meticulous attention to detail.",
+        "Comprehensive assistance in filing Form 706 for gift tax compliance.",
     },
     {
       id: 2,
-      title: "Guidance on tax liabilities & exemptions",
+      title: "Tax Liability & Exemption Guidance",
       description:
-        "Ensuring full compliance with U.S. tax laws and IRS regulations through our comprehensive review process.",
+        "Helping individuals understand tax-free thresholds and obligations.",
     },
     {
       id: 3,
-      title: "Compliance with IRS regulations",
+      title: "IRS Compliance",
       description:
-        "Strategic tax optimization approaches to maximize efficiency while maintaining compliance.",
+        "Ensuring proper documentation and adherence to tax laws.",
     },
   ];
 
   const details = [
     {
       id: 1,
-      title: "U.S. citizens & residents making large gifts",
+      title: "U.S. citizens & residents making substantial financial gifts",
       description:
-        "Companies registered in the U.S. that require annual corporate tax filings.",
+        "Individuals making significant financial gifts requiring tax compliance.",
     },
     {
       id: 2,
       title: "Non-residents gifting U.S.-based assets",
       description:
-        "Indian businesses operating in the U.S. market requiring compliance.",
+        "Requiring tax compliance for U.S. asset transfers.",
     },
     {
       id: 3,
-      title: "High-net-worth individuals managing wealth transfers",
+      title: "High-net-worth individuals engaged in strategic wealth transfer",
       description:
-        "Businesses with international operations that need expert tax management.",
+        "Managing complex wealth transfer strategies and tax implications.",
     },
   ];
 
@@ -65,25 +65,25 @@ const GiftTax = () => {
       id: 1,
       title: "Understanding Gift Tax Liabilities",
       description:
-        "Comprehensive review of your business structure and tax requirements.",
+        "Assessing tax implications and exemptions.",
     },
     {
       id: 2,
       title: "Document Collection & Review",
       description:
-        "Thorough analysis of financial documents and previous filings.",
+        "Gathering financial records and gift declarations.",
     },
     {
       id: 3,
       title: "Tax Return Filing & Compliance",
       description:
-        "Expert preparation and submission of all required tax forms.",
+        "Preparing and submitting Form 706.",
     },
     {
       id: 4,
       title: "Ongoing Wealth Management Support",
       description:
-        "Ongoing assistance and support for any follow-up requirements.",
+        "Providing advisory on estate planning and future gifting strategies.",
     },
   ];
 
@@ -92,14 +92,13 @@ const GiftTax = () => {
       {/* Hero Section */}
       <div
         className="relative bg-cover bg-center min-h-[600px] flex items-center justify-center text-white text-center px-6"
-        style={{ backgroundImage: "url('/ServiceSection.png')" }}
+        style={{ backgroundImage: "url('22.jpg')" }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10">
           <h1 className="text-3xl md:text-5xl font-bold">Gift Tax Returns</h1>
           <p className="mt-3">
-            Navigate U.S. gift tax regulations effortlessly with precise Form
-            706 preparation and filing.
+          Navigate U.S. gift tax regulations effortlessly with precise Form 706 preparation and filing, ensuring compliance with IRS rules while optimizing tax liabilities.
           </p>
           {showButton && (
             <motion.div
@@ -130,23 +129,23 @@ const GiftTax = () => {
           What We Offer
         </h2>
         <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
-          Our comprehensive gift tax services ensure accurate and timely filing of your gift tax returns.
+          Comprehensive guidance on gift tax regulations and reporting, helping you navigate tax implications of wealth transfers.
         </p>
 
         {/* Image & Service List */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
-              src="/service3.png"
+              src="/4.jpg"
               alt="Offerings"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
           </div>
 
           {/* Services List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[175px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {services.map((service) => (
                 <div key={service.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Service Number */}
@@ -180,8 +179,8 @@ const GiftTax = () => {
         {/* Grid Layout */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Service List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-1">
+            <div className="h-[175px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {details.map((item) => (
                 <div key={item.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Number Icon */}
@@ -204,9 +203,9 @@ const GiftTax = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-2">
             <img
-              src="service2.png"
+              src="2.jpg"
               alt="Who Needs This Service"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
@@ -225,10 +224,10 @@ const GiftTax = () => {
         </p>
 
         {/* Grid Layout */}
-        <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-10 mt-10">
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-10">
           {/* Process Steps - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[175px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {steps.map((step) => (
                 <div key={step.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Step Number */}
@@ -251,9 +250,9 @@ const GiftTax = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
-              src="service1.png"
+              src="/3.webp"
               alt="How It Works"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />

@@ -7,15 +7,7 @@ export default function LeadershipTeam({ selectedLeader, setSelectedLeader }) {
       image: "Alpesh_Photo.jpg",
       shortInfo:
         "A Chartered Accountant since 2006, specializing in tax planning and cross-border tax consultation  .",
-      fullInfo: `A Chartered Accountant since 2006, Alpesh brings over 12 years of
-experience in public accounting, specializing in tax planning, compliance, and
-cross-border tax consultation for clients with income in both the U.S. and India. He has
-advised businesses across industries, including banking, real estate, finance, and
-high-net-worth individuals, implementing effective tax-saving strategies. With expertise in
-audit and business advisory services for privately held companies, he combines technical
-proficiency with a client-centric approach. He holds a Commerce degree from the
-University of Pune and an Accounting degree from the Institute of Chartered Accountants
-of India, New Delhi.`,
+      fullInfo: ` A Chartered Accountant since 2006, Alpesh brings over 12 years of experience in public accounting, specializing in tax planning, compliance, and cross-border tax consultation for clients with income in both the U.S. and India. He has advised businesses across industries, including banking, real estate, finance, and high-net-worth individuals, implementing effective tax-saving strategies. With expertise in audit and business advisory services for privately held companies, he combines technical proficiency with a client-centric approach. He holds a Commerce degree from the University of Pune and an Accounting degree from the Institute of Chartered Accountants of India, New Delhi.`,
     },
     {
       name: "Kalyankumar Gujrathi",

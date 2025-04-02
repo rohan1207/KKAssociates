@@ -22,69 +22,75 @@ const Investor = () => {
   const services = [
     {
       id: 1,
-      title: "Assistance with EB-5 visa investment & filing",
+      title: "Comprehensive Tax Advisory",
       description:
-        "Expert preparation and filing of Forms 1120C, 1120S, and 1120F with meticulous attention to detail.",
+        "Expert tax planning for EB-5 investors navigating U.S. tax laws.",
     },
     {
       id: 2,
-      title: "Tax planning for U.S. residency & compliance",
+      title: "Investment Structuring",
       description:
-        "Ensuring full compliance with U.S. tax laws and IRS regulations through our comprehensive review process.",
+        "Guidance on structuring investments to optimize tax efficiency.",
     },
     {
       id: 3,
-      title: "Structuring investments for maximum tax benefits",
+      title: "IRS Compliance Support",
       description:
-        "Strategic tax optimization approaches to maximize efficiency while maintaining compliance.",
+        "Assistance with reporting requirements and regulatory filings.",
+    },
+    {
+      id: 4,
+      title: "Pre-Immigration Tax Planning",
+      description:
+        "Strategies to minimize global tax liabilities before U.S. relocation.",
     },
   ];
 
   const details = [
     {
       id: 1,
-      title: "Investors seeking U.S. residency through EB-5",
+      title: "Foreign Investors",
       description:
-        "Companies registered in the U.S. that require annual corporate tax filings.",
+        "Individuals seeking U.S. residency through the EB-5 Immigrant Investor Program.",
     },
     {
       id: 2,
-      title: "High-net-worth individuals planning U.S. relocation",
+      title: "Families Relocating to the U.S.",
       description:
-        "Indian businesses operating in the U.S. market requiring compliance.",
+        "Those planning to move to the U.S. and invest in commercial enterprises.",
     },
     {
       id: 3,
-      title: "Families looking for permanent residency pathways",
+      title: "Business Owners & Entrepreneurs",
       description:
-        "Businesses with international operations that need expert tax management.",
+        "Investors expanding into the U.S. through the EB-5 program.",
     },
   ];
 
   const steps = [
     {
       id: 1,
-      title: "Investment Planning & Structuring",
+      title: "Initial Consultation",
       description:
-        "Comprehensive review of your business structure and tax requirements.",
+        "Understanding your investment structure and residency goals.",
     },
     {
       id: 2,
-      title: "Legal & Financial Due Diligence",
+      title: "Tax Planning & Structuring",
       description:
-        "Thorough analysis of financial documents and previous filings.",
+        "Advising on optimal investment structures and tax-efficient planning.",
     },
     {
       id: 3,
-      title: "Visa Filing & Tax Compliance",
+      title: "Compliance & Filing Support",
       description:
-        "Expert preparation and submission of all required tax forms.",
+        "Assisting with IRS filings and reporting obligations.",
     },
     {
       id: 4,
-      title: "Post-Investment Advisory",
+      title: "Ongoing Advisory",
       description:
-        "Ongoing assistance and support for any follow-up requirements.",
+        "Providing continuous support for tax compliance and long-term financial planning.",
     },
   ];
 
@@ -93,7 +99,7 @@ const Investor = () => {
       {/* Hero Section */}
       <div
         className="relative bg-cover bg-center min-h-[600px] flex items-center justify-center text-white text-center px-6"
-        style={{ backgroundImage: "url('/ServiceSection.png')" }}
+        style={{ backgroundImage: "url('service3.png')" }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10">
@@ -101,8 +107,7 @@ const Investor = () => {
             EB-5 Investor Services
           </h1>
           <p className="mt-3">
-            Navigate the EB-5 Immigrant Investor Program with structured
-            investment planning and compliance support.
+          Navigate the EB-5 Immigrant Investor Program with structured investment planning and compliance support.
           </p>
           {showButton && (
             <motion.div
@@ -133,29 +138,25 @@ const Investor = () => {
           What We Offer
         </h2>
         <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
-          Our comprehensive investor services ensure accurate and timely filing
-          of your tax returns.
+          Strategic tax planning and compliance support for EB-5 investors, ensuring smooth navigation of U.S. investment regulations.
         </p>
 
         {/* Image & Service List */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
-              src="/4.jpg"
+              src="/1.jpeg"
               alt="Offerings"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
           </div>
 
           {/* Services List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[175px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {services.map((service) => (
-                <div
-                  key={service.id}
-                  className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none"
-                >
+                <div key={service.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Service Number */}
                   <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
                     {service.id}
@@ -187,13 +188,10 @@ const Investor = () => {
         {/* Grid Layout */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Service List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-1">
+            <div className="h-[175px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {details.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none"
-                >
+                <div key={item.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Number Icon */}
                   <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
                     {item.id}
@@ -214,9 +212,9 @@ const Investor = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-2">
             <img
-              src="/5.webp"
+              src="/2.jpg"
               alt="Who Needs This Service"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
@@ -236,15 +234,12 @@ const Investor = () => {
         </p>
 
         {/* Grid Layout */}
-        <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-10 mt-10">
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-10">
           {/* Process Steps - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[175px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {steps.map((step) => (
-                <div
-                  key={step.id}
-                  className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none"
-                >
+                <div key={step.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Step Number */}
                   <div className="bg-orange-500 text-white font-bold w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-xs sm:text-lg flex-shrink-0">
                     {step.id}
@@ -265,9 +260,9 @@ const Investor = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
-              src="/17.jpeg"
+              src="/3.webp"
               alt="How It Works"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />

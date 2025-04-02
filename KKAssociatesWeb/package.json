@@ -25,7 +25,6 @@
     "react-markdown": "^10.1.0",
     "react-parallax-tilt": "^1.7.288",
     "react-router-dom": "^6.30.0",
-    "react-tilt": "^1.0.2",
     "rehype-raw": "^7.0.0",
     "sweetalert2": "^11.17.2"
   },

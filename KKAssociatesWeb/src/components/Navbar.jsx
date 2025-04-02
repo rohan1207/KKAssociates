@@ -76,14 +76,14 @@ export default function Navbar() {
       className="fixed top-0 w-full z-50 bg-[#2E1A55] shadow-md"
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
           <Link to="/" className={`relative z-50 ${menuOpen ? 'hidden' : 'block'}`}>
             <motion.img
               whileHover={{ scale: 1.05 }}
               src="/logo.png"
               alt="KK Associates Logo"
-              className="h-14 sm:h-16 max-w-[280px]"
+              className="h-10 sm:h-12 w-auto object-contain"
             />
           </Link>
 

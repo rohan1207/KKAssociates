@@ -53,7 +53,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="mt-[180px] lg:mt-0 px-4 sm:px-8">
+    <div className="mt-[180px] lg:mt-[86px] px-4 sm:px-8">
       <h2 className="text-lg font-semibold mb-4">Send Us a Message</h2>
 
       {/* Toggle Between Email & WhatsApp */}

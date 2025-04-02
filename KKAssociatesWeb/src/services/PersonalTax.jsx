@@ -22,93 +22,113 @@ const PersonalTax = () => {
   const services = [
     {
       id: 1,
-      title: "Personal Tax Return Preparation",
+      title: "Form 1040 & 1040NR Filing",
       description:
-        "Expert preparation and filing of Forms 1040 and 1040NR with meticulous attention to detail.",
+        "Assistance in preparing and submitting U.S. personal tax returns.",
     },
     {
       id: 2,
-      title: "Tax Planning & Compliance",
+      title: "IRS Compliance",
       description:
-        "Ensuring full compliance with U.S. tax laws and IRS regulations through our comprehensive review process.",
+        "Ensuring adherence to U.S. tax laws for residents and non-residents.",
     },
     {
       id: 3,
-      title: "Tax Optimization Strategies",
+      title: "Tax Planning",
       description:
-        "Strategic tax optimization approaches to maximize efficiency while maintaining compliance.",
+        "Helping individuals with dual-country taxation and minimizing liabilities.",
     },
   ];
 
   const details = [
     {
       id: 1,
-      title: "U.S. Residents",
+      title: "U.S. citizens living abroad",
       description:
-        "Individuals residing in the U.S. requiring personal tax filing services.",
+        "Who need to file annual tax returns.",
     },
     {
       id: 2,
-      title: "Non-Resident Aliens",
+      title: "Non-residents with U.S. income",
       description:
-        "Foreign nationals with U.S. income needing specialized tax filing services.",
+        "Requiring compliance assistance.",
     },
     {
       id: 3,
-      title: "International Taxpayers",
+      title: "Foreign nationals with U.S. tax obligations",
       description:
-        "Individuals with international income requiring expert tax management.",
+        "Needing structured tax planning.",
     },
   ];
 
   const steps = [
     {
       id: 1,
-      title: "Initial Assessment",
+      title: "Personal Tax Consultation",
       description:
-        "Comprehensive review of your tax situation and requirements.",
+        "Reviewing individual tax status and income sources.",
     },
     {
       id: 2,
-      title: "Document Collection",
+      title: "Financial Document Review",
       description:
-        "Thorough analysis of financial documents and previous filings.",
+        "Gathering necessary paperwork for tax filing.",
     },
     {
       id: 3,
-      title: "Tax Preparation",
+      title: "Tax Return Preparation & Submission",
       description:
-        "Expert preparation and submission of all required tax forms.",
+        "Filing accurate and timely tax returns.",
     },
     {
       id: 4,
-      title: "Review & Filing",
+      title: "IRS Compliance & Advisory",
       description:
-        "Final review and timely submission of tax returns.",
+        "Offering guidance on tax-saving strategies and audits.",
     },
   ];
 
   return (
     <div>
       {/* Hero Section */}
-      <div
-        className="relative bg-cover bg-center min-h-[600px] flex items-center justify-center text-white text-center px-6"
-        style={{ backgroundImage: "url('/ServiceSection.png')" }}
-      >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative z-10">
-          <h1 className="text-3xl md:text-5xl font-bold">
+      <div className="relative min-h-[600px] flex items-center justify-center text-white text-center px-6 overflow-hidden">
+        {/* Background Image with Parallax Effect */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ 
+            backgroundImage: "url('/service2.png')",
+            transform: "scale(1.1)",
+            transition: "transform 0.3s ease-out"
+          }}
+        />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl font-bold mb-4"
+          >
             U.S. Personal Tax Filings
-          </h1>
-          <p className="mt-3">
-            Expert personal tax services ensuring compliance and maximizing tax efficiency for individuals.
-          </p>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-3 text-lg md:text-xl text-gray-200"
+          >
+           Hassle-free tax preparation and filing of Forms 1040 and 1040NR for U.S. residents and non-residents. We ensure IRS compliance and strategic tax planning for individuals with U.S. income.
+          </motion.p>
           {showButton && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="w-full flex justify-center mt-5 sm:mt-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="w-full flex justify-center mt-8 sm:mt-10"
             >
               <Link to="/contact-us">
                 <motion.button
@@ -132,13 +152,13 @@ const PersonalTax = () => {
           What We Offer
         </h2>
         <p className="mt-2 text-gray-600 max-w-2xl mx-auto text-center text-sm sm:text-base">
-          Our comprehensive personal tax services ensure accurate and timely filing of your tax returns.
+          Personalized tax solutions to help individuals meet U.S. tax obligations efficiently and identify potential savings opportunities.
         </p>
 
         {/* Image & Service List */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
               src="/19.jpeg"
               alt="Offerings"
@@ -147,8 +167,8 @@ const PersonalTax = () => {
           </div>
 
           {/* Services List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[175px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {services.map((service) => (
                 <div key={service.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Service Number */}
@@ -182,8 +202,8 @@ const PersonalTax = () => {
         {/* Grid Layout */}
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-8">
           {/* Service List - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-1">
+            <div className="h-[175px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {details.map((item) => (
                 <div key={item.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Number Icon */}
@@ -206,9 +226,9 @@ const PersonalTax = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-2">
             <img
-              src="/20.jpeg"
+              src="/18.jpeg"
               alt="Who Needs This Service"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />
@@ -227,10 +247,10 @@ const PersonalTax = () => {
         </p>
 
         {/* Grid Layout */}
-        <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-10 mt-10">
+        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 mt-10">
           {/* Process Steps - Scrollable on mobile */}
-          <div className="w-full md:w-[55%]">
-            <div className="h-[191px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
+          <div className="w-full md:w-[55%] order-2 md:order-2">
+            <div className="h-[175px] md:h-auto overflow-y-auto md:overflow-visible space-y-4 pr-2 md:pr-0 scroll-smooth">
               {steps.map((step) => (
                 <div key={step.id} className="flex items-start space-x-3 sm:space-x-4 bg-white p-3 rounded-lg shadow-sm md:shadow-none">
                   {/* Step Number */}
@@ -253,9 +273,9 @@ const PersonalTax = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          <div className="w-full md:w-[45%] flex justify-center order-1 md:order-1">
             <img
-              src="/1.jpeg"
+              src="/17.jpeg"
               alt="How It Works"
               className="w-full sm:w-[300px] lg:w-[350px] aspect-[16/10] object-cover rounded-lg shadow-md"
             />

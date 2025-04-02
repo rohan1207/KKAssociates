@@ -16,7 +16,7 @@ const Footer = () => {
           <Link to="/">
             <img src="/logo.png" alt="KK Associates Logo" className="h-10" />
           </Link>
-          <p className="text-sm text-gray-300">CHARTERED ACCOUNTANTS</p>
+        
         </div>
 
         {/* Quick Links */}
@@ -63,45 +63,28 @@ const Footer = () => {
 
         {/* Newsletter */}
         <div>
-          <h3 className="font-semibold mb-3">Newsletter</h3>
-          <ul className="text-sm text-gray-300 space-y-2">
-            <li>
-              <Link to="/login">
-                <a href="#" className="hover:underline">
-                  Sign Up
-                </a>
-                /
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/contact-us">
-                <a href="#" className="hover:underline">
-                  Support Center
-                </a>
-              </Link>
-            </li>
-          </ul>
+          <h3 className="font-semibold mb-3">Join Us At</h3>
+          <div className="flex space-x-6 text-xl">
+            <a 
+              href="https://www.facebook.com/kkassociatepune" 
+              className="text-gray-300 hover:text-white transition-colors duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebookF />
+            </a>
+            <a 
+              href="https://www.linkedin.com/company/kkassociate/" 
+              className="text-gray-300 hover:text-white transition-colors duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedinIn />
+            </a>
+          </div>
         </div>
 
-        {/* Social Media Icons */}
-        <div className="flex space-x-4 text-xl">
-          <a href="https://www.linkedin.com/company/kkassociate/">
-            <FaFacebookF />
-          </a>
-          <a href="#">
-            <FaInstagram />
-          </a>
-          <a href="#">
-            <FaTwitter />
-          </a>
-          <a href="https://www.linkedin.com/company/kkassociate/">
-            <FaLinkedinIn />
-          </a>
-          <a href="#">
-            <FaYoutube />
-          </a>
-        </div>
+      
       </div>
 
       {/* Bottom Section */}

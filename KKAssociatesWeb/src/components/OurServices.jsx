@@ -54,12 +54,12 @@ const services = [
     image: "service6.png",
   },
   {
-    title: "Business Formation",
+    title: "Formation of Trusts in India & USA",
     description: "Guidance on setting up your business.",
     tags: ["Startup", "LLC", "Corporation"],
     buttonColor: "bg-[#2E1A55] hover:bg-purple hover:scale-105 transition-all duration-300",
     path: "/formation-advisory",
-    image: "service7.png",
+    image: "9.jpg",
   },
   {
     title: "Gift Tax Return",
@@ -67,7 +67,7 @@ const services = [
     tags: ["IRS", "Exemptions"],
     buttonColor: "bg-[#2E1A55] hover:bg-purple hover:scale-105 transition-all duration-300",
     path: "/return-advisory",
-    image: "service8.png",
+    image: "22.jpg",
   },
 ];
 
@@ -125,7 +125,7 @@ const OurServices = () => {
              rounded-[20px] px-5 py-2 sm:px-6 sm:py-3 
              hover:bg-[#FF7733] transition duration-300 ease-in-out"
           >
-            View All Services
+            View More Services
           </button>
         </motion.div>
       )}
