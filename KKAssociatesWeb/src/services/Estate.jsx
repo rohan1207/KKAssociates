@@ -243,7 +243,7 @@ const Estate = () => {
           How It Works
         </h2>
         <p className="text-gray-600 mt-2 max-w-2xl mx-auto text-center">
-          Our streamlined process ensures your estate plan is comprehensive and legally sound.
+           Streamlined estate planning and cross-border succession solutions designed for wealth preservation.
         </p>
 
         {/* Grid Layout */}

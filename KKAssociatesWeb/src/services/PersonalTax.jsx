@@ -243,7 +243,7 @@ const PersonalTax = () => {
           How It Works
         </h2>
         <p className="text-gray-600 mt-2 max-w-2xl mx-auto text-center">
-          Our streamlined process ensures efficient and accurate tax filing services.
+        We ensure IRS compliance and strategic tax planning for individuals with U.S. income.
         </p>
 
         {/* Grid Layout */}

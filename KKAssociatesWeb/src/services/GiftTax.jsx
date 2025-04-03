@@ -220,7 +220,7 @@ const GiftTax = () => {
           How It Works
         </h2>
         <p className="text-gray-600 mt-2 max-w-2xl mx-auto text-center">
-          Our streamlined process ensures efficient and accurate gift tax filing services.
+          Our streamlined process ensures compliance with IRS rules while optimizing tax liabilities.
         </p>
 
         {/* Grid Layout */}

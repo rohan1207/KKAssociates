@@ -28,7 +28,21 @@ export default function ContactInfo() {
           <div className="flex items-center">
             <h3 className="font-semibold text-base sm:text-lg">Phone</h3>
           </div>
-          <p className="text-gray-600 text-sm leading-tight mt-1">+91 1234567890</p>
+          <p className="text-gray-600 text-sm leading-tight mt-1">
+            <a 
+              href="tel:+912025511024" 
+              className="hover:text-orange-500 transition-colors duration-200"
+            >
+              +91 20 25511024
+            </a>
+            <br />
+            <a 
+              href="tel:+919823149491" 
+              className="hover:text-orange-500 transition-colors duration-200"
+            >
+              +91 9823149491
+            </a>
+          </p>
         </div>
       </div>
 
@@ -42,7 +56,12 @@ export default function ContactInfo() {
             <h3 className="font-semibold text-base sm:text-lg">Email</h3>
           </div>
           <p className="text-gray-600 text-sm leading-tight mt-1">
-            contact@example.com
+            <a 
+              href="mailto:expat@kkassociate.com" 
+              className="hover:text-orange-500 transition-colors duration-200"
+            >
+              expat@kkassociate.com
+            </a>
           </p>
         </div>
       </div>

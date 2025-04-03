@@ -229,8 +229,7 @@ const Investor = () => {
           How It Works
         </h2>
         <p className="text-gray-600 mt-2 max-w-2xl mx-auto text-center">
-          Our streamlined process ensures efficient and accurate tax filing
-          services.
+        EB-5 Immigrant Investor Program with structured investment planning and compliance support.
         </p>
 
         {/* Grid Layout */}
