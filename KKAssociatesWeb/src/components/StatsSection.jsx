@@ -27,15 +27,15 @@ export default function StatsSection({ selectedLeader, setSelectedLeader }) {
         >
           {selectedLeader ? (
             <div className="relative max-w-5xl mx-auto mt-[100px] md:mt-[120px]">
-              {/* Image Container */}
+              {/* Image Container - Desktop Only */}
               <motion.div 
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="absolute left-0 -top-[100px] md:-top-[120px] z-10"
+                className="hidden md:block absolute left-0 -top-[120px] z-10"
               >
-                <div className={`w-[280px] h-[320px] md:w-[320px] md:h-[380px] rounded-lg overflow-hidden ${
-                  selectedLeader.name !== "Jaren Durham" ? "sm:mt-[64px]" : ""
+                <div className={`w-[320px] h-[380px] rounded-lg overflow-hidden ${
+                  selectedLeader.name !== "Jaren Durham" ? "mt-[64px]" : ""
                 }`}>
                   <img
                     src={selectedLeader.image}
@@ -46,7 +46,7 @@ export default function StatsSection({ selectedLeader, setSelectedLeader }) {
               </motion.div>
 
               {/* Purple Background Container */}
-              <div className="bg-[#2E1A55] rounded-2xl shadow-lg pt-[240px] md:pt-8 pb-8 px-8 md:pl-[360px] relative min-h-[220px] md:min-h-[260px]">
+              <div className="bg-[#2E1A55] rounded-2xl shadow-lg pt-8 pb-8 px-8 md:pl-[360px] relative min-h-[220px] md:min-h-[260px] flex flex-col">
                 {/* Close Button */}
                 <button
                   onClick={() => setSelectedLeader(null)}
@@ -67,6 +67,24 @@ export default function StatsSection({ selectedLeader, setSelectedLeader }) {
                     />
                   </svg>
                 </button>
+
+                {/* Mobile Image Container */}
+                <div className="md:hidden mb-6">
+                  <motion.div 
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="w-full flex justify-center"
+                  >
+                    <div className="w-[280px] h-[320px] rounded-lg overflow-hidden">
+                      <img
+                        src={selectedLeader.image}
+                        alt={selectedLeader.name}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                  </motion.div>
+                </div>
 
                 {/* Leader Details */}
                 <motion.div 
