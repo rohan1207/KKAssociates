@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -191,10 +190,11 @@ const ServiceCard = ({ service, isLargeScreen, index }) => {
         <motion.button
           onClick={() => navigate(service.path)}
           className={`w-[75px] h-[29px] sm:w-[85px] sm:h-[32px] px-3 text-white rounded-[6px] sm:rounded-[8px] 
-            font-roboto font-medium text-[10px] sm:text-[12px] leading-[20px] sm:leading-[20px] 
+            font-roboto font-medium text-[9px] xs:text-[10px] sm:text-[12px] leading-[20px] sm:leading-[20px] 
             ${service.buttonColor} 
-            flex items-center justify-center
-            ${isLargeScreen ? "opacity-0 group-hover:opacity-100 transition-opacity duration-300" : "opacity-100"}`}
+            flex items-center justify-center whitespace-nowrap
+            ${isLargeScreen ? "opacity-0 group-hover:opacity-100 transition-opacity duration-300" : "opacity-100"}
+            ${isNewIphone ? 'text-[8.5px]' : ''}`}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -205,4 +205,4 @@ const ServiceCard = ({ service, isLargeScreen, index }) => {
   );
 };
 
-export default OurServices;
+export default OurServices;
