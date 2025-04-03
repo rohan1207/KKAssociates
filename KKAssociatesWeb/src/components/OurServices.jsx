@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -135,7 +136,21 @@ const OurServices = () => {
 
 const ServiceCard = ({ service, isLargeScreen, index }) => {
   const navigate = useNavigate();
-  
+  const [isAndroid, setIsAndroid] = useState(false);
+  const [isNewIphone, setIsNewIphone] = useState(false);
+
+  useEffect(() => {
+    // Detect device type
+    const userAgent = navigator.userAgent.toLowerCase();
+    setIsAndroid(/android/.test(userAgent));
+    
+    // Detect iPhone 15 and newer (based on screen dimensions)
+    const isIphone = /iphone/.test(userAgent);
+    const { width, height } = window.screen;
+    const isNewModel = (width >= 390 && height >= 844) || (height >= 390 && width >= 844);
+    setIsNewIphone(isIphone && isNewModel);
+  }, []);
+
   return (
     <motion.div 
       className="bg-[#fff9f2] rounded-lg shadow-md p-4 flex flex-col h-full hover:shadow-lg transition duration-300 group relative"
@@ -190,4 +205,4 @@ const ServiceCard = ({ service, isLargeScreen, index }) => {
   );
 };
 
-export default OurServices;
+export default OurServices;
