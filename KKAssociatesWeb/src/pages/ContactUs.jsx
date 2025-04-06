@@ -5,7 +5,7 @@ import Locations from "../components/Locations";
 
 export default function ContactUs() {
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 mt-[48px]">
       {/* Map & Contact Info */}
       <div className="relative w-full h-96 mb-10">
         <iframe

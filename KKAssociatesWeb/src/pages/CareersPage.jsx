@@ -62,7 +62,7 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-8">
+    <div className="container mx-auto p-4 md:p-8 mt-[51px]">
       {/* Careers Section */}
       <div className="text-center mb-6 md:mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800">

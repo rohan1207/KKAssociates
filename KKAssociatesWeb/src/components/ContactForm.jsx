@@ -36,20 +36,49 @@ export default function ContactForm() {
 
   // ✅ Handle WhatsApp Message Sending
   const sendToWhatsapp = () => {
-    const { name, email, message } = formData;
-    const phoneNumber = "8600073706";
+    const { name, email, subject, message } = formData;
 
     if (!name || !email || !message) {
       alert("Please fill in all required fields!");
       return;
     }
 
-    const text = ` Contact Form Submission\n\n Name: ${name}\n Email: ${email}\n Message: ${message}`;
-    const encodedText = encodeURIComponent(text);
+    // Create the message
+    const messageText = 
+`New Contact Form Submission
 
-    const whatsappURL =
-      "https://wa.me/91" + phoneNumber + "?text=" + encodedText;
-    window.open(whatsappURL, "_blank");
+Name: ${name}
+Email: ${email}
+Subject: ${subject}
+Message: ${message}`;
+
+    try {
+      // Convert line breaks to URL-encoded format and handle special characters
+      const encodedMessage = messageText
+        .split('\n')
+        .map(line => encodeURIComponent(line))
+        .join('%0A');
+
+      // Use the legacy WhatsApp API endpoint
+      const whatsappURL = `https://web.whatsapp.com/send?phone=919823149491&text=${encodedMessage}`;
+      
+      // For mobile devices, try to use the WhatsApp app
+      if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        window.location.href = `whatsapp://send?phone=919823149491&text=${encodedMessage}`;
+      } else {
+        // For desktop, open in new tab
+        window.open(whatsappURL, '_blank');
+      }
+      
+      // Log for debugging
+      console.log('Encoded Message:', encodedMessage);
+      console.log('WhatsApp URL:', whatsappURL);
+      
+    } catch (error) {
+      console.error('Error creating WhatsApp link:', error);
+      // Fallback to basic WhatsApp link
+      window.open(`https://wa.me/919823149491`, '_blank');
+    }
   };
 
   return (
