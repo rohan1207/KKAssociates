@@ -20,17 +20,37 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("Sending...");
 
-    const response = await fetch("https://formspree.io/f/mldjwdnz", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      // Using Formspree endpoint configured for expat@kkassociate.com
+      const response = await fetch("https://formspree.io/f/xpzvgwnj", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          email: formData.email,
+          _subject: `New Contact Form Submission from ${formData.name}`,
+          message: `
+Name: ${formData.name}
+Email: ${formData.email}
+Subject: ${formData.subject}
 
-    if (response.ok) {
-      setStatus("Email Sent Successfully!");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } else {
-      setStatus("Failed to send email. Please try again.");
+Message:
+${formData.message}
+          `
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("Message sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setStatus("Failed to send message. Please try again.");
     }
   };
 
