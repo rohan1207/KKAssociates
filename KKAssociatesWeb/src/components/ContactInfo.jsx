@@ -12,10 +12,15 @@ export default function ContactInfo() {
           <div className="flex items-center">
             <h3 className="font-semibold text-base sm:text-lg">Address</h3>
           </div>
-          <p className="text-gray-600 text-sm leading-tight mt-1">
-            702, Apex Business Court, <br />
+          <a 
+            href="https://maps.app.goo.gl/3ybXd8cSga1xAThp7"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 text-sm leading-tight mt-1 hover:text-orange-500 transition-colors duration-200 block"
+          >
+            709, Apex Business Court, <br />
             Bibwewadi Kondhwa Rd, Pune 411037
-          </p>
+          </a>
         </div>
       </div>
 
@@ -33,7 +38,7 @@ export default function ContactInfo() {
               href="tel:+912025511024" 
               className="hover:text-orange-500 transition-colors duration-200"
             >
-              +91 20 25511024
+              +91 2069000097
             </a>
             <br />
             <a 

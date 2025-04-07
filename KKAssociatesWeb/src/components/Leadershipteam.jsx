@@ -6,44 +6,42 @@ export default function LeadershipTeam({ selectedLeader, setSelectedLeader }) {
       name: "Alpesh Gujrathi",
       image: "Alpesh_Photo.jpg",
       shortInfo:
-        "A Chartered Accountant since 2006, specializing in tax planning and cross-border tax consultation  .",
-      fullInfo: ` A Chartered Accountant since 2006, Alpesh brings over 12 years of experience in public accounting, specializing in tax planning, compliance, and cross-border tax consultation for clients with income in both the U.S. and India. He has advised businesses across industries, including banking, real estate, finance, and high-net-worth individuals, implementing effective tax-saving strategies. With expertise in audit and business advisory services for privately held companies, he combines technical proficiency with a client-centric approach. He holds a Commerce degree from the University of Pune and an Accounting degree from the Institute of Chartered Accountants of India, New Delhi.`,
+        "Partner, KK Associates",
+      fullInfo: `A Chartered Accountant since 2006, Alpesh Gujrathi brings over a decade of specialized experience in U.S. and India tax advisory, compliance, and cross-border tax planning. His core expertise lies in helping individuals and businesses navigate complex international tax landscapes—offering end-to-end services from tax filings to strategic structuring and optimization.
+Over the years, Alpesh has worked with clients across diverse sectors including banking, real estate, finance, and family-owned enterprises. He has successfully implemented tax-efficient solutions for high-net-worth individuals with dual tax obligations in the U.S. and India. His deep understanding of both jurisdictions’ tax codes, coupled with his experience in audit and business advisory for privately held companies, positions him as a trusted advisor in cross-border financial matters.
+Alpesh holds a degree in Commerce from the University of Pune and an Accounting qualification from the Institute of Chartered Accountants of India, New Delhi.
+`,
     },
     {
       name: "Kalyankumar Gujrathi",
       image: "kalyankumar.png",
       shortInfo:
-        "A seasoned partner at KKA for over 30 years, blending tax extensive experience with business insights.",
-      fullInfo: `A seasoned partner at KKA for over 30 years, Kalyankumar has
-extensive experience serving mid-sized family businesses, wholesalers, distributors,
-international clients, and individuals. He blends technical tax expertise with deep business
-insight to deliver proactive, client-focused solutions. He has successfully represented
-clients in India and advised multi-million-dollar U.S. companies on establishing operations
-in India. His expertise also includes business valuations for various entities. He holds a
-Bachelor's in Commerce from the University of Pune and an Accounting degree from the
-Institute of Chartered Accountants of India, New Delhi.`,
+        "Senior Partner, KK Associates",
+      fullInfo: `With over 30 years of experience as a partner at KKA, Kalyankumar Gujrathi is a respected authority in Indian taxation and compliance. He has successfully represented numerous clients before Indian tax authorities, offering strategic support in resolving tax scrutiny cases, litigation, and complex regulatory challenges. His deep understanding of the Indian tax system, combined with hands-on experience, makes him a trusted advisor for individuals and mid-sized family-owned businesses.
+Kalyankumar has also played a pivotal role in guiding multi-million-dollar U.S. companies in establishing and scaling their operations in India, ensuring tax-efficient and regulatory-compliant market entry. His expertise extends to business valuations, strategic advisory, and cross-border structuring, bringing value to both domestic and international clients.
+He holds a Bachelor's in Commerce from the University of Pune and an Accounting degree from the Institute of Chartered Accountants of India, New Delhi.
+`,
     },
     {
       name: "Sachin Ahuja",
       image: "sachin.png",
       shortInfo:
-        "A partner at KKA with over 12 years of experience across the U.S. and India, offering strategic tax advisory.",
-      fullInfo: `A partner at KKA with over 12 years of post-qualification experience, Sachin
-has worked across both the U.S. and India, bringing a fresh and practical approach to tax
-advisory. His expertise spans diverse industries, from manufacturing and engineering
-firms in India to mid-size corporations and publicly listed insurance companies in the U.S.
-With experience gained from top accounting firms worldwide, he offers in-depth insights
-and strategic financial solutions. Sachin holds a Bachelor of Commerce and a Chartered
-Accountancy degree from India and has been a member of the American Institute of
-Certified Public Accountants since 2009.`,
+        "Partner, KK Associates",
+      fullInfo: `With over 12 years of post-qualification experience, Sachin Ahuja brings a cross-continental perspective to tax advisory, specializing in U.S. and India tax compliance, planning, and cross-border structuring. As a partner at KK Associates, Sachin has worked extensively with a wide range of clients—from manufacturing and engineering companies in India to mid-sized U.S. corporations and publicly listed insurance companies.
+His global exposure, backed by experience at top international accounting firms, enables him to offer nuanced financial strategies tailored to complex, multi-jurisdictional tax challenges. Known for his analytical approach and practical insights, Sachin helps individuals and businesses streamline their U.S. and Indian tax filings, minimize liabilities, and ensure regulatory compliance.
+He holds a Bachelor of Commerce and a Chartered Accountancy degree from India, and has been a member of the American Institute of Certified Public Accountants (AICPA) since 2009.
+`,
     },
     {
-      name: "Jaren Durham",
+      name: "Wade Higgs",
       image: "wade.jpg",
       shortInfo:
-        "A partner at KKA with over 12 years of experience across the U.S. and India, offering strategic tax advisory.",
+        "U.S. Tax Expert, KK Associates",
       fullInfo:
-        "He is a licensed CPA in the State of Utah, has a Master's of Science in Taxation, and has years of Tax and Accounting experience. In Addition to doing taxes for individuals and businesses for years. He has worked for one of the big four accounting firms, has managed the tax analyst team at TAX Works, a major software provider and has taught accounting classes at the University of Utah. He is also very knowledgeable in business systems and technology.",
+        `Wade Higgs is a licensed CPA in the State of Utah with a Master of Science in Taxation and a robust career spanning tax advisory, compliance, and accounting. With extensive experience in both individual and business tax preparation, Wade brings a wealth of practical insight to U.S. and cross-border tax matters—especially those involving India-U.S. tax treaties and dual-jurisdiction filings.
+Wade has worked with one of the Big Four accounting firms and previously led the tax analyst team at TaxWorks, a major tax software provider. His background combines deep technical knowledge with a strong command of tax systems and process optimization. In addition, Wade has taught accounting courses at the University of Utah, reflecting his commitment to both education and excellence in the field.
+His unique blend of academic, professional, and technological expertise allows him to advise clients navigating complex U.S. and India tax landscapes, ensuring full compliance and maximizing tax efficiencies across borders.
+`,
     },
   ];
 

@@ -4,30 +4,38 @@ const locations = [
   {
     name: "Headquarters",
     city: "Chicago, USA",
-    mapUrl: "https://goo.gl/maps/7gF8G6PfJmB2",
+    address: `6915 South 900 East Midvale, Utah  84047`,
+    phone: "801-432-8965",
+    mapUrl: "https://maps.app.goo.gl/WkUMhXCqHcZDGhG26",
     iframeSrc:
-      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d385232.45348403853!2d-111.986542!3d41.033382!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8753026fe800f935%3A0x16236469189e8759!2s51%20Bonneville%20Lane%2C%20Kaysville%2C%20UT%2084037!5e0!3m2!1sen!2us!4v1742887642335!5m2!1sen!2sus",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3028.1982963303753!2d-111.86856982416178!3d40.62550867140683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x875289d252801947%3A0x5828d23437ea8efd!2s6915%20S%20900%20E%2C%20Midvale%2C%20UT%2084047%2C%20USA!5e0!3m2!1sen!2sin!4v1744035671628!5m2!1sen!2sin",
   },
   {
     name: "Regional Office",
     city: "Mumbai, India",
-    mapUrl: "https://goo.gl/maps/3Q5y4G3yT6H2",
+    address: "6/10 Matunga Navjivan CHS, 172, Tulsi Pipe Road, Matunga (WR), Mumbai- 400016",
+    phone: "+91 98231 49491",
+    mapUrl: "https://maps.app.goo.gl/XjNfKT1GB5qs13yLA",
     iframeSrc:
-      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d482830.78836785315!2d72.838491!3d19.01463!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cec3f462dfbd%3A0x8f317d1b39e5e5ce!2sSenapati%20Bapat%20Marg%2C%20Mumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2us!4v1742887678774!5m2!1sen!2us",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.479047720725!2d72.84142417934571!3d19.042664100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c92e92eb806f%3A0xafa5f6c53d8f41be!2sNavjivan%20CHS!5e0!3m2!1sen!2sus!4v1744037634977!5m2!1sen!2sus"
   },
   {
     name: "Delhi/ NCR",
     city: "Delhi, India",
-    mapUrl: "https://goo.gl/maps/Y6cH3P5gG8K2",
+    address: "344, Tower B2, Spaze I-Tech, Sector-49, Sohna Road, Gurgaon- 122018, Haryana.",
+    phone: "+91 98231 49491",
+    mapUrl: "https://maps.app.goo.gl/nhDSfW9iKtTdwVN68",
     iframeSrc:
-      "https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3509.2019303605784!2d77.04053632528064!3d28.413163175785318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s344%2C%20Tower%20B2%2C%20Spaze%20I-Tech%2C%20Sector-49%2C%20Sohna%20Road%2C%20Gurgaon-%20122018%2C%20Haryana.!5e0!3m2!1sen!2us!4v1742887788886!5m2!1sen!2us",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.201930360579!2d77.04053632528061!3d28.413163175785293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d229aea4f7e0f%3A0xeccfa90483111aa0!2sTower%20B2!5e0!3m2!1sen!2sus!4v1744037772738!5m2!1sen!2sus",
   },
   {
     name: "Bengaluru",
     city: "Bengaluru, India",
-    mapUrl: "https://goo.gl/maps/9Z3H4G7JfL52",
+    address: "F602, Purva Fountain Sqaure, Marathahalli, Bengaluru- 560037",
+    phone: "+91 98231 49491",
+    mapUrl: "https://maps.app.goo.gl/GLbyy49Yf6XszNd28",
     iframeSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2254952520116!2d77.7029406748411!3d12.957417687356637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae123184269049%3A0x9822df974af274d4!2sPurva%20Fountain%20Square!5e0!3m2!1sen!2us!4v1742887837880!5m2!1sen!2us",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2254952520116!2d77.7029406748411!3d12.957417687356637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae123184269049%3A0x9822df974af274d4!2sPurva%20Fountain%20Square!5e0!3m2!1sen!2sin!4v1744037904687!5m2!1sen!2sin",
   },
 ];
 
@@ -39,12 +47,10 @@ export default function Locations() {
       <div className="overflow-x-auto whitespace-nowrap pb-4">
         <div className="inline-flex space-x-6">
           {locations.map((loc, index) => (
-            <a
+            <div
               key={index}
-              href={loc.mapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-80 bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow"
+              className="block w-80 bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
+              onClick={() => window.open(loc.mapUrl, '_blank')}
             >
               <iframe
                 src={loc.iframeSrc}
@@ -56,14 +62,21 @@ export default function Locations() {
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
               <div className="p-4">
-                <h3 className="font-semibold">{loc.name}</h3>
-                <p className="text-sm text-gray-600">{loc.city}</p>
+                <h3 className="font-semibold hover:text-orange-500 transition-colors">{loc.name}</h3>
+                <p className="text-sm text-gray-600 hover:text-orange-500 transition-colors">{loc.city}</p>
+                <p className="text-sm text-gray-600 mt-2 hover:text-orange-500 transition-colors">{loc.address}</p>
+                <a 
+                  href={`tel:${loc.phone.replace(/\s+/g, '')}`}
+                  className="text-sm text-gray-600 mt-1 block hover:text-orange-500 transition-colors"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {loc.phone}
+                </a>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
-         
     </div>
   );
 }

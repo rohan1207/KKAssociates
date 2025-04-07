@@ -34,7 +34,7 @@ export default function StatsSection({ selectedLeader, setSelectedLeader }) {
                 transition={{ duration: 0.3 }}
                 className="hidden md:block absolute left-0 -top-[120px] z-10"
               >
-                <div className={`w-[320px] h-[380px] rounded-lg overflow-hidden ${
+                <div className={`w-[320px] h-[484px] rounded-lg overflow-hidden ${
                   selectedLeader.name !== "Jaren Durham" ? "mt-[64px]" : ""
                 }`}>
                   <img
