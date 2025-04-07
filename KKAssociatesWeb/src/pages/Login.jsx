@@ -41,8 +41,16 @@ export default function Login() {
         icon: "error",
         title: "Not Registered",
         text: "You need to register first.",
+        showCancelButton: true,
+        confirmButtonText: "Sign Up",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#FF5500",
+        cancelButtonColor: "#6c757d",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setIsSignUp(true);
+        }
       });
-      setIsSignUp(true);
     } else {
       Swal.fire({
         icon: "success",
