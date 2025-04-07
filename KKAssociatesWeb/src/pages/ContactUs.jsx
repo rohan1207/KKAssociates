@@ -12,7 +12,7 @@ export default function ContactUs() {
           className="w-full h-full rounded-lg cursor-pointer relative"
           onClick={() => window.open('https://maps.app.goo.gl/3ybXd8cSga1xAThp7', '_blank')}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-300 z-10 rounded-lg"></div>
+          <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-300 z-0 rounded-lg"></div>
           <iframe
             className="w-full h-full rounded-lg"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.0475158629147!2d73.87380467496196!3d18.48150678260443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eb534ebd4ac7%3A0xab78b83fe8a268ba!2sAPEX%20BUSINESS%20COURT!5e0!3m2!1sen!2sin!4v1743060856757!5m2!1sen!2sin"
@@ -25,7 +25,7 @@ export default function ContactUs() {
           ></iframe>
         </div>
 
-        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-3xl mt-[202px]">
+        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-3xl mt-[202px] z-20">
           <ContactInfo />
         </div>
       </div>
