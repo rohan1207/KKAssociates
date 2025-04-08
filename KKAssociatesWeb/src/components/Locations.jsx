@@ -44,30 +44,41 @@ export default function Locations() {
     <div className="mt-16 text-center">
       <h2 className="text-2xl font-semibold text-orange-500">Our Locations</h2>
       <p className="text-gray-500 mb-6">Connecting with you worldwide.</p>
-      <div className="overflow-x-auto whitespace-nowrap pb-4">
+      <div className="overflow-x-auto whitespace-nowrap pb-4 px-4 md:px-6">
         <div className="inline-flex space-x-6">
           {locations.map((loc, index) => (
             <div
               key={index}
-              className="block w-80 bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
+              className="block w-[280px] md:w-[320px] bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
               onClick={() => window.open(loc.mapUrl, '_blank')}
             >
-              <iframe
-                src={loc.iframeSrc}
-                width="100%"
-                height="250"
-                style={{ border: "0" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300 z-10"></div>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                  <span className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                    View in Maps
+                  </span>
+                </div>
+                <iframe
+                  src={loc.iframeSrc}
+                  width="100%"
+                  height="200"
+                  style={{ border: "0" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="pointer-events-none"
+                ></iframe>
+              </div>
               <div className="p-4">
-                <h3 className="font-semibold hover:text-orange-500 transition-colors">{loc.name}</h3>
+                <h3 className="font-semibold text-lg hover:text-orange-500 transition-colors mb-1">{loc.name}</h3>
                 <p className="text-sm text-gray-600 hover:text-orange-500 transition-colors">{loc.city}</p>
-                <p className="text-sm text-gray-600 mt-2 hover:text-orange-500 transition-colors">{loc.address}</p>
+                <p className="text-sm text-gray-600 mt-2 hover:text-orange-500 transition-colors whitespace-normal break-words leading-relaxed min-h-[60px]">
+                  {loc.address}
+                </p>
                 <a 
                   href={`tel:${loc.phone.replace(/\s+/g, '')}`}
-                  className="text-sm text-gray-600 mt-1 block hover:text-orange-500 transition-colors"
+                  className="text-sm text-gray-600 mt-2 block hover:text-orange-500 transition-colors"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {loc.phone}
