@@ -6,93 +6,119 @@ export default function ContactForm() {
     name: "",
     email: "",
     subject: "",
+    company: "",
+    phone: "",
     message: "",
   });
 
   const [status, setStatus] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // ✅ Handle Email Submission (Formspree)
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("Sending...");
-
-    try {
-      // Using Formspree endpoint configured for expat@kkassociate.com
-      const response = await fetch("https://formspree.io/f/xpzvgwnj", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          email: formData.email,
-          _subject: `New Contact Form Submission from ${formData.name}`,
-          message: `
-Name: ${formData.name}
-Email: ${formData.email}
-Subject: ${formData.subject}
-
-Message:
-${formData.message}
-          `
-        }),
-      });
-
-      if (response.ok) {
-        setStatus("Message sent successfully!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        throw new Error("Failed to send message");
-      }
-    } catch (error) {
-      console.error("Error sending email:", error);
-      setStatus("Failed to send message. Please try again.");
+    if (errors[e.target.name]) {
+      setErrors({ ...errors, [e.target.name]: "" });
     }
   };
 
-  // ✅ Handle WhatsApp Message Sending
-  const sendToWhatsapp = () => {
-    const { name, email, subject, message } = formData;
+  const options = [
+    "US Expats & Inpats",
+    "Visa Holders",
+    "Business Owners",
+    "NRIs - Indian Taxes",
+    "India Entity Formation",
+    "Other"
+  ];
 
-    if (!name || !email || !message) {
-      alert("Please fill in all required fields!");
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^[0-9+\-\s()]{10,}$/.test(formData.phone)) {
+      newErrors.phone = "Please enter a valid phone number";
+    }
+    
+    if (!formData.subject) {
+      newErrors.subject = "Please select a subject";
+    }
+    
+    if (!formData.company) {
+      newErrors.company = "Please select a company type";
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
       return;
     }
 
-    // Create the message
-    const messageText = 
+    const emailBody = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Subject: ${formData.subject}
+Company: ${formData.company}
+
+Message:
+${formData.message}
+    `.trim();
+
+    const mailtoLink = `mailto:expat@kkassociate.com?subject=${encodeURIComponent(`New Contact Form Submission from ${formData.name}`)}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(formData.email)}`;
+
+    window.location.href = mailtoLink;
+    setStatus("Opening your email client...");
+  };
+
+  const sendToWhatsapp = () => {
+    if (!validateForm()) {
+      return;
+    }
+
+    const message = 
 `New Contact Form Submission
 
-Name: ${name}
-Email: ${email}
-Subject: ${subject}
-Message: ${message}`;
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Subject: ${formData.subject}
+Company: ${formData.company}
+
+Message:
+${formData.message}`;
 
     try {
-      // Convert line breaks to URL-encoded format and handle special characters
-      const encodedMessage = messageText
+      const encodedMessage = message
         .split('\n')
         .map(line => encodeURIComponent(line))
         .join('%0A');
 
-      // Use the legacy WhatsApp API endpoint
-      const whatsappURL = `https://web.whatsapp.com/send?phone=919823149491&text=${encodedMessage}`;
-      
-      // For mobile devices, try to use the WhatsApp app
+      // For mobile devices, open WhatsApp app directly
       if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
         window.location.href = `whatsapp://send?phone=919823149491&text=${encodedMessage}`;
       } else {
-        // For desktop, open in new tab
-        window.open(whatsappURL, '_blank');
+        // For desktop, open WhatsApp Web
+        window.open(`https://web.whatsapp.com/send?phone=919823149491&text=${encodedMessage}`, '_blank');
       }
-      
-      // Log for debugging
-      console.log('Encoded Message:', encodedMessage);
-      console.log('WhatsApp URL:', whatsappURL);
       
     } catch (error) {
       console.error('Error creating WhatsApp link:', error);
@@ -136,43 +162,102 @@ Message: ${message}`;
       </div>
       <form
         onSubmit={isWhatsApp ? (e) => e.preventDefault() : handleSubmit}
-        className="space-y-4"
+        className="space-y-4 max-w-full"
       >
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="w-full p-3 border border-gray-300 rounded-lg"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="w-full p-3 border border-gray-300 rounded-lg"
-        />
-        <input
-          type="text"
-          name="subject"
-          placeholder="Subject"
-          value={formData.subject}
-          onChange={handleChange}
-          required
-          className="w-full p-3 border border-gray-300 rounded-lg"
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message..."
-          value={formData.message}
-          onChange={handleChange}
-          required
-          className="w-full p-3 border border-gray-300 rounded-lg h-24"
-        ></textarea>
+        <div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name *"
+            value={formData.name}
+            onChange={handleChange}
+            className={`w-full p-3 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg text-sm md:text-base`}
+          />
+          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+        </div>
+
+        <div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address *"
+            value={formData.email}
+            onChange={handleChange}
+            className={`w-full p-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg text-sm md:text-base`}
+          />
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+        </div>
+
+        <div>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Contact Number *"
+            value={formData.phone}
+            onChange={handleChange}
+            className={`w-full p-3 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg text-sm md:text-base`}
+          />
+          {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+        </div>
+
+        <div className="relative w-full">
+          <select
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            className={`w-full p-3 border ${
+              errors.subject ? 'border-red-500' : 'border-gray-300'
+            } rounded-lg bg-white text-sm md:text-base appearance-none`}
+          >
+            <option value="">Select Subject *</option>
+            {options.map((option, index) => (
+              <option key={index} value={option}>{option}</option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+            </svg>
+          </div>
+          {errors.subject && (
+            <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
+          )}
+        </div>
+
+        <div className="relative w-full">
+          <select
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            className={`w-full p-3 border ${
+              errors.company ? 'border-red-500' : 'border-gray-300'
+            } rounded-lg bg-white text-sm md:text-base appearance-none`}
+          >
+            <option value="">Select Company *</option>
+            {options.map((option, index) => (
+              <option key={index} value={option}>{option}</option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+            </svg>
+          </div>
+          {errors.company && (
+            <p className="text-red-500 text-sm mt-1">{errors.company}</p>
+          )}
+        </div>
+
+        <div>
+          <textarea
+            name="message"
+            placeholder="Your Message... *"
+            value={formData.message}
+            onChange={handleChange}
+            className={`w-full p-3 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded-lg h-24 text-sm md:text-base`}
+          ></textarea>
+          {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+        </div>
 
         {/* Conditional Rendering for Buttons */}
         {isWhatsApp ? (

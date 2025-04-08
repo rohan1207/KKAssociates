@@ -9,46 +9,101 @@ export default function ChatBox() {
     name: "",
     email: "",
     phone: "",
+    subject: "",
+    company: "",
     message: "",
   });
+
+  const [errors, setErrors] = useState({});
+
+  const options = [
+    "US Expats & Inpats",
+    "Visa Holders",
+    "Business Owners",
+    "NRIs - Indian Taxes",
+    "India Entity Formation",
+    "Other"
+  ];
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^[0-9+\-\s()]{10,}$/.test(formData.phone)) {
+      newErrors.phone = "Please enter a valid phone number";
+    }
+    
+    if (!formData.subject) {
+      newErrors.subject = "Please select a subject";
+    }
+    
+    if (!formData.company) {
+      newErrors.company = "Please select a company type";
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   // Function to update form fields
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (errors[e.target.name]) {
+      setErrors({ ...errors, [e.target.name]: "" });
+    }
   };
 
   // Function to send data to WhatsApp
   const sendToWhatsapp = () => {
-    let number = "+918600073706"; // Replace with your WhatsApp number
-
-    const { name, email, phone, message } = formData;
-
-    // Check if all fields are filled
-    if (!name || !email || !phone || !message) {
-      alert("Please fill all the fields!");
+    if (!validateForm()) {
       return;
     }
 
-    // Create WhatsApp URL
-    let url =
-      "https://wa.me/" +
-      number +
-      "?text=" +
-      " Contact Form Submission %0A%0A" +
-      " Name: " +
-      name +
-      "%0A" +
-      " Email: " +
-      email +
-      "%0A" +
-      " Phone: " +
-      phone +
-      "%0A" +
-      " Message: " +
-      message +
-      "%0A";
+    const message = 
+`New Contact Form Submission
 
-    window.open(url, "_blank").focus(); // Open WhatsApp
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Subject: ${formData.subject}
+Company: ${formData.company}
+
+Message:
+${formData.message}`;
+
+    try {
+      const encodedMessage = message
+        .split('\n')
+        .map(line => encodeURIComponent(line))
+        .join('%0A');
+
+      const whatsappURL = `https://web.whatsapp.com/send?phone=919823149491&text=${encodedMessage}`;
+      
+      if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        window.location.href = `whatsapp://send?phone=919823149491&text=${encodedMessage}`;
+      } else {
+        window.open(whatsappURL, '_blank');
+      }
+      
+    } catch (error) {
+      console.error('Error creating WhatsApp link:', error);
+      window.open(`https://wa.me/919823149491`, '_blank');
+    }
   };
 
   return (
@@ -66,7 +121,7 @@ export default function ChatBox() {
           <div className="mt-4 flex justify-center space-x-4">
             <Link to={"Contact-us"}>
               <button
-                onClick={() => setIsOpen(!isOpen)}
+               
                 className="bg-white text-black px-5 py-2 rounded font-medium shadow"
               >
                 Contact
@@ -117,32 +172,66 @@ export default function ChatBox() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Enter your full name"
-                className="w-full border border-gray-300 p-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]"
+                placeholder="Enter your full name *"
+                className={`w-full border ${errors.name ? 'border-red-500' : 'border-gray-300'} p-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]`}
               />
+              {errors.name && <p className="text-red-500 text-sm mb-2">{errors.name}</p>}
+              
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Email"
-                className="w-full border border-gray-300 p-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]"
+                placeholder="Email *"
+                className={`w-full border ${errors.email ? 'border-red-500' : 'border-gray-300'} p-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]`}
               />
+              {errors.email && <p className="text-red-500 text-sm mb-2">{errors.email}</p>}
+              
               <input
                 type="text"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="Phone"
-                className="w-full border border-gray-300 p-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]"
+                placeholder="Phone *"
+                className={`w-full border ${errors.phone ? 'border-red-500' : 'border-gray-300'} p-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569]`}
               />
+              {errors.phone && <p className="text-red-500 text-sm mb-2">{errors.phone}</p>}
+
+              <select
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className={`w-full border ${errors.subject ? 'border-red-500' : 'border-gray-300'} p-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569] bg-white`}
+              >
+                <option value="">Select Subject *</option>
+                {options.map((option, index) => (
+                  <option key={index} value={option}>{option}</option>
+                ))}
+              </select>
+              {errors.subject && <p className="text-red-500 text-sm mb-2">{errors.subject}</p>}
+
+              <select
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                className={`w-full border ${errors.company ? 'border-red-500' : 'border-gray-300'} p-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-[#402569] bg-white`}
+              >
+                <option value="">Select Company *</option>
+                {options.map((option, index) => (
+                  <option key={index} value={option}>{option}</option>
+                ))}
+              </select>
+              {errors.company && <p className="text-red-500 text-sm mb-2">{errors.company}</p>}
+              
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Your message"
-                className="w-full border border-gray-300 p-2 rounded-lg mb-3 h-20 focus:outline-none focus:ring-2 focus:ring-[#402569]"
+                placeholder="Your message *"
+                className={`w-full border ${errors.message ? 'border-red-500' : 'border-gray-300'} p-2 rounded-lg mb-3 h-20 focus:outline-none focus:ring-2 focus:ring-[#402569]`}
               />
+              {errors.message && <p className="text-red-500 text-sm mb-2">{errors.message}</p>}
+              
               <button
                 onClick={sendToWhatsapp}
                 className="bg-[#402569] text-white w-full py-2 rounded-lg hover:bg-[#311c4f] transition text-lg"

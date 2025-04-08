@@ -6,59 +6,73 @@ export default function CareersPage() {
     email: "",
     contact: "",
     message: "",
-    resume: null,
+    resumeLink: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: files ? files[0] : value, // Handle file input separately
+      [name]: value,
     });
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: "" });
+    }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSuccessMessage(""); // Clear previous messages
-    setErrorMessage("");
-    setLoading(true);
-
-    try {
-      const response = await fetch("https://formspree.io/f/mldjwdnz", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          contact: formData.contact,
-          message: formData.message,
-          resume: formData.resumeLink, // Sending resume link
-        }),
-      });
-
-      if (response.ok) {
-        setSuccessMessage("Application submitted successfully!");
-        setFormData({
-          name: "",
-          email: "",
-          contact: "",
-          message: "",
-          resumeLink: "",
-        });
-      } else {
-        setErrorMessage("Failed to submit application. Please try again.");
-      }
-    } catch (error) {
-      setErrorMessage("An unexpected error occurred. Please try again later.");
-    } finally {
-      setLoading(false);
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
     }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    
+    if (!formData.contact.trim()) {
+      newErrors.contact = "Contact number is required";
+    } else if (!/^[0-9+\-\s()]{10,}$/.test(formData.contact)) {
+      newErrors.contact = "Please enter a valid contact number";
+    }
+    
+    if (!formData.resumeLink.trim()) {
+      newErrors.resumeLink = "Resume link is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    const emailBody = `
+Job Application Submission
+
+Name: ${formData.name}
+Email: ${formData.email}
+Contact: ${formData.contact}
+Resume Link: ${formData.resumeLink}
+
+Message:
+${formData.message}
+    `.trim();
+
+    const mailtoLink = `mailto:expat@kkassociate.com?subject=${encodeURIComponent(`Job Application from ${formData.name}`)}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(formData.email)}`;
+
+    window.location.href = mailtoLink;
+    setStatus("Opening your email client...");
   };
 
   return (
@@ -93,78 +107,78 @@ export default function CareersPage() {
           <h3 className="text-2xl font-semibold text-gray-700 mb-4 text-center">
             Apply Now
           </h3>
-          {successMessage && (
+          {status && (
             <p className="text-center text-green-600 font-medium">
-              {successMessage}
-            </p>
-          )}
-
-          {errorMessage && (
-            <p className="text-center text-red-600 font-medium">
-              {errorMessage}
-            </p>
-          )}
-
-          {errorMessage && (
-            <p className="text-center text-red-600 font-medium">
-              {errorMessage}
+              {status}
             </p>
           )}
           <form
             onSubmit={handleSubmit}
             className="space-y-4"
-            encType="multipart/form-data"
           >
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name *"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email *"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="text"
-              name="contact"
-              placeholder="Contact Number *"
-              required
-              value={formData.contact}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <textarea
-              name="message"
-              placeholder="Message"
-              value={formData.message}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            ></textarea>
-            <input
-              type="url"
-              name="resumeLink"
-              placeholder="Paste Google Drive link to your resume *"
-              required
-              value={formData.resumeLink}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <div>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name *"
+                value={formData.name}
+                onChange={handleChange}
+                className={`w-full p-3 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              />
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+            </div>
+
+            <div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email *"
+                value={formData.email}
+                onChange={handleChange}
+                className={`w-full p-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              />
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="contact"
+                placeholder="Contact Number *"
+                value={formData.contact}
+                onChange={handleChange}
+                className={`w-full p-3 border ${errors.contact ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              />
+              {errors.contact && <p className="text-red-500 text-sm mt-1">{errors.contact}</p>}
+            </div>
+
+            <div>
+              <textarea
+                name="message"
+                placeholder="Message"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              ></textarea>
+            </div>
+
+            <div>
+              <input
+                type="url"
+                name="resumeLink"
+                placeholder="Paste Google Drive link to your resume *"
+                value={formData.resumeLink}
+                onChange={handleChange}
+                className={`w-full p-3 border ${errors.resumeLink ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              />
+              {errors.resumeLink && <p className="text-red-500 text-sm mt-1">{errors.resumeLink}</p>}
+            </div>
 
             <button
               type="submit"
-              disabled={loading}
-              className="w-full bg-[#FF5500]  text-white py-3 rounded-lg hover:bg-bg-[#FF5500]  transition font-semibold text-lg"
+              className="w-full bg-[#FF5500] text-white py-3 rounded-lg hover:bg-[#FF5500] transition font-semibold text-lg"
             >
-              {loading ? "Submitting..." : "Submit Application"}
+              Submit Application
             </button>
           </form>
         </div>
