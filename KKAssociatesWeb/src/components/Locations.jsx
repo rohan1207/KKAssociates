@@ -2,8 +2,8 @@ import { useRef, useEffect, useState } from "react";
 
 const locations = [
   {
-    name: "Headquarters",
-    city: "Chicago, USA",
+    name: "US Office",
+    city: "Utah, USA",
     address: `6915 South 900 East Midvale, Utah  84047`,
     phone: "801-432-8965",
     mapUrl: "https://maps.app.goo.gl/WkUMhXCqHcZDGhG26",
@@ -11,7 +11,7 @@ const locations = [
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3028.1982963303753!2d-111.86856982416178!3d40.62550867140683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x875289d252801947%3A0x5828d23437ea8efd!2s6915%20S%20900%20E%2C%20Midvale%2C%20UT%2084047%2C%20USA!5e0!3m2!1sen!2sin!4v1744035671628!5m2!1sen!2sin",
   },
   {
-    name: "Regional Office",
+    name: "Mumbai Office",
     city: "Mumbai, India",
     address: "6/10 Matunga Navjivan CHS, 172, Tulsi Pipe Road, Matunga (WR), Mumbai- 400016",
     phone: "+91 98231 49491",

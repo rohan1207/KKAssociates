@@ -26,6 +26,7 @@ export default function ContactUs() {
         </div>
 
         <div className="absolute top-16 left-1/2 transform -translate-x-1/2 bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-3xl mt-[202px] z-20">
+          <h2 className="text-2xl font-semibold mb-4 text-center">Head Office</h2>
           <ContactInfo />
         </div>
       </div>
