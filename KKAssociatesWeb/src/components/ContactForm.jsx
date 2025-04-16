@@ -6,7 +6,9 @@ export default function ContactForm() {
     name: "",
     email: "",
     subject: "",
+    otherSubject: "",
     company: "",
+    otherCompany: "",
     phone: "",
     message: "",
   });
@@ -21,13 +23,19 @@ export default function ContactForm() {
     }
   };
 
-  const options = [
+  const subjectOptions = [
+    "Individual",
+    "Corporate",
+    "Others"
+  ];
+
+  const companyOptions = [
     "US Expats & Inpats",
     "Visa Holders",
     "Business Owners",
     "NRIs - Indian Taxes",
     "India Entity Formation",
-    "Other"
+    "Others"
   ];
 
   const validateForm = () => {
@@ -51,10 +59,14 @@ export default function ContactForm() {
     
     if (!formData.subject) {
       newErrors.subject = "Please select a subject";
+    } else if (formData.subject === "Others" && !formData.otherSubject.trim()) {
+      newErrors.otherSubject = "Please specify your subject";
     }
     
     if (!formData.company) {
       newErrors.company = "Please select a company type";
+    } else if (formData.company === "Others" && !formData.otherCompany.trim()) {
+      newErrors.otherCompany = "Please specify your company type";
     }
     
     if (!formData.message.trim()) {
@@ -76,8 +88,8 @@ export default function ContactForm() {
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
-Subject: ${formData.subject}
-Company: ${formData.company}
+Subject: ${formData.subject === "Others" ? formData.otherSubject : formData.subject}
+Company: ${formData.company === "Others" ? formData.otherCompany : formData.company}
 
 Message:
 ${formData.message}
@@ -100,8 +112,8 @@ ${formData.message}
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
-Subject: ${formData.subject}
-Company: ${formData.company}
+Subject: ${formData.subject === "Others" ? formData.otherSubject : formData.subject}
+Company: ${formData.company === "Others" ? formData.otherCompany : formData.company}
 
 Message:
 ${formData.message}`;
@@ -210,7 +222,7 @@ ${formData.message}`;
             } rounded-lg bg-white text-sm md:text-base appearance-none`}
           >
             <option value="">Select Subject *</option>
-            {options.map((option, index) => (
+            {subjectOptions.map((option, index) => (
               <option key={index} value={option}>{option}</option>
             ))}
           </select>
@@ -224,6 +236,23 @@ ${formData.message}`;
           )}
         </div>
 
+        {formData.subject === "Others" && (
+          <div>
+            <textarea
+              name="otherSubject"
+              placeholder="Please specify your subject *"
+              value={formData.otherSubject}
+              onChange={handleChange}
+              className={`w-full p-3 border ${
+                errors.otherSubject ? 'border-red-500' : 'border-gray-300'
+              } rounded-lg text-sm md:text-base h-20 resize-none`}
+            ></textarea>
+            {errors.otherSubject && (
+              <p className="text-red-500 text-sm mt-1">{errors.otherSubject}</p>
+            )}
+          </div>
+        )}
+
         <div className="relative w-full">
           <select
             name="company"
@@ -234,7 +263,7 @@ ${formData.message}`;
             } rounded-lg bg-white text-sm md:text-base appearance-none`}
           >
             <option value="">Select Company *</option>
-            {options.map((option, index) => (
+            {companyOptions.map((option, index) => (
               <option key={index} value={option}>{option}</option>
             ))}
           </select>
@@ -247,6 +276,23 @@ ${formData.message}`;
             <p className="text-red-500 text-sm mt-1">{errors.company}</p>
           )}
         </div>
+
+        {formData.company === "Others" && (
+          <div>
+            <textarea
+              name="otherCompany"
+              placeholder="Please specify your company type *"
+              value={formData.otherCompany}
+              onChange={handleChange}
+              className={`w-full p-3 border ${
+                errors.otherCompany ? 'border-red-500' : 'border-gray-300'
+              } rounded-lg text-sm md:text-base h-20 resize-none`}
+            ></textarea>
+            {errors.otherCompany && (
+              <p className="text-red-500 text-sm mt-1">{errors.otherCompany}</p>
+            )}
+          </div>
+        )}
 
         <div>
           <textarea

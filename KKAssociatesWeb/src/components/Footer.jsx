@@ -16,7 +16,6 @@ const Footer = () => {
           <Link to="/">
             <img src="/logo.png" alt="KK Associates Logo" className="h-10" />
           </Link>
-        
         </div>
 
         {/* Quick Links */}
@@ -77,26 +76,48 @@ const Footer = () => {
             </a>
           </div>
         </div>
-
-      
       </div>
 
       {/* Bottom Section */}
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-300 mt-10">
-        {/* Copyright Text */}
-        <p>© 2024 KK Associates. All rights reserved.</p>
+      <div className="container mx-auto mt-10">
+        <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-300 border-t border-gray-700 pt-6">
+          {/* Copyright Text */}
+          <p>© 2024 KK Associates. All rights reserved.</p>
 
-        {/* Privacy Links */}
-        <div className="flex space-x-6">
-          <a href="#" className="hover:underline">
-            Privacy Policy
-          </a>
-          <a href="#" className="hover:underline">
-            Terms of Use
-          </a>
-          <a href="#" className="hover:underline">
-            Cookie Policy
-          </a>
+          {/* Privacy Links */}
+          <div className="flex space-x-6 my-4 md:my-0">
+            <a href="#" className="hover:underline">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:underline">
+              Terms of Use
+            </a>
+            <a href="#" className="hover:underline">
+              Cookie Policy
+            </a>
+          </div>
+        </div>
+
+        {/* Designer Credit with Schema.org structured data */}
+        <div className="text-center text-sm text-gray-400 mt-4 pt-4 border-t border-gray-700">
+          <div itemScope itemType="https://schema.org/WebSite">
+            <meta itemProp="name" content="KK Associates" />
+            <div itemProp="creator" itemScope itemType="https://schema.org/Organization">
+              <p>
+                Designed & Developed by{" "}
+                <a
+                  href="https://thesocialcollab.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  itemProp="url"
+                  className="text-[#FF5500] hover:underline font-medium"
+                >
+                  <span itemProp="name">ThesocialKollab</span>
+                </a>
+                {" "}| Digital Marketing & Web Development Agency
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
