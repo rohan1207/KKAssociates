@@ -121,8 +121,10 @@ ${formData.message}`;
           <div className="mt-4 flex justify-center space-x-4">
             <Link to={"Contact-us"}>
               <button
-               
-                className="bg-white text-black px-5 py-2 rounded font-medium shadow"
+                className="w-[194px] h-[55px] sm:w-[223px] sm:h-[64px] bg-white text-black font-roboto font-medium 
+                text-md sm:text-lg leading-[24px] sm:leading-[27px] text-center 
+                rounded-[20px] px-5 py-2 sm:px-6 sm:py-3 
+                hover:bg-gray-100 transition duration-300 ease-in-out shadow-lg hover:scale-105"
               >
                 Contact
               </button>

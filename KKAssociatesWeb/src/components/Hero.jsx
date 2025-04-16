@@ -62,9 +62,8 @@ const Hero = () => {
           animate={{ opacity: scrollY > 300 ? 0 : 1 }}
           transition={{ duration: 0.3 }}
         >
-          Seamless Cross-Border Tax Solutions
-          <br className="hidden sm:block" />
-          Between the U.S. & India
+          Seamless Cross-Border Tax Solutions{" "}
+          <span className="inline-block">Between the U.S. & India</span>
         </motion.h2>
 
         <motion.p
@@ -79,21 +78,19 @@ const Hero = () => {
         </motion.p>
 
         {/* Book Consultation Button */}
-
-        {/* Book Consultation Button */}
         <motion.div
-          animate={{ opacity: scrollY > 100 ? 1 : 0 }}
-          transition={{ duration: 0.15 }}
-          className="w-full flex justify-center mt-5 sm:mt-6"
+          animate={{ opacity: scrollY > 50 ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="w-full flex justify-center mt-8 sm:mt-10 md:mt-12"
         >
           <Link to="/book-consultation">
             <motion.button
               className="w-[194px] h-[55px] sm:w-[223px] sm:h-[64px] rounded-[20px] bg-[#FF5500] text-white font-semibold 
-                 text-md sm:text-lg px-5 py-2 sm:py-3 flex justify-center items-center shadow-lg"
+                 text-md sm:text-lg px-5 py-2 sm:py-3 flex justify-center items-center shadow-lg hover:scale-105"
               whileHover={{ backgroundColor: "#FF7733" }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              Book Consultation
+              Book  Consultation
             </motion.button>
           </Link>
         </motion.div>
